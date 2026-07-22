@@ -1,1 +1,0 @@
-# Barrierefreie Wohnungen Dresden – Test

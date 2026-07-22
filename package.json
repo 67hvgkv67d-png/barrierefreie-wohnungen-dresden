@@ -1,0 +1,9 @@
+{
+  "name": "barrierefreie-wohnungen-dresden",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "import:ewg": "node scripts/import-ewg-wohnungen.mjs",
+    "check": "node --check script.js && node --check scripts/import-ewg-wohnungen.mjs"
+  }
+}

@@ -12,7 +12,7 @@ const MAX_BODY_BYTES = 1500000;
 const FIELD_PATTERNS = {
   address: [/\bAdresse\b/i, /\bAnschrift\b/i, /\bLage\b/i, /\bStra(?:ße|sse)\b/i, /\bWeg\b/i, /\bRing\b/i],
   rooms: [/\bZimmer\b/i, /\bRäume?\b/i, /\bRaumwohnung\b/i, /\bRaum-Wohnung\b/i],
-  area: [/\bWohnfläche\b/i, /\bFläche\b/i, /\bm²\b/i, /\bm&sup2;\b/i, /\bm&#178;\b/i],
+  area: [/\bWohnfläche\b/i, /\bFläche\b/i, /(?:^|[^\p{L}\p{N}_])m\s*(?:²|2|&sup2;|&#178;)(?=$|[^\p{L}\p{N}_])/iu],
   rent: [/\bKaltmiete\b/i, /\bWarmmiete\b/i, /\bBruttokaltmiete\b/i, /\bGesamtmiete\b/i, /\bNebenkosten\b/i, /\bMiete\b/i],
   availability: [/\bverfügbar\b/i, /\bfrei ab\b/i, /\bbezugsfrei\b/i, /\bBezug\b/i, /\bVerfügbarkeit\b/i],
   accessibility: [/\bbarrierefrei\b/i, /\bbarrierearm\b/i, /\brollstuhlgerecht\b/i, /\bstufenlos\b/i, /\bAufzug\b/i, /\bLift\b/i],

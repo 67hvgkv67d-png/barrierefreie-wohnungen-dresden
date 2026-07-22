@@ -9,10 +9,36 @@ const REQUEST_TIMEOUT_MS = 15000;
 const DELAY_BETWEEN_REQUESTS_MS = 1200;
 const MAX_BODY_BYTES = 1500000;
 
+const NAMED_HTML_ENTITIES = Object.freeze({
+  amp: '&',
+  apos: "'",
+  quot: '"',
+  lt: '<',
+  gt: '>',
+  nbsp: ' ',
+  auml: 'ä',
+  Auml: 'Ä',
+  ouml: 'ö',
+  Ouml: 'Ö',
+  uuml: 'ü',
+  Uuml: 'Ü',
+  szlig: 'ß',
+  eacute: 'é',
+  Eacute: 'É',
+  agrave: 'à',
+  Agrave: 'À',
+  egrave: 'è',
+  Egrave: 'È',
+  euro: '€',
+  sup2: '²',
+  ndash: '–',
+  mdash: '—'
+});
+
 const FIELD_PATTERNS = {
   address: [/\bAdresse\b/i, /\bAnschrift\b/i, /\bLage\b/i, /\bStra(?:ße|sse)\b/i, /\bWeg\b/i, /\bRing\b/i],
   rooms: [/\bZimmer\b/i, /\bRäume?\b/i, /\bRaumwohnung\b/i, /\bRaum-Wohnung\b/i],
-  area: [/\bWohnfläche\b/i, /\bFläche\b/i, /(?:^|[^\p{L}\p{N}_])m\s*(?:²|2|&sup2;|&#178;)(?=$|[^\p{L}\p{N}_])/iu],
+  area: [/\bWohnfläche\b/i, /\bFläche\b/i, /(?:^|[^\p{L}\p{N}_])m\s*(?:²|2)(?=$|[^\p{L}\p{N}_])/iu],
   rent: [/\bKaltmiete\b/i, /\bWarmmiete\b/i, /\bBruttokaltmiete\b/i, /\bGesamtmiete\b/i, /\bNebenkosten\b/i, /\bMiete\b/i],
   availability: [/\bverfügbar\b/i, /\bfrei ab\b/i, /\bbezugsfrei\b/i, /\bBezug\b/i, /\bVerfügbarkeit\b/i],
   accessibility: [/\bbarrierefrei\b/i, /\bbarrierearm\b/i, /\brollstuhlgerecht\b/i, /\bstufenlos\b/i, /\bAufzug\b/i, /\bLift\b/i],
@@ -67,19 +93,34 @@ function validateConfig(config) {
   }
 }
 
+function decodeHtmlEntities(value) {
+  return value.replace(/&(?:#(\d+)|#x([\da-fA-F]+)|([A-Za-z][A-Za-z0-9]+));/g, (match, decimal, hexadecimal, named) => {
+    if (decimal || hexadecimal) {
+      const codePoint = Number.parseInt(decimal || hexadecimal, decimal ? 10 : 16);
+      if (!Number.isInteger(codePoint) || codePoint < 0 || codePoint > 0x10ffff || (codePoint >= 0xd800 && codePoint <= 0xdfff)) {
+        return match;
+      }
+
+      return String.fromCodePoint(codePoint);
+    }
+
+    return NAMED_HTML_ENTITIES[named] ?? match;
+  });
+}
+
 function stripMarkup(html) {
-  return html
+  return decodeHtmlEntities(html)
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
     .replace(/<!--([\s\S]*?)-->/g, ' ')
     .replace(/<[^>]+>/g, ' ')
-    .replace(/&nbsp;/gi, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
 function detectFields(html) {
-  const searchable = `${html}\n${stripMarkup(html)}`;
+  const decodedHtml = decodeHtmlEntities(html);
+  const searchable = `${decodedHtml}\n${stripMarkup(html)}`;
   const detected = {};
 
   for (const [field, patterns] of Object.entries(FIELD_PATTERNS)) {
@@ -87,6 +128,38 @@ function detectFields(html) {
   }
 
   return detected;
+}
+
+async function readBodyWithLimit(response) {
+  if (!response.body) return { body: '', bodyBytes: 0 };
+
+  const reader = response.body.getReader();
+  const chunks = [];
+  let bodyBytes = 0;
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      const chunk = Buffer.from(value);
+      bodyBytes += chunk.byteLength;
+
+      if (bodyBytes > MAX_BODY_BYTES) {
+        await reader.cancel('Antwort überschreitet das Größenlimit.').catch(() => {});
+        throw new Error(`Antwort größer als ${MAX_BODY_BYTES} Byte.`);
+      }
+
+      chunks.push(chunk);
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  return {
+    body: Buffer.concat(chunks, bodyBytes).toString('utf8'),
+    bodyBytes
+  };
 }
 
 async function fetchWithLimit(url) {
@@ -109,14 +182,11 @@ async function fetchWithLimit(url) {
     const contentType = response.headers.get('content-type') || '';
     const declaredLength = Number(response.headers.get('content-length') || 0);
     if (declaredLength > MAX_BODY_BYTES) {
+      if (response.body) await response.body.cancel().catch(() => {});
       throw new Error(`Antwort laut Content-Length größer als ${MAX_BODY_BYTES} Byte.`);
     }
 
-    const body = await response.text();
-    const bodyBytes = Buffer.byteLength(body, 'utf8');
-    if (bodyBytes > MAX_BODY_BYTES) {
-      throw new Error(`Antwort größer als ${MAX_BODY_BYTES} Byte.`);
-    }
+    const { body, bodyBytes } = await readBodyWithLimit(response);
 
     return {
       ok: response.ok,

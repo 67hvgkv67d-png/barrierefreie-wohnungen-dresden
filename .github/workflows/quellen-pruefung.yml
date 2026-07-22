@@ -27,6 +27,7 @@ jobs:
         run: node scripts/pruefe-quellen.mjs --output=reports/quellen-pruefung.json
 
       - name: Prüfbericht als Artefakt speichern
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: quellen-pruefung

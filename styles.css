@@ -126,7 +126,7 @@ summary {
 
 .filters {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
   max-width: 100%;
 }
@@ -173,6 +173,12 @@ button {
 }
 
 button:hover { background: var(--accent-dark); }
+
+@media (min-width: 35rem) {
+  .filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 .apartment-grid {
   display: grid;
@@ -236,7 +242,9 @@ button:hover { background: var(--accent-dark); }
 @media (min-width: 48rem) {
   .site-header { padding: 3rem 0; }
   .info-section, .filter-panel, .apartment-card { padding: 1.5rem; }
+}
 
+@media (min-width: 64rem) {
   .filters {
     grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   }

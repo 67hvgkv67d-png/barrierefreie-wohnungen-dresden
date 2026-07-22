@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://67hvgkv67d-png.github.io/barrierefreie-wohnungen-dresden/data/wohnungen.schema.json",
+  "title": "Wohnungsdaten Dresden",
+  "type": "object",
+  "required": ["lastUpdated", "referenceAddresses", "apartments"],
+  "properties": {
+    "lastUpdated": {
+      "type": "string",
+      "format": "date"
+    },
+    "referenceAddresses": {
+      "type": "object",
+      "required": ["Johannstadt", "Gorbitz"],
+      "properties": {
+        "Johannstadt": { "type": "string", "minLength": 1 },
+        "Gorbitz": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "apartments": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/apartment" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "nullableMoney": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "apartment": {
+      "type": "object",
+      "required": [
+        "id",
+        "dataStatus",
+        "title",
+        "district",
+        "location",
+        "rooms",
+        "areaSqm",
+        "accessibilityCategory",
+        "accessibilityLabel",
+        "accessibilityFeatures",
+        "wbs",
+        "provider",
+        "sourceId",
+        "firstFound",
+        "lastChecked",
+        "originalUrl",
+        "originalLabel"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "dataStatus": {
+          "type": "string",
+          "enum": ["example", "live", "inactive"]
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "district": {
+          "type": "string",
+          "enum": ["Johannstadt", "Gorbitz"]
+        },
+        "location": { "type": "string", "minLength": 1 },
+        "distanceMeters": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "rooms": { "type": "number", "exclusiveMinimum": 0 },
+        "areaSqm": { "type": "number", "exclusiveMinimum": 0 },
+        "netColdRent": { "$ref": "#/$defs/nullableMoney" },
+        "coldOperatingCosts": { "$ref": "#/$defs/nullableMoney" },
+        "grossColdRent": { "$ref": "#/$defs/nullableMoney" },
+        "heatingCosts": { "$ref": "#/$defs/nullableMoney" },
+        "warmRent": { "$ref": "#/$defs/nullableMoney" },
+        "accessibilityCategory": {
+          "type": "string",
+          "enum": ["A", "B", "C"]
+        },
+        "accessibilityLabel": { "type": "string", "minLength": 1 },
+        "accessibilityFeatures": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "wbs": {
+          "type": "string",
+          "enum": ["erforderlich", "nicht erforderlich", "unbekannt"]
+        },
+        "provider": { "type": "string", "minLength": 1 },
+        "sourceId": { "type": "string", "minLength": 1 },
+        "objectId": { "type": ["string", "null"] },
+        "availableFrom": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "firstFound": { "type": "string", "format": "date" },
+        "lastChecked": { "type": "string", "format": "date" },
+        "contact": { "type": ["string", "null"] },
+        "originalUrl": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "originalLabel": { "type": "string", "minLength": 1 },
+        "suitableForPersons": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1 },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

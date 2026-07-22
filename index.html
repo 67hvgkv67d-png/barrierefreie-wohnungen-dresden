@@ -38,6 +38,15 @@
           <p><strong>C – ungeklärt:</strong> Es fehlen wesentliche Informationen. Eine persönliche Prüfung ist besonders wichtig.</p>
         </div>
       </details>
+      <details>
+        <summary>Wie wird die KdU für eine Wohngemeinschaft berechnet?</summary>
+        <div class="details-content">
+          <p>Die Bewohner:innen bilden in diesem Projekt in der Regel keine gemeinsame Bedarfsgemeinschaft. Deshalb wird jede Person grundsätzlich mit der Ein-Personen-Grenze von 450,50 Euro berücksichtigt.</p>
+          <p>Für zwei getrennte leistungsberechtigte Personen ergibt sich rechnerisch eine Gesamtgrenze von 901,00 Euro. Für drei getrennte leistungsberechtigte Personen ergibt sich rechnerisch eine Gesamtgrenze von 1.351,50 Euro.</p>
+          <p>Entscheidend ist die Bruttokaltmiete, also Nettokaltmiete plus kalte Betriebskosten. Heizkosten werden getrennt geprüft und werden für diese KdU-Einschätzung nicht zur Bruttokaltmiete gerechnet.</p>
+          <p>Die Berechnung auf dieser Webseite ist nur eine Orientierung. Vor Abschluss des Mietvertrags muss eine Angemessenheitsbestätigung beziehungsweise Kostenübernahme beim zuständigen Leistungsträger eingeholt werden.</p>
+        </div>
+      </details>
     </section>
 
     <section class="filter-panel" aria-labelledby="filter-heading">
@@ -72,10 +81,9 @@
         <label>KdU-Einschätzung
           <select id="kdu-filter" name="kdu">
             <option value="all">Alle</option>
-            <option value="innerhalb der Grenze">innerhalb der Grenze</option>
-            <option value="Einzelfallprüfung">Einzelfallprüfung</option>
-            <option value="nicht prüfbar">nicht prüfbar</option>
-            <option value="über der Grenze">über der Grenze</option>
+            <option value="any-within">für mindestens eine mögliche Belegung innerhalb der WG-KdU-Grenze</option>
+            <option value="none-within">für keine mögliche Belegung innerhalb der WG-KdU-Grenze</option>
+            <option value="not-checkable">nicht prüfbar</option>
           </select>
         </label>
         <label>Wohnberechtigungsschein

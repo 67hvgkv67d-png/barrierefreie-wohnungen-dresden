@@ -13,12 +13,11 @@
       "distanceMeters": 450,
       "rooms": 1,
       "areaSqm": 42,
-      "suitableFor": 1,
-      "netColdRent": 395,
-      "coldOperatingCosts": 95,
-      "grossColdRent": 490,
+      "netColdRent": 340,
+      "coldOperatingCosts": 90,
+      "grossColdRent": 430,
       "heatingCosts": 70,
-      "warmRent": 560,
+      "warmRent": 500,
       "accessibilityCategory": "A",
       "accessibilityLabel": "bestätigt barrierefrei",
       "accessibilityFeatures": [
@@ -26,14 +25,16 @@
         "Aufzug vorhanden",
         "bodengleiche Dusche"
       ],
-      "kduAssessment": "innerhalb der Grenze",
       "wbs": "nicht erforderlich",
       "provider": "Beispiel Wohnservice Dresden",
       "firstFound": "2026-07-01",
       "lastChecked": "2026-07-20",
       "contact": "beispielhafte Kontaktstelle, keine echten Kontaktdaten",
       "originalUrl": "#",
-      "originalLabel": "Kein echtes Inserat"
+      "originalLabel": "Kein echtes Inserat",
+      "suitableForPersons": [
+        1
+      ]
     },
     {
       "id": "beispiel-johannstadt-002",
@@ -43,12 +44,11 @@
       "distanceMeters": 980,
       "rooms": 2,
       "areaSqm": 58,
-      "suitableFor": 2,
-      "netColdRent": 540,
-      "coldOperatingCosts": 135,
-      "grossColdRent": 675,
+      "netColdRent": 640,
+      "coldOperatingCosts": 140,
+      "grossColdRent": 780,
       "heatingCosts": 105,
-      "warmRent": 780,
+      "warmRent": 885,
       "accessibilityCategory": "B",
       "accessibilityLabel": "wahrscheinlich barrierearm",
       "accessibilityFeatures": [
@@ -56,14 +56,17 @@
         "Aufzug bis zur Etage",
         "Badgröße muss geprüft werden"
       ],
-      "kduAssessment": "Einzelfallprüfung",
       "wbs": "erforderlich",
       "provider": "Fiktive Genossenschaft Johannstadt",
       "firstFound": "2026-06-18",
       "lastChecked": "2026-07-19",
       "contact": "Musterkontakt über Anbieterportal",
       "originalUrl": "#",
-      "originalLabel": "Kein echtes Inserat"
+      "originalLabel": "Kein echtes Inserat",
+      "suitableForPersons": [
+        1,
+        2
+      ]
     },
     {
       "id": "beispiel-gorbitz-001",
@@ -73,12 +76,11 @@
       "distanceMeters": 320,
       "rooms": 2,
       "areaSqm": 50,
-      "suitableFor": 2,
-      "netColdRent": 470,
-      "coldOperatingCosts": 110,
-      "grossColdRent": 580,
-      "heatingCosts": 95,
-      "warmRent": 675,
+      "netColdRent": 1020,
+      "coldOperatingCosts": 220,
+      "grossColdRent": 1240,
+      "heatingCosts": 150,
+      "warmRent": 1390,
       "accessibilityCategory": "C",
       "accessibilityLabel": "ungeklärt",
       "accessibilityFeatures": [
@@ -86,14 +88,17 @@
         "Aufzug nicht bestätigt",
         "Besichtigung erforderlich"
       ],
-      "kduAssessment": "nicht prüfbar",
       "wbs": "unbekannt",
       "provider": "Beispiel Immobilien Gorbitz",
       "firstFound": "2026-07-12",
       "lastChecked": "2026-07-21",
       "contact": "keine personenbezogenen Daten veröffentlicht",
       "originalUrl": "#",
-      "originalLabel": "Kein echtes Inserat"
+      "originalLabel": "Kein echtes Inserat",
+      "suitableForPersons": [
+        2,
+        3
+      ]
     },
     {
       "id": "beispiel-gorbitz-002",
@@ -103,12 +108,11 @@
       "distanceMeters": 1250,
       "rooms": 3,
       "areaSqm": 74,
-      "suitableFor": 3,
-      "netColdRent": 710,
-      "coldOperatingCosts": 170,
-      "grossColdRent": 880,
+      "netColdRent": 900,
+      "coldOperatingCosts": 160,
+      "grossColdRent": 1060,
       "heatingCosts": 140,
-      "warmRent": 1020,
+      "warmRent": 1200,
       "accessibilityCategory": "B",
       "accessibilityLabel": "wahrscheinlich barrierearm",
       "accessibilityFeatures": [
@@ -116,14 +120,17 @@
         "breite Wohnungsflure laut Beispieldaten",
         "Dusche mit niedriger Schwelle"
       ],
-      "kduAssessment": "über der Grenze",
       "wbs": "nicht erforderlich",
       "provider": "Fiktive Wohnungsverwaltung West",
       "firstFound": "2026-05-30",
       "lastChecked": "2026-07-18",
       "contact": "allgemeine Muster-Serviceadresse",
       "originalUrl": "#",
-      "originalLabel": "Kein echtes Inserat"
+      "originalLabel": "Kein echtes Inserat",
+      "suitableForPersons": [
+        1,
+        2
+      ]
     }
   ]
 }

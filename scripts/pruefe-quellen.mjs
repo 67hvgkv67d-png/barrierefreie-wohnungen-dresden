@@ -109,18 +109,20 @@ function decodeHtmlEntities(value) {
 }
 
 function stripMarkup(html) {
-  return decodeHtmlEntities(html)
-    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
-    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
-    .replace(/<!--([\s\S]*?)-->/g, ' ')
-    .replace(/<[^>]+>/g, ' ')
+  return decodeHtmlEntities(
+    html
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+      .replace(/<template\b[^>]*>[\s\S]*?<\/template>/gi, ' ')
+      .replace(/<!--([\s\S]*?)-->/g, ' ')
+      .replace(/<[^>]+>/g, ' ')
+  )
     .replace(/\s+/g, ' ')
     .trim();
 }
 
 function detectFields(html) {
-  const decodedHtml = decodeHtmlEntities(html);
-  const searchable = `${decodedHtml}\n${stripMarkup(html)}`;
+  const searchable = stripMarkup(html);
   const detected = {};
 
   for (const [field, patterns] of Object.entries(FIELD_PATTERNS)) {
@@ -238,7 +240,7 @@ async function checkSource(source) {
       missingExpectedFields,
       fieldIndicators: fields,
       diagnosticOnly: true,
-      note: 'Die Felderkennung prüft nur öffentlich sichtbare Begriffe und HTML-Merkmale. Sie extrahiert keine Wohnungsangebote und bestätigt noch keine dauerhafte technische Nutzbarkeit.'
+      note: 'Die Felderkennung prüft nur öffentlich sichtbare Begriffe. Sie extrahiert keine Wohnungsangebote und bestätigt noch keine dauerhafte technische Nutzbarkeit.'
     };
   } catch (error) {
     return {
@@ -297,6 +299,11 @@ async function main() {
 
   console.log(`\nBericht gespeichert: ${path.relative(process.cwd(), options.outputPath)}`);
   console.log(JSON.stringify(report.summary, null, 2));
+
+  if (!options.dryRun && !results.some((result) => result.status === 'reachable')) {
+    console.error('Keine konfigurierte Quelle war erreichbar.');
+    process.exitCode = 1;
+  }
 }
 
 main().catch((error) => {

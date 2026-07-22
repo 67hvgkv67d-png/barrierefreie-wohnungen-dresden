@@ -1,0 +1,1 @@
+Der Branch enthält den ersten automatischen Import echter, als barrierefrei oder mobilitätseingeschränkt gekennzeichneter EWG-Wohnungsangebote für Gorbitz. Die Aktualisierung läuft nach dem Merge montags und mittwochs über GitHub Actions.

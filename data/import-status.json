@@ -1,0 +1,6 @@
+{
+  "source": "ewg-dresden",
+  "schedule": "Montag und Mittwoch, 06:00 UTC",
+  "lastSuccessfulImport": null,
+  "note": "Die GitHub Action aktualisiert data/wohnungen.json nach dem Merge automatisch."
+}

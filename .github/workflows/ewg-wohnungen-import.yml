@@ -1,0 +1,40 @@
+name: EWG-Wohnungen aktualisieren
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1,3"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ewg-wohnungen-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: EWG-Angebote abrufen
+        run: node scripts/import-ewg-wohnungen.mjs
+
+      - name: Änderungen veröffentlichen
+        run: |
+          if git diff --quiet -- data/wohnungen.json; then
+            echo "Keine Änderungen an den Wohnungsdaten."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/wohnungen.json
+          git commit -m "Aktualisiere EWG-Wohnungsangebote"
+          git push

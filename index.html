@@ -79,12 +79,13 @@
           </select>
         </label>
         <label>KdU-Einschätzung
-          <select id="kdu-filter" name="kdu">
+          <select id="kdu-filter" name="kdu" aria-describedby="kdu-filter-help">
             <option value="all">Alle</option>
-            <option value="any-within">für mindestens eine mögliche Belegung innerhalb der WG-KdU-Grenze</option>
-            <option value="none-within">für keine mögliche Belegung innerhalb der WG-KdU-Grenze</option>
-            <option value="not-checkable">nicht prüfbar</option>
+            <option value="any-within">Für mindestens eine Belegung passend</option>
+            <option value="none-within">Für keine Belegung passend</option>
+            <option value="not-checkable">Nicht prüfbar</option>
           </select>
+          <span id="kdu-filter-help" class="field-help">Die Prüfung berücksichtigt alle für die Wohnung angegebenen möglichen Personenzahlen.</span>
         </label>
         <label>Wohnberechtigungsschein
           <select id="wbs-filter" name="wbs">

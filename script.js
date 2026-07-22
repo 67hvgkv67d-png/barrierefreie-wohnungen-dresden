@@ -1,3 +1,5 @@
+const KDU_LIMIT_PER_PERSON = 450.5;
+
 const state = {
   apartments: [],
   lastUpdated: "",
@@ -29,13 +31,48 @@ function getFilters() {
   return Object.fromEntries(formData.entries());
 }
 
+function hasCompleteColdRentData(apartment) {
+  return Number.isFinite(apartment.netColdRent) && Number.isFinite(apartment.coldOperatingCosts) && Number.isFinite(apartment.grossColdRent);
+}
+
+function calculateKduAssessment(apartment, persons) {
+  if (!hasCompleteColdRentData(apartment) || !Number.isFinite(persons) || persons < 1) {
+    return { persons, status: "nicht prüfbar – Mietbestandteile fehlen" };
+  }
+
+  const totalLimit = persons * KDU_LIMIT_PER_PERSON;
+  const sharePerPerson = apartment.grossColdRent / persons;
+  const isWithinLimit = apartment.grossColdRent <= totalLimit;
+
+  return {
+    persons,
+    grossColdRent: apartment.grossColdRent,
+    sharePerPerson,
+    totalLimit,
+    status: isWithinLimit ? "innerhalb der WG-KdU-Grenze" : "über der WG-KdU-Grenze – Einzelfallprüfung erforderlich",
+    isWithinLimit,
+  };
+}
+
+function getKduAssessments(apartment) {
+  return [...(apartment.suitableForPersons || [])]
+    .sort((a, b) => a - b)
+    .map((persons) => calculateKduAssessment(apartment, Number(persons)));
+}
+
+function getKduFilterCategory(apartment) {
+  const assessments = getKduAssessments(apartment);
+  if (assessments.some((assessment) => assessment.status === "nicht prüfbar – Mietbestandteile fehlen")) return "not-checkable";
+  return assessments.some((assessment) => assessment.isWithinLimit) ? "any-within" : "none-within";
+}
+
 function applyFilters(apartments) {
   const filters = getFilters();
   return apartments
     .filter((apartment) => filters.district === "all" || apartment.district === filters.district)
     .filter((apartment) => filters.accessibility === "all" || apartment.accessibilityCategory === filters.accessibility)
-    .filter((apartment) => filters.persons === "all" || String(apartment.suitableFor) === filters.persons)
-    .filter((apartment) => filters.kdu === "all" || apartment.kduAssessment === filters.kdu)
+    .filter((apartment) => filters.persons === "all" || (apartment.suitableForPersons || []).includes(Number(filters.persons)))
+    .filter((apartment) => filters.kdu === "all" || getKduFilterCategory(apartment) === filters.kdu)
     .filter((apartment) => filters.wbs === "all" || apartment.wbs === filters.wbs)
     .sort((a, b) => {
       if (filters.sort === "rent") return a.warmRent - b.warmRent;
@@ -48,8 +85,39 @@ function createFact(label, value) {
   return `<div class="fact"><dt>${label}</dt><dd>${value}</dd></div>`;
 }
 
+function formatPersons(persons) {
+  return `${persons} ${persons === 1 ? "Person" : "getrennte Personen"}`;
+}
+
+function renderKduAssessment(apartment) {
+  const rows = getKduAssessments(apartment).map((assessment) => {
+    if (assessment.status === "nicht prüfbar – Mietbestandteile fehlen") {
+      return `<li><strong>${formatPersons(assessment.persons)}:</strong> Ergebnis: ${assessment.status}</li>`;
+    }
+
+    return `
+      <li>
+        <strong>${formatPersons(assessment.persons)}:</strong>
+        <dl>
+          <dt>Bruttokaltmiete gesamt</dt><dd>${euroFormatter.format(assessment.grossColdRent)}</dd>
+          <dt>Rechnerischer Anteil</dt><dd>${euroFormatter.format(assessment.sharePerPerson)} pro Person</dd>
+          <dt>Maximale Gesamtgrenze</dt><dd>${euroFormatter.format(assessment.totalLimit)}</dd>
+          <dt>Ergebnis</dt><dd>${assessment.status}</dd>
+        </dl>
+      </li>`;
+  }).join("");
+
+  return `
+    <section class="kdu-section" aria-label="Rechnerische KdU-Einschätzung">
+      <h4>Rechnerische KdU-Einschätzung für eine WG ohne gemeinsame Bedarfsgemeinschaft</h4>
+      <ul class="kdu-list">${rows}</ul>
+      <p class="kdu-note">Die Berechnung setzt eine gleichmäßige Aufteilung der Bruttokaltmiete voraus. Maßgeblich sind die tatsächlichen Mietanteile und die Prüfung durch den zuständigen Leistungsträger.</p>
+    </section>`;
+}
+
 function renderApartment(apartment) {
   const features = apartment.accessibilityFeatures.map((feature) => `<li>${feature}</li>`).join("");
+  const persons = [...(apartment.suitableForPersons || [])].sort((a, b) => a - b).join(", ");
   return `
     <article class="apartment-card" aria-labelledby="${apartment.id}-title">
       <span class="badge">BEISPIEL</span>
@@ -60,20 +128,20 @@ function renderApartment(apartment) {
         ${createFact("Entfernung zur Referenzadresse", formatDistance(apartment.distanceMeters))}
         ${createFact("Zimmerzahl", apartment.rooms.toLocaleString("de-DE"))}
         ${createFact("Wohnfläche", `${apartment.areaSqm.toLocaleString("de-DE")} m²`)}
-        ${createFact("Mögliche Personenzahl", `${apartment.suitableFor} Person${apartment.suitableFor > 1 ? "en" : ""}`)}
+        ${createFact("Mögliche Personenzahlen", persons)}
         ${createFact("Nettokaltmiete", euroFormatter.format(apartment.netColdRent))}
         ${createFact("Kalte Betriebskosten", euroFormatter.format(apartment.coldOperatingCosts))}
         ${createFact("Bruttokaltmiete", euroFormatter.format(apartment.grossColdRent))}
         ${createFact("Heizkosten", euroFormatter.format(apartment.heatingCosts))}
         ${createFact("Warmmiete", euroFormatter.format(apartment.warmRent))}
         ${createFact("Barrierefreiheitskategorie", `${apartment.accessibilityCategory} – ${apartment.accessibilityLabel}`)}
-        ${createFact("KdU-Einschätzung", apartment.kduAssessment)}
         ${createFact("Wohnberechtigungsschein", apartment.wbs)}
         ${createFact("Anbieter", apartment.provider)}
         ${createFact("Datum des ersten Fundes", formatDate(apartment.firstFound))}
         ${createFact("Datum der letzten Prüfung", formatDate(apartment.lastChecked))}
         ${createFact("Kontaktangabe", apartment.contact)}
       </dl>
+      ${renderKduAssessment(apartment)}
       <div>
         <strong>Genannte Barrierefreiheitsmerkmale:</strong>
         <ul class="feature-list">${features}</ul>

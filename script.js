@@ -19,11 +19,21 @@ const euroFormatter = new Intl.NumberFormat("de-DE", { style: "currency", curren
 const dateFormatter = new Intl.DateTimeFormat("de-DE", { dateStyle: "medium" });
 
 function formatDate(value) {
+  if (!value) return "nicht ausgewiesen";
   return dateFormatter.format(new Date(`${value}T00:00:00`));
 }
 
 function formatDistance(meters) {
+  if (!Number.isFinite(meters)) return "nicht berechnet";
   return meters >= 1000 ? `${(meters / 1000).toLocaleString("de-DE", { maximumFractionDigits: 1 })} km` : `${meters} m`;
+}
+
+function formatMoney(value) {
+  return Number.isFinite(value) ? euroFormatter.format(value) : "nicht ausgewiesen";
+}
+
+function formatNumber(value, suffix = "") {
+  return Number.isFinite(value) ? `${value.toLocaleString("de-DE")}${suffix}` : "nicht ausgewiesen";
 }
 
 function getFilters() {
@@ -62,22 +72,29 @@ function getKduAssessments(apartment) {
 
 function getKduFilterCategory(apartment) {
   const assessments = getKduAssessments(apartment);
-  if (assessments.some((assessment) => assessment.status === "nicht prüfbar – Mietbestandteile fehlen")) return "not-checkable";
+  if (assessments.length === 0 || assessments.some((assessment) => assessment.status === "nicht prüfbar – Mietbestandteile fehlen")) return "not-checkable";
   return assessments.some((assessment) => assessment.isWithinLimit) ? "any-within" : "none-within";
 }
 
 function applyFilters(apartments) {
   const filters = getFilters();
   return apartments
+    .filter((apartment) => apartment.dataStatus !== "inactive")
     .filter((apartment) => filters.district === "all" || apartment.district === filters.district)
     .filter((apartment) => filters.accessibility === "all" || apartment.accessibilityCategory === filters.accessibility)
     .filter((apartment) => filters.persons === "all" || (apartment.suitableForPersons || []).includes(Number(filters.persons)))
     .filter((apartment) => filters.kdu === "all" || getKduFilterCategory(apartment) === filters.kdu)
     .filter((apartment) => filters.wbs === "all" || apartment.wbs === filters.wbs)
     .sort((a, b) => {
-      if (filters.sort === "rent") return a.warmRent - b.warmRent;
+      if (filters.sort === "rent") {
+        const rentA = Number.isFinite(a.warmRent) ? a.warmRent : Number.POSITIVE_INFINITY;
+        const rentB = Number.isFinite(b.warmRent) ? b.warmRent : Number.POSITIVE_INFINITY;
+        return rentA - rentB;
+      }
       if (filters.sort === "newest") return new Date(b.firstFound) - new Date(a.firstFound);
-      return a.distanceMeters - b.distanceMeters;
+      const distanceA = Number.isFinite(a.distanceMeters) ? a.distanceMeters : Number.POSITIVE_INFINITY;
+      const distanceB = Number.isFinite(b.distanceMeters) ? b.distanceMeters : Number.POSITIVE_INFINITY;
+      return distanceA - distanceB;
     });
 }
 
@@ -90,7 +107,12 @@ function formatPersons(persons) {
 }
 
 function renderKduAssessment(apartment) {
-  const rows = getKduAssessments(apartment).map((assessment) => {
+  const assessments = getKduAssessments(apartment);
+  if (assessments.length === 0) {
+    return `<section class="kdu-section" aria-label="Rechnerische KdU-Einschätzung"><h4>Rechnerische KdU-Einschätzung</h4><p>Keine belastbare Personenzahl oder keine getrennten Mietbestandteile ausgewiesen. Bitte das Originalangebot prüfen.</p></section>`;
+  }
+
+  const rows = assessments.map((assessment) => {
     if (assessment.status === "nicht prüfbar – Mietbestandteile fehlen") {
       return `<li><strong>${formatPersons(assessment.persons)}:</strong> Ergebnis: ${assessment.status}</li>`;
     }
@@ -116,37 +138,38 @@ function renderKduAssessment(apartment) {
 }
 
 function renderApartment(apartment) {
-  const features = apartment.accessibilityFeatures.map((feature) => `<li>${feature}</li>`).join("");
-  const persons = [...(apartment.suitableForPersons || [])].sort((a, b) => a - b).join(", ");
+  const features = (apartment.accessibilityFeatures || []).map((feature) => `<li>${feature}</li>`).join("");
+  const persons = [...(apartment.suitableForPersons || [])].sort((a, b) => a - b).join(", ") || "nicht ausgewiesen";
+  const badge = apartment.dataStatus === "live" ? "ECHTES ANGEBOT" : "BEISPIEL";
   return `
     <article class="apartment-card" aria-labelledby="${apartment.id}-title">
-      <span class="badge">BEISPIEL</span>
+      <span class="badge">${badge}</span>
       <h3 class="card-title" id="${apartment.id}-title">${apartment.title}</h3>
       <dl class="fact-grid">
         ${createFact("Stadtteil", apartment.district)}
         ${createFact("Adresse oder Lage", apartment.location)}
         ${createFact("Entfernung zur Referenzadresse", formatDistance(apartment.distanceMeters))}
-        ${createFact("Zimmerzahl", apartment.rooms.toLocaleString("de-DE"))}
-        ${createFact("Wohnfläche", `${apartment.areaSqm.toLocaleString("de-DE")} m²`)}
+        ${createFact("Zimmerzahl", formatNumber(apartment.rooms))}
+        ${createFact("Wohnfläche", formatNumber(apartment.areaSqm, " m²"))}
         ${createFact("Mögliche Personenzahlen", persons)}
-        ${createFact("Nettokaltmiete", euroFormatter.format(apartment.netColdRent))}
-        ${createFact("Kalte Betriebskosten", euroFormatter.format(apartment.coldOperatingCosts))}
-        ${createFact("Bruttokaltmiete", euroFormatter.format(apartment.grossColdRent))}
-        ${createFact("Heizkosten", euroFormatter.format(apartment.heatingCosts))}
-        ${createFact("Warmmiete", euroFormatter.format(apartment.warmRent))}
+        ${createFact("Nettokaltmiete", formatMoney(apartment.netColdRent))}
+        ${createFact("Kalte Betriebskosten", formatMoney(apartment.coldOperatingCosts))}
+        ${createFact("Bruttokaltmiete", formatMoney(apartment.grossColdRent))}
+        ${createFact("Heizkosten", formatMoney(apartment.heatingCosts))}
+        ${createFact("Warmmiete", formatMoney(apartment.warmRent))}
         ${createFact("Barrierefreiheitskategorie", `${apartment.accessibilityCategory} – ${apartment.accessibilityLabel}`)}
         ${createFact("Wohnberechtigungsschein", apartment.wbs)}
         ${createFact("Anbieter", apartment.provider)}
         ${createFact("Datum des ersten Fundes", formatDate(apartment.firstFound))}
         ${createFact("Datum der letzten Prüfung", formatDate(apartment.lastChecked))}
-        ${createFact("Kontaktangabe", apartment.contact)}
+        ${createFact("Kontaktangabe", apartment.contact || "nicht ausgewiesen")}
       </dl>
       ${renderKduAssessment(apartment)}
       <div>
         <strong>Genannte Barrierefreiheitsmerkmale:</strong>
-        <ul class="feature-list">${features}</ul>
+        <ul class="feature-list">${features || "<li>Bitte im Originalangebot prüfen.</li>"}</ul>
       </div>
-      <a class="card-link" href="${apartment.originalUrl}" aria-label="${apartment.originalLabel}: ${apartment.title}">${apartment.originalLabel}</a>
+      <a class="card-link" href="${apartment.originalUrl}" target="_blank" rel="noopener noreferrer" aria-label="${apartment.originalLabel}: ${apartment.title}">${apartment.originalLabel}</a>
     </article>
   `;
 }

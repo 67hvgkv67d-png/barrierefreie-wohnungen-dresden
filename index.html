@@ -13,7 +13,7 @@
       <p class="eyebrow">Öffentliche Testversion</p>
       <h1>Barrierefreie Wohnungen Dresden</h1>
       <p class="subtitle">Wohnungsangebote in Johannstadt und Gorbitz</p>
-      <p class="notice" role="note">Diese Seite befindet sich im Testbetrieb. Alle derzeit angezeigten Wohnungen sind Beispieldaten und keine echten Wohnungsangebote.</p>
+      <p class="notice" role="note">Die Angaben werden automatisch aus öffentlichen Angeboten übernommen. Bitte prüfen Sie alle Angaben zusätzlich im verlinkten Originalangebot.</p>
       <dl class="status-list" aria-label="Status der Angebotsübersicht">
         <div>
           <dt>Letzte Aktualisierung</dt>
@@ -33,18 +33,9 @@
       <details>
         <summary>Kategorien A, B und C erklären</summary>
         <div class="details-content">
-          <p><strong>A – bestätigt barrierefrei:</strong> Die Beispieldaten nennen klare Merkmale wie stufenlosen Zugang, Aufzug und geeignete Sanitärausstattung.</p>
-          <p><strong>B – wahrscheinlich barrierearm:</strong> Es gibt hilfreiche Merkmale, einzelne Angaben müssen aber noch geprüft werden.</p>
+          <p><strong>A – eindeutiger Hinweis:</strong> Das Originalangebot enthält einen deutlichen Hinweis wie barrierefrei, rollstuhlgerecht oder pMW.</p>
+          <p><strong>B – wahrscheinlich barrierearm:</strong> Das Angebot nennt Begriffe wie barrierearm, seniorengerecht oder stufenlos. Einzelheiten müssen geprüft werden.</p>
           <p><strong>C – ungeklärt:</strong> Es fehlen wesentliche Informationen. Eine persönliche Prüfung ist besonders wichtig.</p>
-        </div>
-      </details>
-      <details>
-        <summary>Wie wird die KdU für eine Wohngemeinschaft berechnet?</summary>
-        <div class="details-content">
-          <p>Die Bewohner:innen bilden in diesem Projekt in der Regel keine gemeinsame Bedarfsgemeinschaft. Deshalb wird jede Person grundsätzlich mit der Ein-Personen-Grenze von 450,50 Euro berücksichtigt.</p>
-          <p>Für zwei getrennte leistungsberechtigte Personen ergibt sich rechnerisch eine Gesamtgrenze von 901,00 Euro. Für drei getrennte leistungsberechtigte Personen ergibt sich rechnerisch eine Gesamtgrenze von 1.351,50 Euro.</p>
-          <p>Entscheidend ist die Bruttokaltmiete, also Nettokaltmiete plus kalte Betriebskosten. Heizkosten werden getrennt geprüft und werden für diese KdU-Einschätzung nicht zur Bruttokaltmiete gerechnet.</p>
-          <p>Die Berechnung auf dieser Webseite ist nur eine Orientierung. Vor Abschluss des Mietvertrags muss eine Angemessenheitsbestätigung beziehungsweise Kostenübernahme beim zuständigen Leistungsträger eingeholt werden.</p>
         </div>
       </details>
     </section>
@@ -65,27 +56,10 @@
         <label>Barrierefreiheit
           <select id="accessibility-filter" name="accessibility">
             <option value="all">Alle</option>
-            <option value="A">bestätigt barrierefrei</option>
+            <option value="A">eindeutiger Hinweis</option>
             <option value="B">wahrscheinlich barrierearm</option>
             <option value="C">ungeklärt</option>
           </select>
-        </label>
-        <label>Geeignet für
-          <select id="persons-filter" name="persons">
-            <option value="all">Alle</option>
-            <option value="1">1 Person</option>
-            <option value="2">2 Personen</option>
-            <option value="3">3 Personen</option>
-          </select>
-        </label>
-        <label>KdU-Einschätzung
-          <select id="kdu-filter" name="kdu" aria-describedby="kdu-filter-help">
-            <option value="all">Alle</option>
-            <option value="any-within">Für mindestens eine Belegung passend</option>
-            <option value="none-within">Für keine Belegung passend</option>
-            <option value="not-checkable">Nicht prüfbar</option>
-          </select>
-          <span id="kdu-filter-help" class="field-help">Die Prüfung berücksichtigt alle für die Wohnung angegebenen möglichen Personenzahlen.</span>
         </label>
         <label>Wohnberechtigungsschein
           <select id="wbs-filter" name="wbs">
@@ -109,7 +83,7 @@
     <section aria-labelledby="list-heading">
       <div class="section-heading">
         <h2 id="list-heading">Wohnungsangebote</h2>
-        <p>Alle Karten sind eindeutig als Beispiele gekennzeichnet.</p>
+        <p>Echte Angebote sind entsprechend gekennzeichnet und mit der Originalquelle verlinkt.</p>
       </div>
       <div id="error-message" class="error-message" role="alert" hidden></div>
       <div id="empty-message" class="empty-message" role="status" hidden>Keine Ergebnisse passen zu den ausgewählten Filtern. Bitte ändern Sie die Filter oder setzen Sie sie zurück.</div>
@@ -123,7 +97,6 @@
       <ul>
         <li>Die Angaben ersetzen keine persönliche Besichtigung.</li>
         <li>Barrierefreiheit muss beim Vermieter geprüft werden.</li>
-        <li>Die KdU-Einschätzung ist nur eine Orientierung.</li>
         <li>Vor Abschluss eines Mietvertrags muss die Kostenübernahme mit dem zuständigen Leistungsträger geklärt werden.</li>
         <li>Private personenbezogene Daten sollen nicht veröffentlicht werden.</li>
       </ul>

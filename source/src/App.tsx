@@ -28,19 +28,50 @@ function statusClass(bewertung: Wohnung["bewertung"]) {
   return "status-check";
 }
 
+function ageLabel(date: string) {
+  const firstSeen = new Date(`${date}T12:00:00`);
+  if (Number.isNaN(firstSeen.getTime())) return null;
+
+  const today = new Date();
+  const todayUtc = Date.UTC(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate(),
+  );
+  const firstSeenUtc = Date.UTC(
+    firstSeen.getFullYear(),
+    firstSeen.getMonth(),
+    firstSeen.getDate(),
+  );
+  const days = Math.max(
+    0,
+    Math.round((todayUtc - firstSeenUtc) / (24 * 60 * 60 * 1000)),
+  );
+
+  if (days === 0) return "Heute hinzugefügt";
+  if (days === 1) return "Seit 1 Tag erfasst";
+  return `Seit ${days} Tagen erfasst`;
+}
+
 function ListingCard({
   wohnung,
   isSaved,
   isHidden,
+  note,
   onToggleSaved,
   onToggleHidden,
+  onNoteChange,
 }: {
   wohnung: Wohnung;
   isSaved: boolean;
   isHidden: boolean;
+  note: string;
   onToggleSaved: (id: string) => void;
   onToggleHidden: (id: string) => void;
+  onNoteChange: (id: string, note: string) => void;
 }) {
+  const age = ageLabel(wohnung.erstmals_gefunden_am);
+
   return (
     <article className={`listing-card ${isSaved ? "listing-card-saved" : ""}`}>
       <div className="card-topline">
@@ -48,7 +79,10 @@ function ListingCard({
           <span className="district-label">
             {districtName(wohnung.stadtteil)}
           </span>
-          {wohnung.neu ? <span className="new-badge">Neu</span> : null}
+          {wohnung.neu ? (
+            <span className="new-badge">Neu seit letztem Lauf</span>
+          ) : null}
+          {age ? <span className="age-badge">{age}</span> : null}
         </div>
         <span className={`status-badge ${statusClass(wohnung.bewertung)}`}>
           {wohnung.bewertung}
@@ -129,7 +163,7 @@ function ListingCard({
             onChange={() => onToggleSaved(wohnung.id)}
           />
           <span aria-hidden="true">{isSaved ? "✓" : ""}</span>
-          {isSaved ? "Vorgemerkt" : "Vormerken"}
+          {isSaved ? "Favorit" : "Als Favorit"}
         </label>
         <button
           className="hide-button"
@@ -139,6 +173,20 @@ function ListingCard({
           {isHidden ? "Wieder anzeigen" : "Ausblenden"}
         </button>
       </div>
+
+      <details className="note-box" open={note ? true : undefined}>
+        <summary>{note ? "Persönliche Notiz bearbeiten" : "Notiz hinzufügen"}</summary>
+        <label>
+          <span>Persönliche Notiz</span>
+          <textarea
+            value={note}
+            onChange={(event) => onNoteChange(wohnung.id, event.target.value)}
+            placeholder="Zum Beispiel: Besichtigung anfragen oder Rückruf ausstehend"
+            rows={3}
+          />
+        </label>
+        <p>Die Notiz wird nur in diesem Browser gespeichert.</p>
+      </details>
 
       <a
         className="listing-link"
@@ -168,6 +216,7 @@ export default function Home() {
   const [view, setView] = useState<ViewMode>("aktiv");
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
   const [hiddenIds, setHiddenIds] = useState<Set<string>>(new Set());
+  const [notes, setNotes] = useState<Record<string, string>>({});
   const [hydrated, setHydrated] = useState(false);
   const wohnungen = daten.wohnungen;
 
@@ -189,9 +238,20 @@ export default function Home() {
       setHiddenIds(
         new Set(JSON.parse(localStorage.getItem("wohnraum-hidden") ?? "[]")),
       );
+      const storedNotes = JSON.parse(
+        localStorage.getItem("wohnraum-notes") ?? "{}",
+      );
+      setNotes(
+        storedNotes &&
+          typeof storedNotes === "object" &&
+          !Array.isArray(storedNotes)
+          ? storedNotes
+          : {},
+      );
     } catch {
       setSavedIds(new Set());
       setHiddenIds(new Set());
+      setNotes({});
     }
     setHydrated(true);
   }, []);
@@ -200,7 +260,25 @@ export default function Home() {
     if (!hydrated) return;
     localStorage.setItem("wohnraum-saved", JSON.stringify([...savedIds]));
     localStorage.setItem("wohnraum-hidden", JSON.stringify([...hiddenIds]));
-  }, [savedIds, hiddenIds, hydrated]);
+    localStorage.setItem("wohnraum-notes", JSON.stringify(notes));
+  }, [savedIds, hiddenIds, hydrated, notes]);
+
+  useEffect(() => {
+    if (!hydrated || wohnungen.length === 0) return;
+
+    const validIds = new Set(wohnungen.map((wohnung) => wohnung.id));
+    setSavedIds(
+      (current) => new Set([...current].filter((id) => validIds.has(id))),
+    );
+    setHiddenIds(
+      (current) => new Set([...current].filter((id) => validIds.has(id))),
+    );
+    setNotes((current) =>
+      Object.fromEntries(
+        Object.entries(current).filter(([id]) => validIds.has(id)),
+      ),
+    );
+  }, [hydrated, wohnungen]);
 
   const explicitCount = wohnungen.filter(
     (wohnung) => wohnung.bewertung === "ausdrücklich geeignet",
@@ -282,15 +360,72 @@ export default function Home() {
     setSort("kdu");
   }
 
-  function downloadJson() {
-    const exportData = wohnungen.map(({ neu, hinweis, ...wohnung }) => wohnung);
-    const blob = new Blob([JSON.stringify(exportData, null, 2)], {
-      type: "application/json",
+  function updateNote(id: string, note: string) {
+    setNotes((current) => {
+      const next = { ...current };
+      if (note) next[id] = note;
+      else delete next[id];
+      return next;
+    });
+  }
+
+  function downloadCsv() {
+    const headers = [
+      "ID",
+      "Titel",
+      "Stadtteil",
+      "Adresse",
+      "Zimmer",
+      "Wohnfläche m²",
+      "Nettokaltmiete €",
+      "Warmmiete €",
+      "Notwendige Personenzahl",
+      "WBS",
+      "Barriereangaben",
+      "Bewertung",
+      "Anbieter",
+      "Quelle",
+      "Direkte Inserats-URL",
+      "Abrufdatum",
+      "Erstmals gefunden",
+      "Favorit",
+      "Ausgeblendet",
+      "Persönliche Notiz",
+    ];
+    const escapeCsv = (value: string | number) =>
+      `"${String(value).replaceAll('"', '""')}"`;
+    const rows = wohnungen.map((wohnung) => [
+      wohnung.id,
+      wohnung.titel,
+      wohnung.stadtteil,
+      wohnung.adresse,
+      decimal.format(wohnung.zimmer),
+      decimal.format(wohnung.wohnflaeche_m2),
+      wohnung.nettokaltmiete_eur.toFixed(2).replace(".", ","),
+      wohnung.warmmiete_eur.toFixed(2).replace(".", ","),
+      wohnung.notwendige_personenzahl_nach_kdu_limit,
+      wohnung.wbs,
+      wohnung.barriereangaben.join(" | "),
+      wohnung.bewertung,
+      wohnung.anbieter,
+      wohnung.quelle,
+      wohnung.direkte_inserats_url,
+      wohnung.abrufdatum,
+      wohnung.erstmals_gefunden_am,
+      savedIds.has(wohnung.id) ? "ja" : "nein",
+      hiddenIds.has(wohnung.id) ? "ja" : "nein",
+      notes[wohnung.id] ?? "",
+    ]);
+    const csv = [headers, ...rows]
+      .map((row) => row.map(escapeCsv).join(";"))
+      .join("\r\n");
+    const blob = new Blob([`\uFEFF${csv}`], {
+      type: "text/csv;charset=utf-8",
     });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = `mietwohnungen-dresden-${daten.aktualisiert_am || "aktuell"}.json`;
+    anchor.download = `mietwohnungen-dresden-${daten.aktualisiert_am || "aktuell"}.csv`;
     anchor.click();
     URL.revokeObjectURL(url);
   }
@@ -483,8 +618,8 @@ export default function Home() {
               <button type="button" className="text-button" onClick={resetFilters}>
                 Filter zurücksetzen
               </button>
-              <button type="button" className="json-button" onClick={downloadJson}>
-                JSON herunterladen
+              <button type="button" className="json-button" onClick={downloadCsv}>
+                CSV für Excel herunterladen
               </button>
             </div>
           </div>
@@ -498,8 +633,10 @@ export default function Home() {
                 wohnung={wohnung}
                 isSaved={savedIds.has(wohnung.id)}
                 isHidden={hiddenIds.has(wohnung.id)}
+                note={notes[wohnung.id] ?? ""}
                 onToggleSaved={(id) => updateSet(setSavedIds, id)}
                 onToggleHidden={(id) => updateSet(setHiddenIds, id)}
+                onNoteChange={updateNote}
               />
             ))}
           </div>

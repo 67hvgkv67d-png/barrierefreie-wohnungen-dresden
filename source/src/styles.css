@@ -486,19 +486,30 @@ a {
 
 .card-labels {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
 }
 
-.new-badge {
+.new-badge,
+.age-badge {
   padding: 4px 6px;
   border-radius: 3px;
-  background: var(--lime);
-  color: #40520b;
   font-size: 8px;
   font-weight: 900;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+}
+
+.new-badge {
+  background: var(--lime);
+  color: #40520b;
+}
+
+.age-badge {
+  border: 1px solid rgba(21, 107, 76, 0.24);
+  background: #eef6f1;
+  color: var(--mint-dark);
 }
 
 .listing-card {
@@ -724,6 +735,60 @@ a {
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   margin-bottom: 8px;
+}
+
+.note-box {
+  margin-bottom: 8px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #f7f5ef;
+}
+
+.note-box summary {
+  padding: 11px 13px;
+  color: var(--ink-soft);
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.note-box[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.note-box label {
+  display: block;
+  padding: 12px 12px 0;
+}
+
+.note-box label > span {
+  display: block;
+  margin-bottom: 7px;
+  color: #667984;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.note-box textarea {
+  width: 100%;
+  min-height: 78px;
+  padding: 10px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.note-box p {
+  margin: 7px 12px 12px;
+  color: #70818c;
+  font-size: 9px;
 }
 
 .save-control,

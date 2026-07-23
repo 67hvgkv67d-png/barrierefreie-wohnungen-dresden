@@ -23,7 +23,8 @@
       "direkte_inserats_url": "https://www.ewg-dresden.de/immobilie/wbs-pmw-3-rw-fuer-mind-3-personen/",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "hinweis": "Die KdU-Rechnung ergibt zwei Personen. Das Inserat verlangt wegen des WBS pMW ausdrücklich mindestens drei Personen."
+      "hinweis": "Die KdU-Rechnung ergibt zwei Personen. Das Inserat verlangt wegen des WBS pMW ausdrücklich mindestens drei Personen.",
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "GCP-5130-00456-008-0128",
@@ -48,7 +49,8 @@
       "quelle": "GCP",
       "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/herzogswalder-strasse-15/5130_00456_008_0128",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "GCP-5131-00449-007-0038",
@@ -74,7 +76,8 @@
       "quelle": "GCP",
       "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/reuningstrasse-9/5131_00449_007_0038",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-169055221",
@@ -97,7 +100,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169055221",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-168290861",
@@ -120,7 +124,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168290861",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-168085567",
@@ -141,7 +146,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168085567",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-168620427",
@@ -163,7 +169,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168620427",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-168620730",
@@ -185,7 +192,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168620730",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-169203145",
@@ -206,7 +214,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169203145",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-168502434",
@@ -228,7 +237,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168502434",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-169265475",
@@ -249,7 +259,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169265475",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-140823749",
@@ -272,7 +283,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/140823749",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-169203384",
@@ -294,7 +306,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169203384",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-169441920",
@@ -315,7 +328,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169441920",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-169004155",
@@ -338,7 +352,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169004155",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-166654732",
@@ -359,7 +374,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/166654732",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-169210483",
@@ -380,7 +396,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169210483",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-169456386",
@@ -403,7 +420,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169456386",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     },
     {
       "id": "IS24-169199205",
@@ -426,7 +444,8 @@
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169199205",
       "abrufdatum": "2026-07-23",
-      "neu": true
+      "neu": true,
+      "erstmals_gefunden_am": "2026-07-23"
     }
   ]
 }

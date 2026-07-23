@@ -18,6 +18,7 @@ export type Wohnung = {
   quelle: string;
   direkte_inserats_url: string;
   abrufdatum: string;
+  erstmals_gefunden_am: string;
   neu: boolean;
   hinweis?: string;
 };

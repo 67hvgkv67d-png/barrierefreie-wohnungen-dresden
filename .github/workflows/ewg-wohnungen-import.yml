@@ -1,4 +1,4 @@
-name: EWG-Wohnungen aktualisieren
+name: Wohnungsangebote aktualisieren
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ewg-wohnungen-import
+  group: wohnungsangebote-import
   cancel-in-progress: false
 
 jobs:
@@ -24,8 +24,8 @@ jobs:
         with:
           node-version: "22"
 
-      - name: EWG-Angebote abrufen
-        run: node scripts/import-ewg-wohnungen.mjs
+      - name: Angebote aus allen Quellen abrufen
+        run: npm run import:all
 
       - name: Änderungen veröffentlichen
         run: |
@@ -36,5 +36,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/wohnungen.json
-          git commit -m "Aktualisiere EWG-Wohnungsangebote"
+          git commit -m "Aktualisiere Wohnungsangebote"
           git push

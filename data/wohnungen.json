@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-22",
+  "lastUpdated": "2026-07-23",
   "referenceAddresses": {
     "Johannstadt": "Pfeifferhannsstraße 11, Dresden",
     "Gorbitz": "Leutewitzer Ring 31, Dresden"
@@ -14,8 +14,8 @@
       "distanceMeters": null,
       "rooms": 3,
       "areaSqm": 66.65,
-      "netColdRent": null,
-      "coldOperatingCosts": null,
+      "netColdRent": 526.54,
+      "coldOperatingCosts": 193.29,
       "grossColdRent": null,
       "heatingCosts": null,
       "warmRent": 719.83,
@@ -28,13 +28,11 @@
       "provider": "Eisenbahner-Wohnungsbaugenossenschaft Dresden eG",
       "sourceId": "ewg-dresden",
       "firstFound": "2026-07-22",
-      "lastChecked": "2026-07-22",
+      "lastChecked": "2026-07-23",
       "contact": "EWG-Vermietung: 0351 41 81 716, wohnung@ewg-dresden.de",
       "originalUrl": "https://www.ewg-dresden.de/immobilie/wbs-pmw-3-rw-fuer-mind-3-personen/",
       "originalLabel": "Originalangebot bei der EWG öffnen",
-      "suitableForPersons": [
-        3
-      ]
+      "suitableForPersons": []
     }
   ]
 }

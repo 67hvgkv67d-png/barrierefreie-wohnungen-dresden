@@ -21,7 +21,7 @@ async function main() {
   const ewgApartments = (afterEwg.apartments || []).filter((item) => !item.sourceId || item.sourceId === "ewg-dresden");
   await writeFile(DATA_FILE, `${JSON.stringify({ ...afterEwg, apartments: [...ewgApartments, ...nonEwgApartments] }, null, 2)}\n`, "utf8");
 
-  await runScript(new URL("./import-immowelt-wohnungen.mjs", import.meta.url).pathname);
+  await runScript(new URL("./import-offizielle-quellen.mjs", import.meta.url).pathname);
 }
 
 main().catch((error) => {

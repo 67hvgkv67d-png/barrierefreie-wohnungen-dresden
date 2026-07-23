@@ -1,16 +1,21 @@
 {
   "name": "barrierefreie-wohnungen-dresden",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "preimport:all": "npm install --no-package-lock --no-save && npx playwright install --with-deps chromium",
-    "import:all": "node scripts/import-alle-wohnungen.mjs",
-    "import:ewg": "node scripts/import-ewg-wohnungen.mjs",
-    "import:official": "node scripts/import-offizielle-quellen.mjs",
-    "import:extra": "node scripts/import-zusatzquellen.mjs",
-    "check": "node --check script.js && node --check scripts/import-ewg-wohnungen.mjs && node --check scripts/import-offizielle-quellen.mjs && node --check scripts/import-zusatzquellen.mjs && node --check scripts/import-alle-wohnungen.mjs"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
   },
-  "devDependencies": {
-    "playwright": "^1.55.0"
-  }
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.11",
+    "typescript": "^5.7.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3"
+  },
+  "devDependencies": {}
 }

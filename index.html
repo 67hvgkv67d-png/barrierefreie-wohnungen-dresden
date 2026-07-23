@@ -30,12 +30,12 @@
   <main class="container">
     <section class="info-section" aria-labelledby="info-heading">
       <h2 id="info-heading">Hinweise zur Barrierefreiheit</h2>
-      <details>
-        <summary>Kategorien A, B und C erklären</summary>
+      <details open>
+        <summary>Barrierefreiheits-Ampel erklären</summary>
         <div class="details-content">
-          <p><strong>A – eindeutiger Hinweis:</strong> Das Originalangebot enthält einen deutlichen Hinweis wie barrierefrei, rollstuhlgerecht oder pMW.</p>
-          <p><strong>B – wahrscheinlich barrierearm:</strong> Das Angebot nennt Begriffe wie barrierearm, seniorengerecht oder stufenlos. Einzelheiten müssen geprüft werden.</p>
-          <p><strong>C – ungeklärt:</strong> Es fehlen wesentliche Informationen. Eine persönliche Prüfung ist besonders wichtig.</p>
+          <p><strong>🟢 A – eindeutiger Hinweis:</strong> Das Originalangebot nennt ausdrücklich barrierefrei, rollstuhlgerecht, pMW, behindertengerecht oder einen vergleichbaren eindeutigen Begriff.</p>
+          <p><strong>🟡 B – starke Indizien:</strong> Das Angebot nennt Merkmale wie barrierearm, seniorengerecht, stufenlos, schwellenarm, bodengleiche Dusche oder eine passende Kombination mit Aufzug. Die tatsächliche Eignung muss geprüft werden.</p>
+          <p><strong>🔴 C – keine ausreichenden Hinweise:</strong> Solche Wohnungen werden derzeit nicht automatisch veröffentlicht, damit die Übersicht fachlich eingegrenzt bleibt.</p>
         </div>
       </details>
     </section>
@@ -56,9 +56,8 @@
         <label>Barrierefreiheit
           <select id="accessibility-filter" name="accessibility">
             <option value="all">Alle</option>
-            <option value="A">eindeutiger Hinweis</option>
-            <option value="B">wahrscheinlich barrierearm</option>
-            <option value="C">ungeklärt</option>
+            <option value="A">🟢 A – eindeutiger Hinweis</option>
+            <option value="B">🟡 B – starke Indizien</option>
           </select>
         </label>
         <label>Wohnberechtigungsschein

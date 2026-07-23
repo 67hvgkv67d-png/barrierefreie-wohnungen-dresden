@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Barrierefreie Wohnungen Dresden</title>
+  <title>Wohnungsangebote Dresden</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
@@ -11,8 +11,8 @@
   <header class="site-header">
     <div class="container">
       <p class="eyebrow">Öffentliche Testversion</p>
-      <h1>Barrierefreie Wohnungen Dresden</h1>
-      <p class="subtitle">Wohnungsangebote in Johannstadt und Gorbitz</p>
+      <h1>Wohnungsangebote Dresden</h1>
+      <p class="subtitle">Wohnungsangebote in Johannstadt und Gorbitz mit besonderem Blick auf Barrierefreiheit</p>
       <p class="notice" role="note">Die Angaben werden automatisch aus öffentlichen Angeboten übernommen. Bitte prüfen Sie alle Angaben zusätzlich im verlinkten Originalangebot.</p>
       <dl class="status-list" aria-label="Status der Angebotsübersicht">
         <div>
@@ -29,13 +29,21 @@
 
   <main class="container">
     <section class="info-section" aria-labelledby="info-heading">
-      <h2 id="info-heading">Hinweise zur Barrierefreiheit</h2>
+      <h2 id="info-heading">Hinweise zur Einordnung</h2>
       <details open>
-        <summary>Barrierefreiheits-Ampel erklären</summary>
+        <summary>Barrierefreiheit: Kategorien A, B und C</summary>
         <div class="details-content">
-          <p><strong>🟢 A – eindeutiger Hinweis:</strong> Das Originalangebot nennt ausdrücklich barrierefrei, rollstuhlgerecht, pMW, behindertengerecht oder einen vergleichbaren eindeutigen Begriff.</p>
-          <p><strong>🟡 B – starke Indizien:</strong> Das Angebot nennt Merkmale wie barrierearm, seniorengerecht, stufenlos, schwellenarm, bodengleiche Dusche oder eine passende Kombination mit Aufzug. Die tatsächliche Eignung muss geprüft werden.</p>
-          <p><strong>🔴 C – keine ausreichenden Hinweise:</strong> Solche Wohnungen werden derzeit nicht automatisch veröffentlicht, damit die Übersicht fachlich eingegrenzt bleibt.</p>
+          <p><strong>🟢 A – ausdrücklich genannt:</strong> Das konkrete Wohnungsangebot nennt eindeutig barrierefrei, rollstuhlgerecht oder eine vergleichbare Formulierung.</p>
+          <p><strong>🟡 B – Hinweise vorhanden:</strong> Das Angebot nennt Merkmale wie barrierearm, stufenlos, schwellenarm, Aufzug oder bodengleiche Dusche. Ob die Wohnung tatsächlich geeignet ist, muss geprüft werden.</p>
+          <p><strong>⚪ C – ungeklärt:</strong> Im Angebot wurden keine belastbaren Angaben zur Barrierefreiheit gefunden. Das bedeutet nicht automatisch, dass die Wohnung ungeeignet ist.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Was bedeuten WBS, pMW und gMW?</summary>
+        <div class="details-content">
+          <p>Ein Wohnberechtigungsschein (WBS) berechtigt einkommensberechtigte Haushalte dazu, eine mietpreis- und belegungsgebundene Wohnung anzumieten.</p>
+          <p><strong>pMW</strong> bezeichnet Wohnungen, die über die Förderrichtlinie „preisgünstiger Mietwohnraum“ saniert oder umgebaut wurden. <strong>gMW</strong> bezeichnet geförderten gebundenen Mietwohnraum. Diese Bezeichnungen sagen für sich allein nichts über die Barrierefreiheit der Wohnung aus.</p>
+          <p>Ob ein WBS erforderlich ist und welcher Typ benötigt wird, wird deshalb getrennt von der Barrierefreiheit angezeigt.</p>
         </div>
       </details>
     </section>
@@ -56,8 +64,9 @@
         <label>Barrierefreiheit
           <select id="accessibility-filter" name="accessibility">
             <option value="all">Alle</option>
-            <option value="A">🟢 A – eindeutiger Hinweis</option>
-            <option value="B">🟡 B – starke Indizien</option>
+            <option value="A">🟢 ausdrücklich genannt</option>
+            <option value="B">🟡 Hinweise vorhanden</option>
+            <option value="C">⚪ ungeklärt</option>
           </select>
         </label>
         <label>Wohnberechtigungsschein
@@ -81,12 +90,22 @@
 
     <section aria-labelledby="list-heading">
       <div class="section-heading">
-        <h2 id="list-heading">Wohnungsangebote</h2>
-        <p>Echte Angebote sind entsprechend gekennzeichnet und mit der Originalquelle verlinkt.</p>
+        <h2 id="list-heading">Wohnungen mit Hinweisen zur Barrierefreiheit</h2>
+        <p>Hier erscheinen Angebote der Kategorien A und B.</p>
       </div>
       <div id="error-message" class="error-message" role="alert" hidden></div>
       <div id="empty-message" class="empty-message" role="status" hidden>Keine Ergebnisse passen zu den ausgewählten Filtern. Bitte ändern Sie die Filter oder setzen Sie sie zurück.</div>
       <div id="apartments" class="apartment-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="other-section" aria-labelledby="other-heading">
+      <details>
+        <summary id="other-heading">Weitere Wohnungen ohne klare Angaben zur Barrierefreiheit (<span id="other-count">0</span>)</summary>
+        <div class="details-content">
+          <p>Diese Wohnungen können für die allgemeine Wohnberatung trotzdem relevant sein. Die Barrierefreiheit ist im Inserat lediglich nicht ausreichend beschrieben.</p>
+          <div id="other-apartments" class="apartment-grid" aria-live="polite"></div>
+        </div>
+      </details>
     </section>
   </main>
 
@@ -96,6 +115,7 @@
       <ul>
         <li>Die Angaben ersetzen keine persönliche Besichtigung.</li>
         <li>Barrierefreiheit muss beim Vermieter geprüft werden.</li>
+        <li>Ein WBS und dessen Typ müssen unabhängig von der Barrierefreiheit geprüft werden.</li>
         <li>Vor Abschluss eines Mietvertrags muss die Kostenübernahme mit dem zuständigen Leistungsträger geklärt werden.</li>
         <li>Private personenbezogene Daten sollen nicht veröffentlicht werden.</li>
       </ul>

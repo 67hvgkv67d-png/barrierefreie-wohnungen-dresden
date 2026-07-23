@@ -20,11 +20,9 @@
       "heatingCosts": null,
       "warmRent": 719.83,
       "accessibilityCategory": "A",
-      "accessibilityLabel": "vom Anbieter für Personen mit Mobilitätseinschränkung gekennzeichnet",
+      "accessibilityLabel": "ausdrücklicher Hinweis auf Barrierefreiheit oder Rollstuhleignung",
       "accessibilityFeatures": [
-        "Im Angebot genannt: barrierefrei",
-        "Im Angebot genannt: barrierearm",
-        "Im Angebot genannt: seniorengerecht",
+        "Im Angebot erkannt: barrierefrei",
         "Angebot ist für Personen mit Mobilitätseinschränkung (pMW) gekennzeichnet"
       ],
       "wbs": "erforderlich",

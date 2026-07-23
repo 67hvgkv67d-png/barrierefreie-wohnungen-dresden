@@ -3,10 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "preimport:all": "npm install --no-package-lock --no-save && npx playwright install --with-deps chromium",
     "import:all": "node scripts/import-alle-wohnungen.mjs",
     "import:ewg": "node scripts/import-ewg-wohnungen.mjs",
     "import:official": "node scripts/import-offizielle-quellen.mjs",
     "import:extra": "node scripts/import-zusatzquellen.mjs",
     "check": "node --check script.js && node --check scripts/import-ewg-wohnungen.mjs && node --check scripts/import-offizielle-quellen.mjs && node --check scripts/import-zusatzquellen.mjs && node --check scripts/import-alle-wohnungen.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.55.0"
   }
 }

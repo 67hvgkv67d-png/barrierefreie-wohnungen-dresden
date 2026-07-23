@@ -19,6 +19,11 @@ export type Wohnung = {
   direkte_inserats_url: string;
   abrufdatum: string;
   erstmals_gefunden_am: string;
+  kartenposition?: {
+    breitengrad: number;
+    laengengrad: number;
+    genauigkeit: "Adresse gefunden" | "ungefähr" | "zu prüfen";
+  };
   neu: boolean;
   hinweis?: string;
 };

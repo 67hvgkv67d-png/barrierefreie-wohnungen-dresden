@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import L from "leaflet";
 import { type Wohnung, type Wohnungsdaten } from "./types";
 
 const euro = new Intl.NumberFormat("de-DE", {
@@ -21,6 +22,21 @@ type SortMode = "kdu" | "nkm-auf" | "nkm-ab";
 function districtName(stadtteil: string) {
   return stadtteil.startsWith("Gorbitz") ? "Gorbitz" : "Johannstadt";
 }
+
+const regionalstellen = {
+  Gorbitz: {
+    name: "Regionalstelle Gorbitz",
+    adresse: "Leutewitzer Ring 31, 01169 Dresden",
+    breitengrad: 51.0453213,
+    laengengrad: 13.6735842,
+  },
+  Johannstadt: {
+    name: "Regionalstelle Johannstadt",
+    adresse: "Pfeifferhannsstraße 11, 01307 Dresden",
+    breitengrad: 51.0572401,
+    laengengrad: 13.7649334,
+  },
+} as const;
 
 function statusClass(bewertung: Wohnung["bewertung"]) {
   if (bewertung === "ausdrücklich geeignet") return "status-good";
@@ -51,6 +67,137 @@ function ageLabel(date: string) {
   if (days === 0) return "Heute hinzugefügt";
   if (days === 1) return "Seit 1 Tag erfasst";
   return `Seit ${days} Tagen erfasst`;
+}
+
+function LocationMap({ wohnung }: { wohnung: Wohnung }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const mapElement = useRef<HTMLDivElement>(null);
+  const position = wohnung.kartenposition;
+  const regionalstelle = regionalstellen[districtName(wohnung.stadtteil)];
+
+  useEffect(() => {
+    if (!isOpen || !mapElement.current || !position) return;
+
+    const wohnungPosition: L.LatLngTuple = [
+      position.breitengrad,
+      position.laengengrad,
+    ];
+    const regionalstellePosition: L.LatLngTuple = [
+      regionalstelle.breitengrad,
+      regionalstelle.laengengrad,
+    ];
+    const map = L.map(mapElement.current, {
+      scrollWheelZoom: false,
+      zoomControl: true,
+    });
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>',
+      maxZoom: 19,
+    }).addTo(map);
+
+    const wohnungIcon = L.divIcon({
+      className: "map-marker map-marker-home",
+      html: "<span>W</span>",
+      iconSize: [34, 34],
+      iconAnchor: [17, 17],
+    });
+    const regionalstelleIcon = L.divIcon({
+      className: "map-marker map-marker-office",
+      html: "<span>R</span>",
+      iconSize: [34, 34],
+      iconAnchor: [17, 17],
+    });
+
+    L.marker(wohnungPosition, {
+      icon: wohnungIcon,
+      title: `Wohnung: ${wohnung.adresse}`,
+    }).addTo(map);
+    L.marker(regionalstellePosition, {
+      icon: regionalstelleIcon,
+      title: `${regionalstelle.name}: ${regionalstelle.adresse}`,
+    }).addTo(map);
+    L.polyline([wohnungPosition, regionalstellePosition], {
+      color: "#156b4c",
+      weight: 2,
+      opacity: 0.55,
+      dashArray: "7 7",
+    }).addTo(map);
+
+    map.fitBounds(
+      L.latLngBounds([wohnungPosition, regionalstellePosition]),
+      { padding: [34, 34], maxZoom: 15 },
+    );
+
+    return () => {
+      map.remove();
+    };
+  }, [
+    isOpen,
+    position,
+    regionalstelle,
+    wohnung.adresse,
+  ]);
+
+  if (!position) {
+    return (
+      <div className="map-unavailable">
+        Lage konnte noch nicht zuverlässig bestimmt werden.
+      </div>
+    );
+  }
+
+  const osmLink =
+    `https://www.openstreetmap.org/?mlat=${position.breitengrad}` +
+    `&mlon=${position.laengengrad}` +
+    `#map=17/${position.breitengrad}/${position.laengengrad}`;
+
+  return (
+    <div className="location-map">
+      <button
+        type="button"
+        className="map-toggle"
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen((current) => !current)}
+      >
+        {isOpen ? "Karte schließen" : "Lage anzeigen"}
+        <span aria-hidden="true">{isOpen ? "−" : "+"}</span>
+      </button>
+
+      {isOpen ? (
+        <div className="map-content">
+          <div
+            ref={mapElement}
+            className="map-canvas"
+            aria-label={`Karte mit ${wohnung.adresse} und ${regionalstelle.name}`}
+          />
+          <div className="map-legend">
+            <p>
+              <span className="legend-marker legend-home">W</span>
+              <strong>Wohnung</strong>
+              <small>
+                {wohnung.adresse} · {position.genauigkeit}
+              </small>
+            </p>
+            <p>
+              <span className="legend-marker legend-office">R</span>
+              <strong>{regionalstelle.name}</strong>
+              <small>{regionalstelle.adresse}</small>
+            </p>
+          </div>
+          <div className="map-footer">
+            <span>
+              Beim Öffnen werden Kartendaten von OpenStreetMap geladen.
+            </span>
+            <a href={osmLink} target="_blank" rel="noreferrer">
+              Große Karte öffnen ↗
+            </a>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 function ListingCard({
@@ -142,6 +289,8 @@ function ListingCard({
       {wohnung.hinweis ? (
         <p className="listing-note">{wohnung.hinweis}</p>
       ) : null}
+
+      <LocationMap wohnung={wohnung} />
 
       <div className="provider-row">
         <span>

@@ -24,7 +24,12 @@
       "abrufdatum": "2026-07-23",
       "neu": true,
       "hinweis": "Die KdU-Rechnung ergibt zwei Personen. Das Inserat verlangt wegen des WBS pMW ausdrücklich mindestens drei Personen.",
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.047019,
+        "laengengrad": 13.6669271,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "GCP-5130-00456-008-0128",
@@ -50,7 +55,12 @@
       "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/herzogswalder-strasse-15/5130_00456_008_0128",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0470158,
+        "laengengrad": 13.673176,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "GCP-5131-00449-007-0038",
@@ -77,7 +87,12 @@
       "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/reuningstrasse-9/5131_00449_007_0038",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0493576,
+        "laengengrad": 13.6555079,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-169055221",
@@ -101,7 +116,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169055221",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0502867,
+        "laengengrad": 13.6591857,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-168290861",
@@ -125,7 +145,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168290861",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0441301,
+        "laengengrad": 13.6812269,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-168085567",
@@ -147,7 +172,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168085567",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0444428,
+        "laengengrad": 13.6732722,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-168620427",
@@ -170,7 +200,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168620427",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0576902,
+        "laengengrad": 13.7692016,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-168620730",
@@ -193,7 +228,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168620730",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.057811,
+        "laengengrad": 13.7694274,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-169203145",
@@ -215,7 +255,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169203145",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0497089,
+        "laengengrad": 13.7613333,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-168502434",
@@ -238,7 +283,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168502434",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0602845,
+        "laengengrad": 13.7845137,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-169265475",
@@ -260,7 +310,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169265475",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0480271,
+        "laengengrad": 13.7571532,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-140823749",
@@ -284,7 +339,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/140823749",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0575586,
+        "laengengrad": 13.7724361,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-169203384",
@@ -307,7 +367,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169203384",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0491104,
+        "laengengrad": 13.7691195,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-169441920",
@@ -329,7 +394,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169441920",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0540449,
+        "laengengrad": 13.7608873,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-169004155",
@@ -353,7 +423,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169004155",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0461986,
+        "laengengrad": 13.7577784,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-166654732",
@@ -375,7 +450,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/166654732",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.051194,
+        "laengengrad": 13.7726537,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-169210483",
@@ -397,7 +477,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169210483",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0585838,
+        "laengengrad": 13.7742342,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-169456386",
@@ -421,7 +506,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169456386",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0508543,
+        "laengengrad": 13.7618705,
+        "genauigkeit": "Adresse gefunden"
+      }
     },
     {
       "id": "IS24-169199205",
@@ -445,7 +535,12 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169199205",
       "abrufdatum": "2026-07-23",
       "neu": true,
-      "erstmals_gefunden_am": "2026-07-23"
+      "erstmals_gefunden_am": "2026-07-23",
+      "kartenposition": {
+        "breitengrad": 51.0507489,
+        "laengengrad": 13.7746825,
+        "genauigkeit": "Adresse gefunden"
+      }
     }
   ]
 }

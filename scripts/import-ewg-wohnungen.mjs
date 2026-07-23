@@ -11,10 +11,7 @@ const CATEGORY_A_TERMS = [
   "barrierefrei",
   "rollstuhlgerecht",
   "rollstuhlgeeignet",
-  "rollstuhl",
-  "pmw",
-  "mobilitätseinschränkung",
-  "mobilitaetseinschraenkung",
+  "rollstuhlwohnung",
   "behindertengerecht",
 ];
 
@@ -27,6 +24,7 @@ const CATEGORY_B_TERMS = [
   "stufenlos",
   "bodengleiche dusche",
   "ebenerdige dusche",
+  "dusche ohne schwelle",
   "aufzug bis in die etage",
   "aufzug bis zur etage",
 ];
@@ -50,6 +48,16 @@ function decodeHtml(value = "") {
     .replace(/&#(\d+);/g, (_, number) => String.fromCodePoint(Number(number)))
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function relevantHtml(html) {
+  const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1];
+  const article = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1];
+  const source = main || article || html;
+  return source
+    .replace(/<nav\b[^>]*>[\s\S]*?<\/nav>/gi, " ")
+    .replace(/<header\b[^>]*>[\s\S]*?<\/header>/gi, " ")
+    .replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi, " ");
 }
 
 function parseGermanNumber(value) {
@@ -82,7 +90,7 @@ function classifyAccessibility(normalized) {
   if (aMatches.length > 0) {
     return {
       category: "A",
-      label: "ausdrücklicher Hinweis auf Barrierefreiheit oder Rollstuhleignung",
+      label: "ausdrücklich als barrierefrei oder rollstuhlgerecht beschrieben",
       matches: aMatches,
     };
   }
@@ -99,30 +107,38 @@ function classifyAccessibility(normalized) {
     if (hasStepFreeHint) combinedMatches.push("stufen- oder schwellenarmer Zugang");
     return {
       category: "B",
-      label: "starke Hinweise auf eine barrierearme Wohnung; Details ungeprüft",
+      label: "Hinweise auf eine barrierearme Wohnung; genaue Prüfung erforderlich",
       matches: [...new Set(combinedMatches)],
     };
   }
 
   return {
     category: "C",
-    label: "keine ausreichenden Hinweise zur Barrierefreiheit",
+    label: "keine belastbaren Angaben zur Barrierefreiheit gefunden",
     matches: [],
   };
 }
 
+function detectWbs(text) {
+  const normalized = text.toLowerCase();
+  if (/\bpmw\b/.test(normalized)) return { required: "erforderlich", type: "pMW" };
+  if (/\bgmw\b/.test(normalized)) return { required: "erforderlich", type: "gMW" };
+  if (/\bwbs\b|wohnberechtigungsschein/.test(normalized)) return { required: "erforderlich", type: "nicht näher bezeichnet" };
+  return { required: "unbekannt", type: null };
+}
+
 function parseApartment(url, html, previousByUrl) {
-  const text = decodeHtml(html);
+  const offerHtml = relevantHtml(html);
+  const text = decodeHtml(offerHtml);
   const normalized = text.toLowerCase();
   const postcode = text.match(/\b(01\d{3})\s+Dresden\b/i)?.[1] ?? null;
   const district = postcode ? ALLOWED_DISTRICTS.get(postcode) : null;
   if (!district) return null;
 
   const accessibility = classifyAccessibility(normalized);
-  // Kategorie C wird bewusst nicht veröffentlicht: Ohne Hinweise wäre die Liste nicht mehr fachlich eingegrenzt.
-  if (accessibility.category === "C") return null;
+  const wbs = detectWbs(text);
 
-  const headingMatches = [...html.matchAll(/<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/gi)]
+  const headingMatches = [...offerHtml.matchAll(/<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/gi)]
     .map((entry) => decodeHtml(entry[1]))
     .filter(Boolean);
   const titleFromUrl = decodeURIComponent(new URL(url).pathname.split("/").filter(Boolean).at(-1) || "")
@@ -145,9 +161,7 @@ function parseApartment(url, html, previousByUrl) {
   const previous = previousByUrl.get(url);
   const found = today();
 
-  const features = accessibility.matches.map((term) => term === "pmw"
-    ? "Angebot ist für Personen mit Mobilitätseinschränkung (pMW) gekennzeichnet"
-    : `Im Angebot erkannt: ${term}`);
+  const features = accessibility.matches.map((term) => `Im Wohnungsangebot erkannt: ${term}`);
 
   return {
     id: stableId(url),
@@ -166,7 +180,8 @@ function parseApartment(url, html, previousByUrl) {
     accessibilityCategory: accessibility.category,
     accessibilityLabel: accessibility.label,
     accessibilityFeatures: [...new Set(features)],
-    wbs: normalized.includes("wbs") ? "erforderlich" : "unbekannt",
+    wbs: wbs.required,
+    wbsType: wbs.type,
     provider: "Eisenbahner-Wohnungsbaugenossenschaft Dresden eG",
     sourceId: "ewg-dresden",
     firstFound: previous?.firstFound || found,
@@ -181,7 +196,7 @@ function parseApartment(url, html, previousByUrl) {
 async function fetchHtml(url) {
   const response = await fetch(url, {
     headers: {
-      "user-agent": "Mozilla/5.0 (compatible; BarrierefreieWohnungenDresden/1.0; +https://github.com/67hvgkv67d-png/barrierefreie-wohnungen-dresden)",
+      "user-agent": "Mozilla/5.0 (compatible; WohnungsberatungDresden/1.0; +https://github.com/67hvgkv67d-png/barrierefreie-wohnungen-dresden)",
       accept: "text/html,application/xhtml+xml",
     },
     signal: AbortSignal.timeout(30000),
@@ -210,7 +225,8 @@ async function main() {
   };
 
   await writeFile(DATA_FILE, `${JSON.stringify(output, null, 2)}\n`, "utf8");
-  console.log(`EWG-Import abgeschlossen: ${apartments.length} passende Angebote der Kategorien A oder B.`);
+  const counts = Object.fromEntries(["A", "B", "C"].map((category) => [category, apartments.filter((item) => item.accessibilityCategory === category).length]));
+  console.log(`EWG-Import abgeschlossen: ${apartments.length} Angebote (A: ${counts.A}, B: ${counts.B}, C: ${counts.C}).`);
 }
 
 main().catch((error) => {

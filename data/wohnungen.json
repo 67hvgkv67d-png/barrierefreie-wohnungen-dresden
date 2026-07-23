@@ -34,67 +34,6 @@
       "originalUrl": "https://www.ewg-dresden.de/immobilie/wbs-pmw-3-rw-fuer-mind-3-personen/",
       "originalLabel": "Originalangebot bei der EWG öffnen",
       "suitableForPersons": []
-    },
-    {
-      "id": "immowelt-7fc5ad5ed1a0",
-      "dataStatus": "live",
-      "title": ".6.6 0 1 1 .881-.814l7.2 7.8a.6.6 0 0 1 0 .814l-7.2 7.8a.6.6 0 0 1-.847.036Z\"> Inserieren ab 0€ 2 Barrierefreie / Behindertengerechte Wohnungen mieten in Dresde",
-      "district": "Johannstadt",
-      "location": "Johannstadt, Dresden",
-      "distanceMeters": null,
-      "rooms": null,
-      "areaSqm": null,
-      "netColdRent": null,
-      "coldOperatingCosts": null,
-      "grossColdRent": null,
-      "heatingCosts": null,
-      "warmRent": null,
-      "accessibilityCategory": "A",
-      "accessibilityLabel": "ausdrücklich als barrierefrei oder rollstuhlgerecht beschrieben",
-      "accessibilityFeatures": [
-        "Im Angebot erkannt: barrierefrei",
-        "Im Angebot erkannt: behindertengerecht"
-      ],
-      "wbs": "unbekannt",
-      "wbsType": null,
-      "provider": "Anbieter laut Immowelt",
-      "sourceId": "immowelt",
-      "firstFound": "2026-07-23",
-      "lastChecked": "2026-07-23",
-      "contact": null,
-      "originalUrl": "https://www.immowelt.de/expose/a33e8a6b-174e-4552-a08f-4b42930938ed",
-      "originalLabel": "Originalangebot bei Immowelt öffnen",
-      "suitableForPersons": []
-    },
-    {
-      "id": "immowelt-cce078717843",
-      "dataStatus": "live",
-      "title": "14734xo\"> Auf Karte anzeigen Weitere Ergebnisse in der Nähe Entdecke weitere Ergebnisse in der Umgebung von Gorbitz-Süd, 1169 Natalie Doering <img id=\"_R_1cms39",
-      "district": "Gorbitz",
-      "location": "Gorbitz, Dresden",
-      "distanceMeters": null,
-      "rooms": null,
-      "areaSqm": null,
-      "netColdRent": null,
-      "coldOperatingCosts": null,
-      "grossColdRent": null,
-      "heatingCosts": null,
-      "warmRent": null,
-      "accessibilityCategory": "B",
-      "accessibilityLabel": "über die Immowelt-Suche für barrierefreie bzw. behindertengerechte Wohnungen gefunden; genaue Prüfung erforderlich",
-      "accessibilityFeatures": [
-        "Im Angebot erkannt: Zuordnung durch die Immowelt-Suchkategorie"
-      ],
-      "wbs": "unbekannt",
-      "wbsType": null,
-      "provider": "Anbieter laut Immowelt",
-      "sourceId": "immowelt",
-      "firstFound": "2026-07-23",
-      "lastChecked": "2026-07-23",
-      "contact": null,
-      "originalUrl": "https://www.immowelt.de/expose/bb3e16b7-80c5-4fb9-9a0a-0229effdc510",
-      "originalLabel": "Originalangebot bei Immowelt öffnen",
-      "suitableForPersons": []
     }
   ]
 }

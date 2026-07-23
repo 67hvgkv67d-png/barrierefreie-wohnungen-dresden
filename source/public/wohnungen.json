@@ -209,92 +209,6 @@
       "neu": true
     },
     {
-      "id": "IS24-129268550",
-      "titel": "MÖBLIERT + elbnah",
-      "stadtteil": "Johannstadt-Nord",
-      "adresse": "Elisenstraße 23, 01307 Dresden",
-      "zimmer": 1,
-      "wohnflaeche_m2": 23.96,
-      "nettokaltmiete_eur": 480,
-      "warmmiete_eur": 566,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Personenaufzug",
-        "stufenloser Zugang",
-        "Dusche, nicht als bodengleich bezeichnet"
-      ],
-      "bewertung": "ausdrücklich geeignet",
-      "anbieter": "DIMAG mbH & Co. KG",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/129268550",
-      "abrufdatum": "2026-07-23",
-      "neu": true
-    },
-    {
-      "id": "IS24-131255720",
-      "titel": "MÖBLIERT, Nähe Uniklinik",
-      "stadtteil": "Johannstadt-Nord",
-      "adresse": "Elisenstraße 23, 01307 Dresden",
-      "zimmer": 1,
-      "wohnflaeche_m2": 25.14,
-      "nettokaltmiete_eur": 525,
-      "warmmiete_eur": 618,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Personenaufzug"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "DIVARES GmbH & Co. KG",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/131255720",
-      "abrufdatum": "2026-07-23",
-      "neu": true
-    },
-    {
-      "id": "IS24-148992313",
-      "titel": "Küche, Bett, Schrank, Tisch und Stuhl sind schon da",
-      "stadtteil": "Johannstadt-Nord",
-      "adresse": "Elisenstraße 23, 01307 Dresden",
-      "zimmer": 1,
-      "wohnflaeche_m2": 25.29,
-      "nettokaltmiete_eur": 525,
-      "warmmiete_eur": 616,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Personenaufzug"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "DIVARES GmbH & Co. KG",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/148992313",
-      "abrufdatum": "2026-07-23",
-      "neu": true
-    },
-    {
-      "id": "IS24-169146858",
-      "titel": "Möblierte Wohnung mit Dachterrasse, Internet etc.",
-      "stadtteil": "Johannstadt-Nord",
-      "adresse": "Arnoldstraße 22, 01307 Dresden",
-      "zimmer": 1,
-      "wohnflaeche_m2": 56.24,
-      "nettokaltmiete_eur": 600,
-      "warmmiete_eur": 800,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Personenaufzug"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "mietPunkt",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169146858",
-      "abrufdatum": "2026-07-23",
-      "neu": true
-    },
-    {
       "id": "IS24-168502434",
       "titel": "Praktische 2-Zimmer Wohnung in der Johannstadt-Nord",
       "stadtteil": "Johannstadt-Nord",
@@ -357,27 +271,6 @@
       "anbieter": "DIVARES GmbH & Co. KG",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/140823749",
-      "abrufdatum": "2026-07-23",
-      "neu": true
-    },
-    {
-      "id": "IS24-129387726",
-      "titel": "Möbliertes Wohnen: Küche + Bett + Schrank inklusive",
-      "stadtteil": "Johannstadt-Nord",
-      "adresse": "Elisenstraße 23, 01307 Dresden",
-      "zimmer": 1,
-      "wohnflaeche_m2": 39.97,
-      "nettokaltmiete_eur": 710,
-      "warmmiete_eur": 854,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Personenaufzug"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "DIVARES GmbH & Co. KG",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/129387726",
       "abrufdatum": "2026-07-23",
       "neu": true
     },
@@ -534,30 +427,6 @@
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169199205",
       "abrufdatum": "2026-07-23",
       "neu": true
-    },
-    {
-      "id": "IW-342DEAC3",
-      "titel": "Atemberaubendes Penthouse mit 360°-Panoramablick, weitläufigem Wohnambiente + drei exclusive Bäder!",
-      "stadtteil": "Johannstadt-Süd",
-      "adresse": "Comeniusstr. 4, 01307 Dresden",
-      "zimmer": 4,
-      "wohnflaeche_m2": 209.73,
-      "nettokaltmiete_eur": 4195,
-      "warmmiete_eur": 4930,
-      "notwendige_personenzahl_nach_kdu_limit": 10,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "barrierearmes Gebäude",
-        "Personenaufzug",
-        "bodengleiche Dusche"
-      ],
-      "bewertung": "ausdrücklich geeignet",
-      "anbieter": "Vonovia Kundenservice GmbH",
-      "quelle": "immowelt",
-      "direkte_inserats_url": "https://www.immowelt.de/expose/342deac3-66d9-4663-91d5-7e95851f2a43",
-      "abrufdatum": "2026-07-23",
-      "neu": true,
-      "hinweis": "Zehn Personen sind ausschließlich das mathematische Ergebnis des NKM-Limits. KdU- und Belegungsanerkennung sind zu prüfen."
     }
   ]
 }

@@ -6,14 +6,14 @@
   },
   "apartments": [
     {
-      "id": "ewg-0c55259c4f05",
+      "id": "ewg-5eed28c7a826",
       "dataStatus": "live",
       "title": "WBS pMW 3-RW für mind. 3 Personen",
       "district": "Gorbitz",
-      "location": "Birkenstraße 5, 01169 Dresden",
+      "location": "Birkenstr. 5, 01169 Dresden",
       "distanceMeters": null,
       "rooms": 3,
-      "areaSqm": 66.65,
+      "areaSqm": null,
       "netColdRent": 526.54,
       "coldOperatingCosts": 193.29,
       "grossColdRent": null,
@@ -22,6 +22,9 @@
       "accessibilityCategory": "A",
       "accessibilityLabel": "vom Anbieter für Personen mit Mobilitätseinschränkung gekennzeichnet",
       "accessibilityFeatures": [
+        "Im Angebot genannt: barrierefrei",
+        "Im Angebot genannt: barrierearm",
+        "Im Angebot genannt: seniorengerecht",
         "Angebot ist für Personen mit Mobilitätseinschränkung (pMW) gekennzeichnet"
       ],
       "wbs": "erforderlich",

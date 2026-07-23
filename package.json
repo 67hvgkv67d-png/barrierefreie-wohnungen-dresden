@@ -5,7 +5,7 @@
   "scripts": {
     "import:all": "node scripts/import-alle-wohnungen.mjs",
     "import:ewg": "node scripts/import-ewg-wohnungen.mjs",
-    "import:immowelt": "node scripts/import-immowelt-wohnungen.mjs",
-    "check": "node --check script.js && node --check scripts/import-ewg-wohnungen.mjs && node --check scripts/import-immowelt-wohnungen.mjs && node --check scripts/import-alle-wohnungen.mjs"
+    "import:official": "node scripts/import-offizielle-quellen.mjs",
+    "check": "node --check script.js && node --check scripts/import-ewg-wohnungen.mjs && node --check scripts/import-offizielle-quellen.mjs && node --check scripts/import-alle-wohnungen.mjs"
   }
 }

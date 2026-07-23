@@ -36,6 +36,10 @@ function formatNumber(value, suffix = "") {
   return Number.isFinite(value) ? `${value.toLocaleString("de-DE")}${suffix}` : "nicht ausgewiesen";
 }
 
+function accessibilitySymbol(category) {
+  return { A: "🟢", B: "🟡", C: "🔴" }[category] || "⚪";
+}
+
 function getFilters() {
   const formData = new FormData(elements.form);
   return Object.fromEntries(formData.entries());
@@ -68,6 +72,7 @@ function createFact(label, value) {
 function renderApartment(apartment) {
   const features = (apartment.accessibilityFeatures || []).map((feature) => `<li>${feature}</li>`).join("");
   const badge = apartment.dataStatus === "live" ? "ECHTES ANGEBOT" : "BEISPIEL";
+  const accessibility = `${accessibilitySymbol(apartment.accessibilityCategory)} ${apartment.accessibilityCategory} – ${apartment.accessibilityLabel}`;
   return `
     <article class="apartment-card" aria-labelledby="${apartment.id}-title">
       <span class="badge">${badge}</span>
@@ -83,7 +88,7 @@ function renderApartment(apartment) {
         ${createFact("Bruttokaltmiete", formatMoney(apartment.grossColdRent))}
         ${createFact("Heizkosten", formatMoney(apartment.heatingCosts))}
         ${createFact("Gesamtmiete", formatMoney(apartment.warmRent))}
-        ${createFact("Barrierefreiheitskategorie", `${apartment.accessibilityCategory} – ${apartment.accessibilityLabel}`)}
+        ${createFact("Barrierefreiheits-Ampel", accessibility)}
         ${createFact("Wohnberechtigungsschein", apartment.wbs)}
         ${createFact("Anbieter", apartment.provider)}
         ${createFact("Datum des ersten Fundes", formatDate(apartment.firstFound))}
@@ -91,7 +96,7 @@ function renderApartment(apartment) {
         ${createFact("Kontaktangabe", apartment.contact || "nicht ausgewiesen")}
       </dl>
       <div>
-        <strong>Genannte Barrierefreiheitsmerkmale:</strong>
+        <strong>Erkannte Barrierefreiheitsmerkmale:</strong>
         <ul class="feature-list">${features || "<li>Bitte im Originalangebot prüfen.</li>"}</ul>
       </div>
       <a class="card-link" href="${apartment.originalUrl}" target="_blank" rel="noopener noreferrer" aria-label="${apartment.originalLabel}: ${apartment.title}">${apartment.originalLabel}</a>

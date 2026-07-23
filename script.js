@@ -1,6 +1,7 @@
 const state = {
   apartments: [],
   lastUpdated: "",
+  sourceChecks: {},
 };
 
 const elements = {
@@ -13,6 +14,7 @@ const elements = {
   resultSummary: document.querySelector("#result-summary"),
   emptyMessage: document.querySelector("#empty-message"),
   errorMessage: document.querySelector("#error-message"),
+  sourceStatus: document.querySelector("#source-status"),
 };
 
 const euroFormatter = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" });
@@ -111,6 +113,25 @@ function renderApartment(apartment) {
   `;
 }
 
+function renderSourceChecks() {
+  const checks = Object.values(state.sourceChecks || {});
+  if (!checks.length) {
+    elements.sourceStatus.innerHTML = "<li>Noch keine Quellenprüfung gespeichert.</li>";
+    return;
+  }
+  elements.sourceStatus.innerHTML = checks
+    .sort((a, b) => a.name.localeCompare(b.name, "de"))
+    .map((check) => {
+      const symbol = check.status === "success" ? "✓" : "⚠";
+      const count = Number.isFinite(check.offersFound) ? `${check.offersFound} passende Angebote` : "Anzahl unbekannt";
+      const name = check.searchUrl
+        ? `<a href="${check.searchUrl}" target="_blank" rel="noopener noreferrer">${check.name}</a>`
+        : check.name;
+      return `<li><strong>${symbol} ${name}:</strong> ${count}. ${check.note || ""} Stand: ${formatDate(check.checkedAt)}.</li>`;
+    })
+    .join("");
+}
+
 function render() {
   const filtered = applyFilters(state.apartments);
   const accessible = filtered.filter((apartment) => apartment.accessibilityCategory === "A" || apartment.accessibilityCategory === "B");
@@ -131,7 +152,9 @@ async function loadApartments() {
     const data = await response.json();
     state.apartments = data.apartments || [];
     state.lastUpdated = data.lastUpdated;
+    state.sourceChecks = data.sourceChecks || {};
     elements.lastUpdated.textContent = formatDate(state.lastUpdated);
+    renderSourceChecks();
     render();
   } catch (error) {
     elements.lastUpdated.textContent = "nicht verfügbar";

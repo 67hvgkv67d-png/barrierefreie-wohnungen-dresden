@@ -15,7 +15,8 @@ const SEARCHES = [
 ];
 
 const A_TERMS = ["barrierefrei", "rollstuhlgerecht", "rollstuhlgeeignet", "behindertengerecht"];
-const B_TERMS = ["barrierearm", "seniorengerecht", "seniorenfreundlich", "stufenlos", "schwellenlos", "schwellenarm", "bodengleiche dusche", "aufzug"];
+const B_TERMS = ["barrierearm", "seniorengerecht", "seniorenfreundlich", "stufenlos", "schwellenlos", "schwellenarm", "bodengleiche dusche", "ebenerdige dusche", "personenaufzug", "aufzug"];
+const EXCLUDE_TERMS = ["tauschwohnung", "wohnungstausch", "tauschangebot", "tauschobjekt", "zum tausch"];
 
 function today() {
   return new Date().toISOString().slice(0, 10);
@@ -25,6 +26,7 @@ function cleanText(value = "") {
   return String(value)
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+    .replace(/<svg\b[^>]*>[\s\S]*?<\/svg>/gi, " ")
     .replace(/<[^>]+>/g, " ")
     .replace(/&nbsp;|&#160;/gi, " ")
     .replace(/&amp;/gi, "&")
@@ -37,8 +39,7 @@ function cleanText(value = "") {
     .replace(/&Ouml;/g, "Ö")
     .replace(/&Uuml;/g, "Ü")
     .replace(/&szlig;/gi, "ß")
-    .replace(/\\u([0-9a-f]{4})/gi, (_, code) => String.fromCharCode(Number.parseInt(code, 16)))
-    .replace(/\\\//g, "/")
+    .replace(/&#(\d+);/g, (_, number) => String.fromCodePoint(Number(number)))
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -46,9 +47,11 @@ function cleanText(value = "") {
 function parseNumber(value) {
   if (value === null || value === undefined || value === "") return null;
   if (typeof value === "number") return Number.isFinite(value) ? value : null;
-  const match = String(value).match(/\d{1,4}(?:[.,]\d{1,2})?/);
+  const match = String(value).match(/\d{1,5}(?:\.\d{3})*(?:,\d{1,2})?|\d{1,5}(?:\.\d{1,2})?/);
   if (!match) return null;
-  const number = Number(match[0].replace(".", "").replace(",", "."));
+  const raw = match[0];
+  const normalized = raw.includes(",") ? raw.replace(/\./g, "").replace(",", ".") : raw;
+  const number = Number(normalized);
   return Number.isFinite(number) ? number : null;
 }
 
@@ -56,131 +59,124 @@ function stableId(url) {
   return `immowelt-${createHash("sha256").update(url).digest("hex").slice(0, 12)}`;
 }
 
-function classify(text) {
-  const normalized = text.toLowerCase();
-  const a = A_TERMS.filter((term) => normalized.includes(term));
-  if (a.length) return { category: "A", label: "ausdrücklich als barrierefrei oder rollstuhlgerecht beschrieben", matches: a };
-  const b = B_TERMS.filter((term) => normalized.includes(term));
-  return {
-    category: "B",
-    label: "über die Immowelt-Suche für barrierefreie bzw. behindertengerechte Wohnungen gefunden; genaue Prüfung erforderlich",
-    matches: b.length ? b : ["Zuordnung durch die Immowelt-Suchkategorie"],
-  };
-}
-
-function collectObjects(value, output = []) {
-  if (!value || typeof value !== "object") return output;
-  if (Array.isArray(value)) {
-    for (const item of value) collectObjects(item, output);
-    return output;
-  }
-  output.push(value);
-  for (const item of Object.values(value)) collectObjects(item, output);
-  return output;
-}
-
-function extractJsonLd(html) {
-  const objects = [];
-  for (const match of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
-    try {
-      collectObjects(JSON.parse(match[1]), objects);
-    } catch {
-      // Einzelne ungültige JSON-LD-Blöcke ignorieren.
-    }
-  }
-  return objects;
-}
-
 function normalizeUrl(value) {
   if (!value) return null;
   try {
-    const url = new URL(value, "https://www.immowelt.de");
-    if (!/immowelt\.de$/i.test(url.hostname) && !/\.immowelt\.de$/i.test(url.hostname)) return null;
-    return url.href;
+    const url = new URL(value.replace(/\\u002F/g, "/").replace(/\\\//g, "/"), "https://www.immowelt.de");
+    if (!/(^|\.)immowelt\.de$/i.test(url.hostname)) return null;
+    const expose = url.pathname.match(/\/expose\/([a-z0-9-]+)/i);
+    if (!expose) return null;
+    return `https://www.immowelt.de/expose/${expose[1]}`;
   } catch {
     return null;
   }
 }
 
-function candidateFromObject(object) {
-  const url = normalizeUrl(object.url || object["@id"] || object.mainEntityOfPage);
-  if (!url || !/expose|immobilie|angebot/i.test(url)) return null;
-  const addressObject = object.address && typeof object.address === "object" ? object.address : {};
-  const offers = object.offers && typeof object.offers === "object" ? object.offers : {};
-  const text = cleanText(JSON.stringify(object));
-  return {
-    url,
-    title: cleanText(object.name || object.headline || object.description || "Wohnungsangebot bei Immowelt").slice(0, 180),
-    text,
-    location: cleanText(addressObject.streetAddress || object.address || ""),
-    postcode: cleanText(addressObject.postalCode || ""),
-    rooms: parseNumber(object.numberOfRooms || object.numberOfBedrooms),
-    areaSqm: parseNumber(object.floorSize?.value || object.floorSize),
-    netColdRent: parseNumber(offers.price || object.price),
-    provider: cleanText(object.seller?.name || object.provider?.name || object.brand?.name || "Anbieter laut Immowelt"),
-  };
-}
-
-function fallbackCandidates(html) {
-  const output = [];
-  const links = [...html.matchAll(/href=["']([^"']*(?:expose|immobilie)[^"']*)["']/gi)];
-  for (const match of links) {
-    const url = normalizeUrl(match[1]);
-    if (!url) continue;
-    const start = Math.max(0, match.index - 1800);
-    const end = Math.min(html.length, match.index + 2200);
-    const text = cleanText(html.slice(start, end));
-    output.push({ url, title: text.slice(0, 160), text, location: "", postcode: "", rooms: null, areaSqm: null, netColdRent: null, provider: "Anbieter laut Immowelt" });
+function findExposeUrls(html) {
+  const urls = new Set();
+  const patterns = [
+    /href=["']([^"']*\/expose\/[a-z0-9-]+[^"']*)["']/gi,
+    /["'](?:url|href)["']\s*:\s*["']([^"']*\/expose\/[a-z0-9-]+[^"']*)["']/gi,
+    /https?:\\?\/\\?\/www\.immowelt\.de\\?\/expose\\?\/[a-z0-9-]+/gi,
+  ];
+  for (const pattern of patterns) {
+    for (const match of html.matchAll(pattern)) {
+      const url = normalizeUrl(match[1] || match[0]);
+      if (url) urls.add(url);
+    }
   }
-  return output;
+  return [...urls].slice(0, 40);
 }
 
-function districtMatches(candidate, expectedDistrict) {
-  const text = `${candidate.location} ${candidate.postcode} ${candidate.text}`.toLowerCase();
-  if (expectedDistrict === "Johannstadt") return /johannstadt|01307|01309/.test(text);
-  return /gorbitz|01169/.test(text);
+function classify(text) {
+  const normalized = text.toLowerCase();
+  const a = A_TERMS.filter((term) => normalized.includes(term));
+  if (a.length) return { category: "A", label: "ausdrücklich als barrierefrei oder rollstuhlgerecht beschrieben", matches: a };
+  const b = B_TERMS.filter((term) => normalized.includes(term));
+  if (b.length) return { category: "B", label: "Hinweise auf eine barrierearme Wohnung; genaue Prüfung erforderlich", matches: b };
+  return { category: "B", label: "über die Immowelt-Suche für barrierefreie beziehungsweise behindertengerechte Wohnungen gefunden; Angaben im Exposé prüfen", matches: ["Zuordnung durch die Immowelt-Suchkategorie"] };
 }
 
-function parseCandidate(candidate, district, previousByUrl) {
-  const text = cleanText(candidate.text);
-  if (!districtMatches(candidate, district)) return null;
-  if (/tauschangebot|tauschwohnung/i.test(text)) return null;
+function extractTitle(html, text, district) {
+  const h2 = [...html.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)]
+    .map((match) => cleanText(match[1]))
+    .find((value) => value.length >= 8 && !/Merkmale|Mietkosten|Lage|Weitere Informationen/i.test(value));
+  if (h2) return h2.slice(0, 180);
+  const og = cleanText(html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i)?.[1] || "");
+  if (og) return og.slice(0, 180);
+  const title = cleanText(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "").replace(/\s*\|\s*immowelt.*$/i, "");
+  return title || `Wohnung in ${district}`;
+}
 
+function parseMoneyAfterLabel(text, label) {
+  const patterns = [
+    new RegExp(`${label}\\s*(?:pro Monat)?\\s*(\\d{1,5}(?:\\.\\d{3})*(?:,\\d{1,2})?)\\s*€`, "i"),
+    new RegExp(`(\\d{1,5}(?:\\.\\d{3})*(?:,\\d{1,2})?)\\s*€\\s*${label}`, "i"),
+  ];
+  for (const pattern of patterns) {
+    const value = parseNumber(text.match(pattern)?.[1]);
+    if (value !== null) return value;
+  }
+  return null;
+}
+
+function districtFromText(text) {
+  const normalized = text.toLowerCase();
+  if (/johannstadt|01307|01309/.test(normalized)) return "Johannstadt";
+  if (/gorbitz|01169/.test(normalized)) return "Gorbitz";
+  return null;
+}
+
+function parseExpose(url, html, expectedDistrict, previousByUrl) {
+  const text = cleanText(html);
+  const normalized = text.toLowerCase();
+  if (EXCLUDE_TERMS.some((term) => normalized.includes(term))) return null;
+
+  const district = districtFromText(text);
+  if (!district || district !== expectedDistrict) return null;
+
+  const title = extractTitle(html, text, district);
+  if (EXCLUDE_TERMS.some((term) => title.toLowerCase().includes(term))) return null;
+
+  const rooms = parseNumber(text.match(/(\d(?:[,.]5)?)\s*Zimmer/i)?.[1]);
+  const areaSqm = parseNumber(text.match(/(\d{1,3}(?:[,.]\d{1,2})?)\s*m(?:²|2)/i)?.[1]);
+  const netColdRent = parseMoneyAfterLabel(text, "Kaltmiete");
+  const warmRent = parseMoneyAfterLabel(text, "Warmmiete");
+  const coldOperatingCosts = parseMoneyAfterLabel(text, "Nebenkosten");
+  const postcode = text.match(/\((01\d{3})\)|\b(01\d{3})\b/)?.[1] || text.match(/\((01\d{3})\)|\b(01\d{3})\b/)?.[2] || null;
+  const street = text.match(/\b([A-ZÄÖÜ][A-Za-zÄÖÜäöüß .-]+(?:straße|str\.|ring|weg|platz|allee|hof)\s*\d+[a-z]?)\b/i)?.[1] || null;
+  const location = street && postcode ? `${street}, ${postcode} Dresden` : `${district}, Dresden${postcode ? ` (${postcode})` : ""}`;
+  const provider = cleanText(text.match(/Über den Anbieter\s+(.{2,100}?)(?:\s+\d+ Jahre Partnerschaft|\s+Dein Kontakt|\s+Kontaktieren)/i)?.[1] || "Anbieter laut Immowelt");
   const accessibility = classify(text);
-  const previous = previousByUrl.get(candidate.url);
-  const locationMatch = text.match(/([A-ZÄÖÜ][A-Za-zÄÖÜäöüß .-]+(?:straße|str\.|ring|weg|platz|allee|hof)\s*\d+[a-z]?)\s*,?\s*(01\d{3})/i);
-  const rooms = candidate.rooms ?? parseNumber(text.match(/(\d(?:[,.]5)?)\s*Zimmer/i)?.[1]);
-  const areaSqm = candidate.areaSqm ?? parseNumber(text.match(/(\d{1,3}(?:[,.]\d{1,2})?)\s*m(?:²|2)/i)?.[1]);
-  const netColdRent = candidate.netColdRent ?? parseNumber(text.match(/(\d{2,4}(?:[.,]\d{1,2})?)\s*€\s*Kaltmiete/i)?.[1]);
-  const title = candidate.title && candidate.title !== "Wohnungsangebot bei Immowelt"
-    ? candidate.title
-    : `${rooms ? `${rooms}-Zimmer-Wohnung` : "Wohnung"} in ${district}`;
+  const previous = previousByUrl.get(url);
+
+  if (!rooms && !areaSqm && !netColdRent && !warmRent) return null;
 
   return {
-    id: stableId(candidate.url),
+    id: stableId(url),
     dataStatus: "live",
     title,
     district,
-    location: locationMatch ? `${locationMatch[1]}, ${locationMatch[2]} Dresden` : `${district}, Dresden`,
+    location,
     distanceMeters: null,
     rooms,
     areaSqm,
     netColdRent,
-    coldOperatingCosts: null,
+    coldOperatingCosts,
     grossColdRent: null,
     heatingCosts: null,
-    warmRent: null,
+    warmRent,
     accessibilityCategory: accessibility.category,
     accessibilityLabel: accessibility.label,
     accessibilityFeatures: accessibility.matches.map((term) => `Im Angebot erkannt: ${term}`),
     wbs: /\bwbs\b|wohnberechtigungsschein/i.test(text) ? "erforderlich" : "unbekannt",
-    wbsType: /\bpmw\b/i.test(text) ? "pMW" : null,
-    provider: candidate.provider || "Anbieter laut Immowelt",
+    wbsType: /\bpmw\b/i.test(text) ? "pMW" : /\bgmw\b/i.test(text) ? "gMW" : null,
+    provider,
     sourceId: SOURCE_ID,
     firstFound: previous?.firstFound || today(),
     lastChecked: today(),
     contact: null,
-    originalUrl: candidate.url,
+    originalUrl: url,
     originalLabel: "Originalangebot bei Immowelt öffnen",
     suitableForPersons: [],
   };
@@ -189,10 +185,11 @@ function parseCandidate(candidate, district, previousByUrl) {
 async function fetchHtml(url) {
   const response = await fetch(url, {
     headers: {
-      "user-agent": "Mozilla/5.0 (compatible; WohnungsberatungDresden/1.0; +https://github.com/67hvgkv67d-png/barrierefreie-wohnungen-dresden)",
+      "user-agent": "Mozilla/5.0 (compatible; WohnungsberatungDresden/1.1; +https://github.com/67hvgkv67d-png/barrierefreie-wohnungen-dresden)",
       accept: "text/html,application/xhtml+xml",
       "accept-language": "de-DE,de;q=0.9",
     },
+    redirect: "follow",
     signal: AbortSignal.timeout(30000),
   });
   if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
@@ -206,15 +203,22 @@ async function main() {
   const otherSources = (existing.apartments || []).filter((item) => item.sourceId !== SOURCE_ID);
   const imported = [];
   const errors = [];
+  let successfulSearches = 0;
 
   for (const search of SEARCHES) {
     try {
-      const html = await fetchHtml(search.url);
-      const jsonCandidates = extractJsonLd(html).map(candidateFromObject).filter(Boolean);
-      const candidates = jsonCandidates.length ? jsonCandidates : fallbackCandidates(html);
-      for (const candidate of candidates) {
-        const apartment = parseCandidate(candidate, search.district, previousByUrl);
-        if (apartment) imported.push(apartment);
+      const searchHtml = await fetchHtml(search.url);
+      successfulSearches += 1;
+      const urls = findExposeUrls(searchHtml);
+      console.log(`${search.district}: ${urls.length} Exposé-Links gefunden.`);
+      for (const url of urls) {
+        try {
+          const exposeHtml = await fetchHtml(url);
+          const apartment = parseExpose(url, exposeHtml, search.district, previousByUrl);
+          if (apartment) imported.push(apartment);
+        } catch (error) {
+          errors.push(`${url}: ${error.message}`);
+        }
       }
     } catch (error) {
       errors.push(`${search.district}: ${error.message}`);
@@ -222,7 +226,7 @@ async function main() {
   }
 
   const unique = imported.filter((item, index, all) => all.findIndex((other) => other.originalUrl === item.originalUrl) === index);
-  const immoweltApartments = unique.length ? unique : previousImmowelt;
+  const immoweltApartments = successfulSearches > 0 ? unique : previousImmowelt;
   const output = {
     ...existing,
     lastUpdated: today(),
@@ -230,9 +234,9 @@ async function main() {
   };
 
   await writeFile(DATA_FILE, `${JSON.stringify(output, null, 2)}\n`, "utf8");
-  console.log(`Immowelt-Import: ${unique.length} aktuelle Angebote gefunden; ${immoweltApartments.length} gespeichert.`);
-  if (errors.length) console.warn(`Teilweise Fehler: ${errors.join(" | ")}`);
-  if (!unique.length) console.warn("Keine neuen Immowelt-Angebote geparst. Vorhandene Immowelt-Daten wurden unverändert beibehalten.");
+  console.log(`Immowelt-Import: ${unique.length} geprüfte Angebote gespeichert.`);
+  if (errors.length) console.warn(`Teilweise Fehler: ${errors.slice(0, 10).join(" | ")}`);
+  if (!successfulSearches) console.warn("Keine Immowelt-Suche erreichbar. Vorhandene Daten wurden beibehalten.");
 }
 
 main().catch((error) => {

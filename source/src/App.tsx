@@ -15,11 +15,12 @@ const decimal = new Intl.NumberFormat("de-DE", {
 });
 
 type DistrictFilter = "alle" | "Johannstadt" | "Gorbitz";
+type DistrictName = Exclude<DistrictFilter, "alle">;
 type RatingFilter = "alle" | Wohnung["bewertung"];
 type ViewMode = "aktiv" | "ausgeblendet";
 type SortMode = "kdu" | "nkm-auf" | "nkm-ab";
 
-function districtName(stadtteil: string) {
+function districtName(stadtteil: string): DistrictName {
   return stadtteil.startsWith("Gorbitz") ? "Gorbitz" : "Johannstadt";
 }
 
@@ -42,6 +43,12 @@ function statusClass(bewertung: Wohnung["bewertung"]) {
   if (bewertung === "ausdrücklich geeignet") return "status-good";
   if (bewertung === "möglicherweise geeignet") return "status-maybe";
   return "status-check";
+}
+
+function ratingMarkerClass(bewertung: Wohnung["bewertung"]) {
+  if (bewertung === "ausdrücklich geeignet") return "overview-marker-good";
+  if (bewertung === "möglicherweise geeignet") return "overview-marker-maybe";
+  return "overview-marker-check";
 }
 
 function ageLabel(date: string) {
@@ -67,6 +74,170 @@ function ageLabel(date: string) {
   if (days === 0) return "Heute hinzugefügt";
   if (days === 1) return "Seit 1 Tag erfasst";
   return `Seit ${days} Tagen erfasst`;
+}
+
+function DistrictOverviewMap({
+  district,
+  wohnungen,
+}: {
+  district: DistrictName;
+  wohnungen: Wohnung[];
+}) {
+  const mapElement = useRef<HTMLDivElement>(null);
+  const regionalstelle = regionalstellen[district];
+  const districtWohnungen = useMemo(
+    () =>
+      wohnungen.filter(
+        (wohnung) => districtName(wohnung.stadtteil) === district,
+      ),
+    [district, wohnungen],
+  );
+  const mappedWohnungen = useMemo(
+    () => districtWohnungen.filter((wohnung) => wohnung.kartenposition),
+    [districtWohnungen],
+  );
+  const unmappedCount = districtWohnungen.length - mappedWohnungen.length;
+
+  useEffect(() => {
+    if (!mapElement.current || mappedWohnungen.length === 0) return;
+
+    const map = L.map(mapElement.current, {
+      scrollWheelZoom: false,
+      zoomControl: true,
+    });
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>',
+      maxZoom: 19,
+    }).addTo(map);
+
+    const bounds: L.LatLngExpression[] = [];
+
+    mappedWohnungen.forEach((wohnung) => {
+      const position = wohnung.kartenposition;
+      if (!position) return;
+
+      const markerPosition: L.LatLngTuple = [
+        position.breitengrad,
+        position.laengengrad,
+      ];
+      const marker = L.marker(markerPosition, {
+        icon: L.divIcon({
+          className: `map-marker overview-marker ${ratingMarkerClass(
+            wohnung.bewertung,
+          )}`,
+          html: "<span>W</span>",
+          iconSize: [34, 34],
+          iconAnchor: [17, 17],
+          popupAnchor: [0, -18],
+        }),
+        title: `${wohnung.titel}: ${wohnung.bewertung}`,
+      }).addTo(map);
+
+      const popup = document.createElement("div");
+      popup.className = "overview-popup";
+
+      const title = document.createElement("strong");
+      title.textContent = wohnung.titel;
+      popup.append(title);
+
+      const address = document.createElement("span");
+      address.textContent = wohnung.adresse;
+      popup.append(address);
+
+      const rating = document.createElement("span");
+      rating.textContent = `Bewertung: ${wohnung.bewertung}`;
+      popup.append(rating);
+
+      const link = document.createElement("a");
+      link.href = wohnung.direkte_inserats_url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.textContent = "Direktes Inserat öffnen ↗";
+      popup.append(link);
+
+      marker.bindPopup(popup);
+      bounds.push(markerPosition);
+    });
+
+    const regionalstellePosition: L.LatLngTuple = [
+      regionalstelle.breitengrad,
+      regionalstelle.laengengrad,
+    ];
+    const officeMarker = L.marker(regionalstellePosition, {
+      icon: L.divIcon({
+        className: "map-marker overview-marker overview-marker-office",
+        html: "<span>R</span>",
+        iconSize: [38, 38],
+        iconAnchor: [19, 19],
+        popupAnchor: [0, -20],
+      }),
+      title: `${regionalstelle.name}: ${regionalstelle.adresse}`,
+    }).addTo(map);
+
+    const officePopup = document.createElement("div");
+    officePopup.className = "overview-popup";
+    const officeName = document.createElement("strong");
+    officeName.textContent = regionalstelle.name;
+    const officeAddress = document.createElement("span");
+    officeAddress.textContent = regionalstelle.adresse;
+    officePopup.append(officeName, officeAddress);
+    officeMarker.bindPopup(officePopup);
+
+    bounds.push(regionalstellePosition);
+    map.fitBounds(L.latLngBounds(bounds), {
+      padding: [32, 32],
+      maxZoom: 15,
+    });
+
+    return () => {
+      map.remove();
+    };
+  }, [mappedWohnungen, regionalstelle]);
+
+  return (
+    <article
+      className={`overview-map-card overview-map-card-${district.toLowerCase()}`}
+    >
+      <div className="overview-map-heading">
+        <div>
+          <p>{district}</p>
+          <h3>
+            {mappedWohnungen.length}{" "}
+            {mappedWohnungen.length === 1 ? "Wohnung" : "Wohnungen"} kartiert
+          </h3>
+        </div>
+        <span>R = {regionalstelle.name}</span>
+      </div>
+
+      {mappedWohnungen.length ? (
+        <div
+          ref={mapElement}
+          className="overview-map-canvas"
+          aria-label={`Karte mit ${mappedWohnungen.length} Wohnungen in ${district} und ${regionalstelle.name}`}
+        />
+      ) : (
+        <div className="overview-map-empty">
+          Noch keine Wohnung mit verlässlicher Kartenposition vorhanden.
+        </div>
+      )}
+
+      <div className="overview-map-meta">
+        <p>
+          <strong>{regionalstelle.name}</strong>
+          <span>{regionalstelle.adresse}</span>
+        </p>
+        {unmappedCount > 0 ? (
+          <p className="overview-map-warning">
+            {unmappedCount}{" "}
+            {unmappedCount === 1 ? "Angebot ist" : "Angebote sind"} mangels
+            verlässlicher Position nicht kartiert.
+          </p>
+        ) : null}
+      </div>
+    </article>
+  );
 }
 
 function LocationMap({ wohnung }: { wohnung: Wohnung }) {
@@ -98,7 +269,9 @@ function LocationMap({ wohnung }: { wohnung: Wohnung }) {
     }).addTo(map);
 
     const wohnungIcon = L.divIcon({
-      className: "map-marker map-marker-home",
+      className: `map-marker map-marker-home ${ratingMarkerClass(
+        wohnung.bewertung,
+      )}`,
       html: "<span>W</span>",
       iconSize: [34, 34],
       iconAnchor: [17, 17],
@@ -174,10 +347,16 @@ function LocationMap({ wohnung }: { wohnung: Wohnung }) {
           />
           <div className="map-legend">
             <p>
-              <span className="legend-marker legend-home">W</span>
+              <span
+                className={`legend-marker ${ratingMarkerClass(
+                  wohnung.bewertung,
+                )}`}
+              >
+                W
+              </span>
               <strong>Wohnung</strong>
               <small>
-                {wohnung.adresse} · {position.genauigkeit}
+                {wohnung.adresse} · {wohnung.bewertung} · {position.genauigkeit}
               </small>
             </p>
             <p>
@@ -626,6 +805,49 @@ export default function Home() {
             KdU-Grenze: 450,50 € Nettokaltmiete je berücksichtigter Person
           </p>
         </aside>
+      </section>
+
+      <section className="overview-section" aria-labelledby="karten-ueberschrift">
+        <div className="overview-section-heading">
+          <div>
+            <p className="eyebrow eyebrow-dark">Lage im Stadtteil</p>
+            <h2 id="karten-ueberschrift">Alle Wohnungen auf einen Blick</h2>
+          </div>
+          <p>
+            Jede Karte zeigt die aktuell gefundenen Wohnungen und die
+            zuständige Regionalstelle. Ein Klick auf einen Wohnungsmarker
+            öffnet die wichtigsten Angaben und den direkten Inseratslink.
+          </p>
+        </div>
+
+        <div className="overview-map-grid">
+          <DistrictOverviewMap district="Johannstadt" wohnungen={wohnungen} />
+          <DistrictOverviewMap district="Gorbitz" wohnungen={wohnungen} />
+        </div>
+
+        <div className="overview-map-legend" aria-label="Kartenlegende">
+          <span>
+            <i className="overview-legend-dot overview-marker-good">W</i>
+            ausdrücklich geeignet
+          </span>
+          <span>
+            <i className="overview-legend-dot overview-marker-maybe">W</i>
+            möglicherweise geeignet
+          </span>
+          <span>
+            <i className="overview-legend-dot overview-marker-check">W</i>
+            zu prüfen
+          </span>
+          <span>
+            <i className="overview-legend-office">R</i>
+            Regionalstelle
+          </span>
+        </div>
+        <p className="overview-map-note">
+          Die Farben geben die redaktionelle Bewertung der ausdrücklich
+          genannten Barriereangaben wieder. Sie ersetzen keine individuelle
+          Prüfung. Beim Laden werden Kartendaten von OpenStreetMap abgerufen.
+        </p>
       </section>
 
       <section className="content-section" id="angebote">

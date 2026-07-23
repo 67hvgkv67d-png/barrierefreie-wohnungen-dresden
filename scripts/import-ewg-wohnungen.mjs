@@ -46,6 +46,11 @@ function parseGermanNumber(value) {
   return Number.isFinite(number) ? number : null;
 }
 
+function parseMoneyAfterLabel(text, label) {
+  const match = text.match(new RegExp(`${label}\\s*:?\\s*(\\d{1,4}(?:\\.\\d{3})*,\\d{2})\\s*€`, "i"));
+  return parseGermanNumber(match?.[1]);
+}
+
 function stableId(url) {
   return `ewg-${createHash("sha256").update(url).digest("hex").slice(0, 12)}`;
 }
@@ -54,54 +59,51 @@ function today() {
   return new Date().toISOString().slice(0, 10);
 }
 
-function findCards(html) {
-  const links = [...html.matchAll(/href=["'](https?:\/\/www\.ewg-dresden\.de)?(\/immobilie\/[^"'#?]+\/?)["']/gi)];
-  const seen = new Set();
-  const cards = [];
-
-  for (const match of links) {
-    const path = match[2];
-    const url = new URL(path, LIST_URL).href;
-    if (seen.has(url)) continue;
-    seen.add(url);
-
-    const start = Math.max(0, match.index - 2200);
-    const end = Math.min(html.length, match.index + 1800);
-    cards.push({ url, html: html.slice(start, end) });
-  }
-  return cards;
+function findOfferUrls(html) {
+  const urls = [...html.matchAll(/href=["'](https?:\/\/www\.ewg-dresden\.de)?(\/immobilie\/[^"'#?]+\/?)['"]/gi)]
+    .map((match) => new URL(match[2], LIST_URL).href);
+  return [...new Set(urls)];
 }
 
-function parseCard(card, previousByUrl) {
-  const text = decodeHtml(card.html);
+function parseApartment(url, html, previousByUrl) {
+  const text = decodeHtml(html);
   const normalized = text.toLowerCase();
   const postcode = text.match(/\b(01\d{3})\s+Dresden\b/i)?.[1] ?? null;
   const district = postcode ? ALLOWED_DISTRICTS.get(postcode) : null;
   if (!district) return null;
   if (!ACCESSIBILITY_TERMS.some((term) => normalized.includes(term))) return null;
 
-  const titleFromUrl = decodeURIComponent(new URL(card.url).pathname.split("/").filter(Boolean).at(-1) || "")
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (letter) => letter.toUpperCase());
-  const headingMatches = [...card.html.matchAll(/<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/gi)]
+  const headingMatches = [...html.matchAll(/<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/gi)]
     .map((entry) => decodeHtml(entry[1]))
     .filter(Boolean);
+  const titleFromUrl = decodeURIComponent(new URL(url).pathname.split("/").filter(Boolean).at(-1) || "")
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
   const title = headingMatches.find((heading) => /wohnung|\b[1-7][ -]?(?:raum|rw)\b|wbs|pmw/i.test(heading)) || titleFromUrl;
 
-  const rooms = parseGermanNumber(text.match(/\b([1-7](?:[,.]5)?)\s*(?:Zimmer|Raum|RW)\b/i)?.[1]);
-  const areaSqm = parseGermanNumber(text.match(/\b(\d{1,3}(?:[.,]\d{1,2})?)\s*m(?:²|2)\b/i)?.[1]);
-  const warmRent = parseGermanNumber(text.match(/\b(\d{2,4}(?:\.\d{3})*,\d{2})\s*€/)?.[1]);
+  const rooms = parseGermanNumber(text.match(/(?:Zimmer|Anzahl Zimmer|Räume|Raumzahl)\s*:?\s*([1-7](?:[,.]5)?)/i)?.[1]
+    || text.match(/\b([1-7](?:[,.]5)?)\s*(?:Zimmer|Raum|RW)\b/i)?.[1]);
+  const areaSqm = parseGermanNumber(text.match(/(?:Wohnfläche)\s*:?\s*(\d{1,3}(?:[.,]\d{1,2})?)\s*m(?:²|2)/i)?.[1]
+    || text.match(/\b(\d{1,3}(?:[.,]\d{1,2})?)\s*m(?:²|2)\b/i)?.[1]);
+
+  const netColdRent = parseMoneyAfterLabel(text, "Kaltmiete");
+  const coldOperatingCosts = parseMoneyAfterLabel(text, "Nebenkosten");
+  const warmRent = parseMoneyAfterLabel(text, "Gesamtmiete")
+    ?? parseMoneyAfterLabel(text, "Warmmiete");
+
   const street = text.match(/\b([A-ZÄÖÜ][A-Za-zÄÖÜäöüß.-]+(?:straße|str\.|ring|weg|platz|allee|hof))\s*(\d+[a-z]?)\s*,?\s*01\d{3}\s+Dresden\b/i);
   const location = street ? `${street[1]} ${street[2]}, ${postcode} Dresden` : `${postcode} Dresden`;
-  const previous = previousByUrl.get(card.url);
+  const previous = previousByUrl.get(url);
   const found = today();
 
   const features = ACCESSIBILITY_TERMS
     .filter((term) => normalized.includes(term))
-    .map((term) => term === "pmw" ? "Angebot ist für Personen mit Mobilitätseinschränkung (pMW) gekennzeichnet" : `Im Angebot genannt: ${term}`);
+    .map((term) => term === "pmw"
+      ? "Angebot ist für Personen mit Mobilitätseinschränkung (pMW) gekennzeichnet"
+      : `Im Angebot genannt: ${term}`);
 
   return {
-    id: stableId(card.url),
+    id: stableId(url),
     dataStatus: "live",
     title,
     district,
@@ -109,13 +111,15 @@ function parseCard(card, previousByUrl) {
     distanceMeters: null,
     rooms,
     areaSqm,
-    netColdRent: null,
-    coldOperatingCosts: null,
+    netColdRent,
+    coldOperatingCosts,
     grossColdRent: null,
     heatingCosts: null,
     warmRent,
     accessibilityCategory: normalized.includes("rollstuhl") || normalized.includes("barrierefrei") || normalized.includes("pmw") ? "A" : "B",
-    accessibilityLabel: normalized.includes("pmw") ? "vom Anbieter für Personen mit Mobilitätseinschränkung gekennzeichnet" : "vom Anbieter als barrierearm oder seniorengerecht beschrieben",
+    accessibilityLabel: normalized.includes("pmw")
+      ? "vom Anbieter für Personen mit Mobilitätseinschränkung gekennzeichnet"
+      : "vom Anbieter als barrierearm oder seniorengerecht beschrieben",
     accessibilityFeatures: [...new Set(features)],
     wbs: normalized.includes("wbs") ? "erforderlich" : "unbekannt",
     provider: "Eisenbahner-Wohnungsbaugenossenschaft Dresden eG",
@@ -123,7 +127,7 @@ function parseCard(card, previousByUrl) {
     firstFound: previous?.firstFound || found,
     lastChecked: found,
     contact: "EWG-Vermietung: 0351 41 81 716, wohnung@ewg-dresden.de",
-    originalUrl: card.url,
+    originalUrl: url,
     originalLabel: "Originalangebot bei der EWG öffnen",
     suitableForPersons: [],
   };
@@ -144,12 +148,13 @@ async function fetchHtml(url) {
 async function main() {
   const existing = JSON.parse(await readFile(DATA_FILE, "utf8"));
   const previousByUrl = new Map((existing.apartments || []).map((item) => [item.originalUrl, item]));
-  const html = await fetchHtml(LIST_URL);
-  const cards = findCards(html);
-  if (cards.length === 0) throw new Error("Auf der EWG-Seite wurden keine Angebotslinks gefunden. Bestehende Daten bleiben unverändert.");
+  const listHtml = await fetchHtml(LIST_URL);
+  const urls = findOfferUrls(listHtml);
+  if (urls.length === 0) throw new Error("Auf der EWG-Seite wurden keine Angebotslinks gefunden. Bestehende Daten bleiben unverändert.");
 
-  const apartments = cards
-    .map((card) => parseCard(card, previousByUrl))
+  const details = await Promise.all(urls.map(async (url) => ({ url, html: await fetchHtml(url) })));
+  const apartments = details
+    .map(({ url, html }) => parseApartment(url, html, previousByUrl))
     .filter(Boolean)
     .filter((item, index, all) => all.findIndex((other) => other.originalUrl === item.originalUrl) === index);
 

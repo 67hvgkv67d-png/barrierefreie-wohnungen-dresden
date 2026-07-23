@@ -220,7 +220,11 @@ function ListingCard({
   const age = ageLabel(wohnung.erstmals_gefunden_am);
 
   return (
-    <article className={`listing-card ${isSaved ? "listing-card-saved" : ""}`}>
+    <article
+      className={`listing-card listing-card-${districtName(wohnung.stadtteil).toLowerCase()} ${
+        isSaved ? "listing-card-saved" : ""
+      }`}
+    >
       <div className="card-topline">
         <div className="card-labels">
           <span className="district-label">

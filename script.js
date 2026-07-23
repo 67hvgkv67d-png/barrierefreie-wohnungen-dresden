@@ -6,6 +6,8 @@ const state = {
 const elements = {
   form: document.querySelector("#filters"),
   apartments: document.querySelector("#apartments"),
+  otherApartments: document.querySelector("#other-apartments"),
+  otherCount: document.querySelector("#other-count"),
   visibleCount: document.querySelector("#visible-count"),
   lastUpdated: document.querySelector("#last-updated"),
   resultSummary: document.querySelector("#result-summary"),
@@ -34,10 +36,6 @@ function formatMoney(value) {
 
 function formatNumber(value, suffix = "") {
   return Number.isFinite(value) ? `${value.toLocaleString("de-DE")}${suffix}` : "nicht ausgewiesen";
-}
-
-function accessibilitySymbol(category) {
-  return { A: "🟢", B: "🟡", C: "🔴" }[category] || "⚪";
 }
 
 function getFilters() {
@@ -69,10 +67,19 @@ function createFact(label, value) {
   return `<div class="fact"><dt>${label}</dt><dd>${value}</dd></div>`;
 }
 
+function categoryDisplay(apartment) {
+  const symbols = { A: "🟢", B: "🟡", C: "⚪" };
+  return `${symbols[apartment.accessibilityCategory] || "⚪"} ${apartment.accessibilityCategory} – ${apartment.accessibilityLabel}`;
+}
+
+function wbsDisplay(apartment) {
+  if (apartment.wbs !== "erforderlich") return apartment.wbs;
+  return apartment.wbsType ? `erforderlich – Typ ${apartment.wbsType}` : "erforderlich";
+}
+
 function renderApartment(apartment) {
   const features = (apartment.accessibilityFeatures || []).map((feature) => `<li>${feature}</li>`).join("");
   const badge = apartment.dataStatus === "live" ? "ECHTES ANGEBOT" : "BEISPIEL";
-  const accessibility = `${accessibilitySymbol(apartment.accessibilityCategory)} ${apartment.accessibilityCategory} – ${apartment.accessibilityLabel}`;
   return `
     <article class="apartment-card" aria-labelledby="${apartment.id}-title">
       <span class="badge">${badge}</span>
@@ -88,16 +95,16 @@ function renderApartment(apartment) {
         ${createFact("Bruttokaltmiete", formatMoney(apartment.grossColdRent))}
         ${createFact("Heizkosten", formatMoney(apartment.heatingCosts))}
         ${createFact("Gesamtmiete", formatMoney(apartment.warmRent))}
-        ${createFact("Barrierefreiheits-Ampel", accessibility)}
-        ${createFact("Wohnberechtigungsschein", apartment.wbs)}
+        ${createFact("Barrierefreiheit", categoryDisplay(apartment))}
+        ${createFact("Wohnberechtigungsschein", wbsDisplay(apartment))}
         ${createFact("Anbieter", apartment.provider)}
         ${createFact("Datum des ersten Fundes", formatDate(apartment.firstFound))}
         ${createFact("Datum der letzten Prüfung", formatDate(apartment.lastChecked))}
         ${createFact("Kontaktangabe", apartment.contact || "nicht ausgewiesen")}
       </dl>
       <div>
-        <strong>Erkannte Barrierefreiheitsmerkmale:</strong>
-        <ul class="feature-list">${features || "<li>Bitte im Originalangebot prüfen.</li>"}</ul>
+        <strong>Erkannte Hinweise zur Barrierefreiheit:</strong>
+        <ul class="feature-list">${features || "<li>Im Angebot wurden keine belastbaren Hinweise gefunden.</li>"}</ul>
       </div>
       <a class="card-link" href="${apartment.originalUrl}" target="_blank" rel="noopener noreferrer" aria-label="${apartment.originalLabel}: ${apartment.title}">${apartment.originalLabel}</a>
     </article>
@@ -106,10 +113,15 @@ function renderApartment(apartment) {
 
 function render() {
   const filtered = applyFilters(state.apartments);
+  const accessible = filtered.filter((apartment) => apartment.accessibilityCategory === "A" || apartment.accessibilityCategory === "B");
+  const unclear = filtered.filter((apartment) => apartment.accessibilityCategory === "C");
+
   elements.visibleCount.textContent = filtered.length;
   elements.resultSummary.textContent = `${filtered.length} von ${state.apartments.length} Wohnungen passen zu den Filtern.`;
   elements.emptyMessage.hidden = filtered.length !== 0;
-  elements.apartments.innerHTML = filtered.map(renderApartment).join("");
+  elements.apartments.innerHTML = accessible.map(renderApartment).join("");
+  elements.otherApartments.innerHTML = unclear.map(renderApartment).join("");
+  elements.otherCount.textContent = unclear.length;
 }
 
 async function loadApartments() {

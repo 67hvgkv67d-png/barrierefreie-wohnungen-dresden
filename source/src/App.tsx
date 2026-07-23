@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { wohnungen, type Wohnung } from "./wohnungen";
+import { type Wohnung, type Wohnungsdaten } from "./types";
 
 const euro = new Intl.NumberFormat("de-DE", {
   style: "currency",
@@ -154,6 +154,11 @@ function ListingCard({
 }
 
 export default function Home() {
+  const [daten, setDaten] = useState<Wohnungsdaten>({
+    aktualisiert_am: "",
+    wohnungen: [],
+  });
+  const [loadError, setLoadError] = useState(false);
   const [query, setQuery] = useState("");
   const [district, setDistrict] = useState<DistrictFilter>("alle");
   const [persons, setPersons] = useState("alle");
@@ -164,6 +169,17 @@ export default function Home() {
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
   const [hiddenIds, setHiddenIds] = useState<Set<string>>(new Set());
   const [hydrated, setHydrated] = useState(false);
+  const wohnungen = daten.wohnungen;
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}wohnungen.json`)
+      .then((response) => {
+        if (!response.ok) throw new Error("Wohnungsdaten konnten nicht geladen werden.");
+        return response.json() as Promise<Wohnungsdaten>;
+      })
+      .then(setDaten)
+      .catch(() => setLoadError(true));
+  }, []);
 
   useEffect(() => {
     try {
@@ -274,7 +290,7 @@ export default function Home() {
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "mietwohnungen-dresden-2026-07-23.json";
+    anchor.download = `mietwohnungen-dresden-${daten.aktualisiert_am || "aktuell"}.json`;
     anchor.click();
     URL.revokeObjectURL(url);
   }
@@ -283,7 +299,14 @@ export default function Home() {
     <main>
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="hero-date">Stand 23.07.2026</p>
+          <p className="hero-date">
+            Stand{" "}
+            {daten.aktualisiert_am
+              ? new Intl.DateTimeFormat("de-DE").format(
+                  new Date(`${daten.aktualisiert_am}T12:00:00`),
+                )
+              : "wird geladen"}
+          </p>
           <h1>Barrierefreie Wohnungen in Dresden Gorbitz und Johannstadt</h1>
         </div>
 
@@ -318,6 +341,15 @@ export default function Home() {
       </section>
 
       <section className="content-section" id="angebote">
+        {loadError ? (
+          <div className="accessibility-note" role="alert">
+            <span className="note-icon" aria-hidden="true">!</span>
+            <div>
+              <strong>Die Angebotsdaten konnten nicht geladen werden.</strong>
+              <p>Bitte laden Sie die Seite neu oder versuchen Sie es später erneut.</p>
+            </div>
+          </div>
+        ) : null}
         <div className="section-heading">
           <div>
             <p className="eyebrow eyebrow-dark">Geprüfte Direktangebote</p>
@@ -520,7 +552,13 @@ export default function Home() {
 
       <footer>
         <p>
-          Recherche-Stand 23.07.2026 · Angaben ohne Gewähr · Verfügbarkeit
+          Recherche-Stand{" "}
+          {daten.aktualisiert_am
+            ? new Intl.DateTimeFormat("de-DE").format(
+                new Date(`${daten.aktualisiert_am}T12:00:00`),
+              )
+            : "wird geladen"}{" "}
+          · Angaben ohne Gewähr · Verfügbarkeit
           bitte auf der Direktseite prüfen
         </p>
       </footer>

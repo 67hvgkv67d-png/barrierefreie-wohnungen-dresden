@@ -8,6 +8,7 @@ https://67hvgkv67d-png.github.io/barrierefreie-wohnungen-dresden/
 
 ## Hinweise
 
+- Die aktiven Angebote und das Abrufdatum liegen in `wohnungen.json`. Dadurch kann die Übersicht aktualisiert werden, ohne die Oberfläche neu zu bauen.
 - Es werden nur konkrete, beim jeweiligen Abruf erreichbare Inseratsseiten berücksichtigt.
 - Wohnungstausch und reine Tauschwohnungen werden ausgeschlossen.
 - Die notwendige Personenzahl wird anhand einer Nettokaltmietgrenze von 450,50 Euro je Person berechnet.

@@ -55,84 +55,75 @@
     },
     "swgd": {
       "name": "Sächsische Wohnungsgenossenschaft Dresden",
-      "groupName": "Sächsische Wohnungsgenossenschaft Dresden",
       "status": "success",
       "checkedAt": "2026-07-23",
       "offersFound": 0,
       "searchUrl": "https://swg-dresden.de/wohnungsangebote/",
-      "note": "Quelle war erreichbar; keine ausreichend vollständig erkennbaren passenden Angebote gefunden."
+      "note": "Mit Chromium vollständig geladen; 0 mögliche Einträge geprüft, aber keine ausreichend vollständigen passenden Angebote erkannt."
     },
     "wgj": {
       "name": "Wohnungsgenossenschaft Johannstadt",
-      "groupName": "Wohnungsgenossenschaft Johannstadt",
       "status": "success",
       "checkedAt": "2026-07-23",
       "offersFound": 0,
       "searchUrl": "https://www.wgj.de/startseite.html",
-      "note": "Quelle war erreichbar; keine ausreichend vollständig erkennbaren passenden Angebote gefunden."
+      "note": "Mit Chromium vollständig geladen; 1 mögliche Einträge geprüft, aber keine ausreichend vollständigen passenden Angebote erkannt."
     },
     "wohnungsboerse-johannstadt-nord": {
       "name": "Wohnungsbörse – Johannstadt-Nord",
-      "groupName": "Dresdner Wohnungsbörse",
       "status": "error",
       "checkedAt": "2026-07-23",
       "offersFound": 0,
       "searchUrl": "https://www.wohnungsboerse.net/Dresden_Johannstadt-Nord/mietwohnungen",
-      "note": "Abruf fehlgeschlagen: HTTP 401. Vorhandene Daten wurden beibehalten."
+      "note": "Browser-Abruf fehlgeschlagen: HTTP 401 auch im Browser. Vorhandene Daten wurden beibehalten."
     },
     "wohnungsboerse-johannstadt-sued": {
       "name": "Wohnungsbörse – Johannstadt-Süd",
-      "groupName": "Dresdner Wohnungsbörse",
       "status": "error",
       "checkedAt": "2026-07-23",
       "offersFound": 0,
       "searchUrl": "https://www.wohnungsboerse.net/Dresden_Johannstadt-Sued/mietwohnungen",
-      "note": "Abruf fehlgeschlagen: HTTP 401. Vorhandene Daten wurden beibehalten."
+      "note": "Browser-Abruf fehlgeschlagen: HTTP 401 auch im Browser. Vorhandene Daten wurden beibehalten."
     },
     "wohnungsboerse-gorbitz-nord": {
       "name": "Wohnungsbörse – Gorbitz-Nord/Neu-Omsewitz",
-      "groupName": "Dresdner Wohnungsbörse",
       "status": "error",
       "checkedAt": "2026-07-23",
       "offersFound": 0,
       "searchUrl": "https://www.wohnungsboerse.net/Dresden_Gorbitz-NordNeu-Omsewitz/mietwohnungen",
-      "note": "Abruf fehlgeschlagen: HTTP 401. Vorhandene Daten wurden beibehalten."
+      "note": "Browser-Abruf fehlgeschlagen: HTTP 401 auch im Browser. Vorhandene Daten wurden beibehalten."
     },
     "wohnungsboerse-gorbitz-ost": {
       "name": "Wohnungsbörse – Gorbitz-Ost",
-      "groupName": "Dresdner Wohnungsbörse",
       "status": "error",
       "checkedAt": "2026-07-23",
       "offersFound": 0,
       "searchUrl": "https://www.wohnungsboerse.net/Dresden_Gorbitz-Ost/mietwohnungen",
-      "note": "Abruf fehlgeschlagen: HTTP 401. Vorhandene Daten wurden beibehalten."
+      "note": "Browser-Abruf fehlgeschlagen: HTTP 401 auch im Browser. Vorhandene Daten wurden beibehalten."
     },
     "immonet-johannstadt": {
       "name": "Immonet – Johannstadt",
-      "groupName": "Immonet",
       "status": "error",
       "checkedAt": "2026-07-23",
       "offersFound": 0,
       "searchUrl": "https://www.immonet.de/suchen/miete/wohnung/dresden-01067/johannstadt-sud-1307/nbh2de91302429",
-      "note": "Abruf fehlgeschlagen: HTTP 403. Vorhandene Daten wurden beibehalten."
+      "note": "Browser-Abruf fehlgeschlagen: HTTP 403 auch im Browser. Vorhandene Daten wurden beibehalten."
     },
     "immonet-gorbitz": {
       "name": "Immonet – Gorbitz",
-      "groupName": "Immonet",
       "status": "error",
       "checkedAt": "2026-07-23",
       "offersFound": 0,
       "searchUrl": "https://www.immonet.de/suchen/miete/wohnung/dresden-01067/gorbitz-ost-1159/nbh2de91302419",
-      "note": "Abruf fehlgeschlagen: HTTP 403. Vorhandene Daten wurden beibehalten."
+      "note": "Browser-Abruf fehlgeschlagen: HTTP 403 auch im Browser. Vorhandene Daten wurden beibehalten."
     },
     "kleinanzeigen": {
-      "name": "Kleinanzeigen",
-      "groupName": "Kleinanzeigen",
+      "name": "Kleinanzeigen – manuelle Suche",
       "status": "manual",
       "checkedAt": "2026-07-23",
       "offersFound": null,
-      "searchUrl": "https://www.kleinanzeigen.de/s-wohnung-mieten/dresden/johannstadt-gorbitz/k0c203l3820",
-      "note": "Keine offizielle RSS-Schnittstelle oder öffentliche API für diesen Suchzweck eingebunden. Der Link ermöglicht eine manuelle Kontrolle."
+      "searchUrl": "https://www.kleinanzeigen.de/s-wohnung-mieten/dresden/c203l3820",
+      "note": "Keine offizielle öffentliche Schnittstelle eingebunden. Diese Quelle muss über den Link manuell nach Johannstadt, Gorbitz und Barrierefreiheit geprüft werden."
     }
   }
 }

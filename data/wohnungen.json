@@ -35,5 +35,23 @@
       "originalLabel": "Originalangebot bei der EWG öffnen",
       "suitableForPersons": []
     }
-  ]
+  ],
+  "sourceChecks": {
+    "vonovia": {
+      "name": "Vonovia",
+      "status": "success",
+      "checkedAt": "2026-07-23",
+      "offersFound": 0,
+      "searchUrl": "https://www.vonovia.de/zuhause-finden/immobilien?balcony=0&city=Dresden&dachgeschoss=0&disabilityAccess=0&erdgeschoss=0&immoType=wohnung&lift=0&minRooms=0&perimeter=0&priceMaxRenting=0&priceMinRenting=0&rentType=miete&sizeMax=0&sizeMin=0&sofortfrei=0&subsidizedHousingPermit=0",
+      "note": "Quelle erreichbar; aktuell keine passenden Angebote in Johannstadt oder Gorbitz erkannt."
+    },
+    "wg-aufbau": {
+      "name": "WG Aufbau Dresden",
+      "status": "success",
+      "checkedAt": "2026-07-23",
+      "offersFound": 0,
+      "searchUrl": "https://www.wgaufbau-dresden.de/objektsuche/wohnung/",
+      "note": "Quelle erreichbar; aktuell keine passenden Angebote in Johannstadt oder Gorbitz erkannt."
+    }
+  }
 }

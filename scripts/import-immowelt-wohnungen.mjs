@@ -4,23 +4,16 @@ import { createHash } from "node:crypto";
 const DATA_FILE = new URL("../data/wohnungen.json", import.meta.url);
 const SOURCE_ID = "immowelt";
 const SEARCHES = [
-  {
-    district: "Johannstadt",
-    url: "https://www.immowelt.de/suche/mieten/wohnung/guenstig/behindertengerecht/dresden-01067/johannstadt-nord-1307/nbh2de91302418",
-  },
-  {
-    district: "Gorbitz",
-    url: "https://www.immowelt.de/suche/mieten/wohnung/guenstig/behindertengerecht/dresden-01067/gorbitz-sud-1169/nbh2de91302420",
-  },
+  { district: "Johannstadt", url: "https://www.immowelt.de/suche/mieten/wohnung/guenstig/behindertengerecht/dresden-01067/johannstadt-nord-1307/nbh2de91302418" },
+  { district: "Gorbitz", url: "https://www.immowelt.de/suche/mieten/wohnung/guenstig/behindertengerecht/dresden-01067/gorbitz-sud-1169/nbh2de91302420" },
 ];
 
 const A_TERMS = ["barrierefrei", "rollstuhlgerecht", "rollstuhlgeeignet", "behindertengerecht"];
-const B_TERMS = ["barrierearm", "seniorengerecht", "seniorenfreundlich", "stufenlos", "schwellenlos", "schwellenarm", "bodengleiche dusche", "ebenerdige dusche", "personenaufzug", "aufzug"];
-const EXCLUDE_TERMS = ["tauschwohnung", "wohnungstausch", "tauschangebot", "tauschobjekt", "zum tausch"];
+const B_TERMS = ["barrierearm", "seniorengerecht", "seniorenfreundlich", "stufenlos", "schwellenlos", "schwellenarm", "bodengleiche dusche", "aufzug"];
+const TAUSCH_TERMS = /tauschwohnung|wohnungstausch|tauschangebot|zum tausch|tauschobjekt/i;
+const BAD_TITLE_TERMS = /auf karte anzeigen|weitere ergebnisse|inserieren ab|barrierefreie\s*\/\s*behindertengerechte wohnungen mieten|entdecke weitere ergebnisse/i;
 
-function today() {
-  return new Date().toISOString().slice(0, 10);
-}
+function today() { return new Date().toISOString().slice(0, 10); }
 
 function cleanText(value = "") {
   return String(value)
@@ -32,60 +25,34 @@ function cleanText(value = "") {
     .replace(/&amp;/gi, "&")
     .replace(/&quot;|&#34;/gi, '"')
     .replace(/&#39;|&apos;/gi, "'")
-    .replace(/&auml;/gi, "ä")
-    .replace(/&ouml;/gi, "ö")
-    .replace(/&uuml;/gi, "ü")
-    .replace(/&Auml;/g, "Ä")
-    .replace(/&Ouml;/g, "Ö")
-    .replace(/&Uuml;/g, "Ü")
+    .replace(/&auml;/gi, "ä").replace(/&ouml;/gi, "ö").replace(/&uuml;/gi, "ü")
+    .replace(/&Auml;/g, "Ä").replace(/&Ouml;/g, "Ö").replace(/&Uuml;/g, "Ü")
     .replace(/&szlig;/gi, "ß")
-    .replace(/&#(\d+);/g, (_, number) => String.fromCodePoint(Number(number)))
+    .replace(/\\u([0-9a-f]{4})/gi, (_, code) => String.fromCharCode(Number.parseInt(code, 16)))
+    .replace(/\\\//g, "/")
     .replace(/\s+/g, " ")
     .trim();
 }
 
 function parseNumber(value) {
   if (value === null || value === undefined || value === "") return null;
-  if (typeof value === "number") return Number.isFinite(value) ? value : null;
   const match = String(value).match(/\d{1,5}(?:\.\d{3})*(?:,\d{1,2})?|\d{1,5}(?:\.\d{1,2})?/);
   if (!match) return null;
   const raw = match[0];
-  const normalized = raw.includes(",") ? raw.replace(/\./g, "").replace(",", ".") : raw;
-  const number = Number(normalized);
+  const number = Number(raw.includes(",") ? raw.replace(/\./g, "").replace(",", ".") : raw);
   return Number.isFinite(number) ? number : null;
 }
 
-function stableId(url) {
-  return `immowelt-${createHash("sha256").update(url).digest("hex").slice(0, 12)}`;
-}
+function stableId(url) { return `immowelt-${createHash("sha256").update(url).digest("hex").slice(0, 12)}`; }
 
 function normalizeUrl(value) {
   if (!value) return null;
   try {
-    const url = new URL(value.replace(/\\u002F/g, "/").replace(/\\\//g, "/"), "https://www.immowelt.de");
+    const url = new URL(String(value).replace(/\\u002F/g, "/").replace(/\\\//g, "/"), "https://www.immowelt.de");
     if (!/(^|\.)immowelt\.de$/i.test(url.hostname)) return null;
     const expose = url.pathname.match(/\/expose\/([a-z0-9-]+)/i);
-    if (!expose) return null;
-    return `https://www.immowelt.de/expose/${expose[1]}`;
-  } catch {
-    return null;
-  }
-}
-
-function findExposeUrls(html) {
-  const urls = new Set();
-  const patterns = [
-    /href=["']([^"']*\/expose\/[a-z0-9-]+[^"']*)["']/gi,
-    /["'](?:url|href)["']\s*:\s*["']([^"']*\/expose\/[a-z0-9-]+[^"']*)["']/gi,
-    /https?:\\?\/\\?\/www\.immowelt\.de\\?\/expose\\?\/[a-z0-9-]+/gi,
-  ];
-  for (const pattern of patterns) {
-    for (const match of html.matchAll(pattern)) {
-      const url = normalizeUrl(match[1] || match[0]);
-      if (url) urls.add(url);
-    }
-  }
-  return [...urls].slice(0, 40);
+    return expose ? `https://www.immowelt.de/expose/${expose[1]}` : null;
+  } catch { return null; }
 }
 
 function classify(text) {
@@ -93,103 +60,98 @@ function classify(text) {
   const a = A_TERMS.filter((term) => normalized.includes(term));
   if (a.length) return { category: "A", label: "ausdrücklich als barrierefrei oder rollstuhlgerecht beschrieben", matches: a };
   const b = B_TERMS.filter((term) => normalized.includes(term));
-  if (b.length) return { category: "B", label: "Hinweise auf eine barrierearme Wohnung; genaue Prüfung erforderlich", matches: b };
-  return { category: "B", label: "über die Immowelt-Suche für barrierefreie beziehungsweise behindertengerechte Wohnungen gefunden; Angaben im Exposé prüfen", matches: ["Zuordnung durch die Immowelt-Suchkategorie"] };
+  return { category: "B", label: "über die Immowelt-Suche für barrierefreie beziehungsweise behindertengerechte Wohnungen gefunden; genaue Prüfung erforderlich", matches: b.length ? b : ["Zuordnung durch die Immowelt-Suchkategorie"] };
 }
 
-function extractTitle(html, text, district) {
-  const h2 = [...html.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)]
-    .map((match) => cleanText(match[1]))
-    .find((value) => value.length >= 8 && !/Merkmale|Mietkosten|Lage|Weitere Informationen/i.test(value));
-  if (h2) return h2.slice(0, 180);
-  const og = cleanText(html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i)?.[1] || "");
-  if (og) return og.slice(0, 180);
-  const title = cleanText(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "").replace(/\s*\|\s*immowelt.*$/i, "");
-  return title || `Wohnung in ${district}`;
+function nearestContainer(html, index) {
+  for (const tag of ["article", "li", "section"]) {
+    const start = html.lastIndexOf(`<${tag}`, index);
+    const end = html.indexOf(`</${tag}>`, index);
+    if (start >= 0 && end > index && end - start < 30000) return html.slice(start, end + tag.length + 3);
+  }
+  return html.slice(Math.max(0, index - 2500), Math.min(html.length, index + 3500));
 }
 
-function parseMoneyAfterLabel(text, label) {
-  const patterns = [
-    new RegExp(`${label}\\s*(?:pro Monat)?\\s*(\\d{1,5}(?:\\.\\d{3})*(?:,\\d{1,2})?)\\s*€`, "i"),
-    new RegExp(`(\\d{1,5}(?:\\.\\d{3})*(?:,\\d{1,2})?)\\s*€\\s*${label}`, "i"),
-  ];
-  for (const pattern of patterns) {
-    const value = parseNumber(text.match(pattern)?.[1]);
-    if (value !== null) return value;
+function parseMoney(text, labels) {
+  for (const label of labels) {
+    const patterns = [
+      new RegExp(`(\\d{2,5}(?:\\.\\d{3})*(?:,\\d{1,2})?)\\s*€\\s*${label}`, "i"),
+      new RegExp(`${label}\\s*(\\d{2,5}(?:\\.\\d{3})*(?:,\\d{1,2})?)\\s*€`, "i"),
+    ];
+    for (const pattern of patterns) {
+      const value = parseNumber(text.match(pattern)?.[1]);
+      if (value !== null) return value;
+    }
   }
   return null;
 }
 
-function districtFromText(text) {
-  const normalized = text.toLowerCase();
-  if (/johannstadt|01307|01309/.test(normalized)) return "Johannstadt";
-  if (/gorbitz|01169/.test(normalized)) return "Gorbitz";
-  return null;
+function titleFromBlock(block, rooms, district) {
+  const headings = [...block.matchAll(/<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/gi)]
+    .map((match) => cleanText(match[1]))
+    .filter((value) => value.length >= 8 && value.length <= 180 && !BAD_TITLE_TERMS.test(value));
+  const title = headings.find((value) => /wohnung|apartment|wohnen|erstbezug|neubau|miete/i.test(value));
+  return title || `${rooms ? `${rooms}-Zimmer-Wohnung` : "Wohnung"} in ${district}`;
 }
 
-function parseExpose(url, html, expectedDistrict, previousByUrl) {
-  const text = cleanText(html);
-  const normalized = text.toLowerCase();
-  if (EXCLUDE_TERMS.some((term) => normalized.includes(term))) return null;
+function parseSearchPage(html, district, previousByUrl) {
+  const results = [];
+  const seen = new Set();
+  const links = [...html.matchAll(/(?:href=|\"(?:url|href)\"\s*:\s*)["']([^"']*\/expose\/[a-z0-9-]+[^"']*)["']/gi)];
 
-  const district = districtFromText(text);
-  if (!district || district !== expectedDistrict) return null;
+  for (const match of links) {
+    const url = normalizeUrl(match[1]);
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
 
-  const title = extractTitle(html, text, district);
-  if (EXCLUDE_TERMS.some((term) => title.toLowerCase().includes(term))) return null;
+    const block = nearestContainer(html, match.index ?? 0);
+    const text = cleanText(block);
+    if (!text || TAUSCH_TERMS.test(text)) continue;
 
-  const rooms = parseNumber(text.match(/(\d(?:[,.]5)?)\s*Zimmer/i)?.[1]);
-  const areaSqm = parseNumber(text.match(/(\d{1,3}(?:[,.]\d{1,2})?)\s*m(?:²|2)/i)?.[1]);
-  const netColdRent = parseMoneyAfterLabel(text, "Kaltmiete");
-  const warmRent = parseMoneyAfterLabel(text, "Warmmiete");
-  const coldOperatingCosts = parseMoneyAfterLabel(text, "Nebenkosten");
-  const postcode = text.match(/\((01\d{3})\)|\b(01\d{3})\b/)?.[1] || text.match(/\((01\d{3})\)|\b(01\d{3})\b/)?.[2] || null;
-  const street = text.match(/\b([A-ZÄÖÜ][A-Za-zÄÖÜäöüß .-]+(?:straße|str\.|ring|weg|platz|allee|hof)\s*\d+[a-z]?)\b/i)?.[1] || null;
-  const location = street && postcode ? `${street}, ${postcode} Dresden` : `${district}, Dresden${postcode ? ` (${postcode})` : ""}`;
-  const provider = cleanText(text.match(/Über den Anbieter\s+(.{2,100}?)(?:\s+\d+ Jahre Partnerschaft|\s+Dein Kontakt|\s+Kontaktieren)/i)?.[1] || "Anbieter laut Immowelt");
-  const accessibility = classify(text);
-  const previous = previousByUrl.get(url);
+    const belongs = district === "Johannstadt" ? /johannstadt|01307|01309/i.test(text) : /gorbitz|01169/i.test(text);
+    if (!belongs) continue;
+    if (district === "Johannstadt" && /cott(a|e)|01157/i.test(text)) continue;
 
-  if (!rooms && !areaSqm && !netColdRent && !warmRent) return null;
+    const rooms = parseNumber(text.match(/(\d(?:[,.]5)?)\s*Zimmer/i)?.[1]);
+    const areaSqm = parseNumber(text.match(/(\d{1,3}(?:[,.]\d{1,2})?)\s*m(?:²|2)/i)?.[1]);
+    const netColdRent = parseMoney(text, ["Kaltmiete", "Nettokaltmiete"])
+      ?? parseNumber(text.match(/(\d{2,5}(?:\.\d{3})*(?:,\d{1,2})?)\s*€/i)?.[1]);
+    const warmRent = parseMoney(text, ["Warmmiete", "Gesamtmiete"]);
+    const factsFound = [rooms, areaSqm, netColdRent].filter((value) => value !== null).length;
+    if (factsFound < 2) continue;
 
-  return {
-    id: stableId(url),
-    dataStatus: "live",
-    title,
-    district,
-    location,
-    distanceMeters: null,
-    rooms,
-    areaSqm,
-    netColdRent,
-    coldOperatingCosts,
-    grossColdRent: null,
-    heatingCosts: null,
-    warmRent,
-    accessibilityCategory: accessibility.category,
-    accessibilityLabel: accessibility.label,
-    accessibilityFeatures: accessibility.matches.map((term) => `Im Angebot erkannt: ${term}`),
-    wbs: /\bwbs\b|wohnberechtigungsschein/i.test(text) ? "erforderlich" : "unbekannt",
-    wbsType: /\bpmw\b/i.test(text) ? "pMW" : /\bgmw\b/i.test(text) ? "gMW" : null,
-    provider,
-    sourceId: SOURCE_ID,
-    firstFound: previous?.firstFound || today(),
-    lastChecked: today(),
-    contact: null,
-    originalUrl: url,
-    originalLabel: "Originalangebot bei Immowelt öffnen",
-    suitableForPersons: [],
-  };
+    const title = titleFromBlock(block, rooms, district);
+    if (BAD_TITLE_TERMS.test(title) || /[<>]|\\"|\.6\.6 0 1/i.test(title)) continue;
+
+    const locationMatch = text.match(/([A-ZÄÖÜ][A-Za-zÄÖÜäöüß .-]+(?:straße|str\.|ring|weg|platz|allee|hof)\s*\d+[a-z]?)\s*,?\s*(01\d{3})/i);
+    const accessibility = classify(text);
+    const previous = previousByUrl.get(url);
+
+    results.push({
+      id: stableId(url), dataStatus: "live", title, district,
+      location: locationMatch ? `${locationMatch[1]}, ${locationMatch[2]} Dresden` : `${district}, Dresden`,
+      distanceMeters: null, rooms, areaSqm, netColdRent,
+      coldOperatingCosts: null, grossColdRent: null, heatingCosts: null, warmRent,
+      accessibilityCategory: accessibility.category,
+      accessibilityLabel: accessibility.label,
+      accessibilityFeatures: accessibility.matches.map((term) => `Im Angebot erkannt: ${term}`),
+      wbs: /\bwbs\b|wohnberechtigungsschein/i.test(text) ? "erforderlich" : "unbekannt",
+      wbsType: /\bpmw\b/i.test(text) ? "pMW" : /\bgmw\b/i.test(text) ? "gMW" : null,
+      provider: "Anbieter laut Immowelt", sourceId: SOURCE_ID,
+      firstFound: previous?.firstFound || today(), lastChecked: today(), contact: null,
+      originalUrl: url, originalLabel: "Originalangebot bei Immowelt öffnen", suitableForPersons: [],
+    });
+  }
+  return results;
 }
 
 async function fetchHtml(url) {
   const response = await fetch(url, {
     headers: {
-      "user-agent": "Mozilla/5.0 (compatible; WohnungsberatungDresden/1.1; +https://github.com/67hvgkv67d-png/barrierefreie-wohnungen-dresden)",
+      "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/150 Safari/537.36",
       accept: "text/html,application/xhtml+xml",
       "accept-language": "de-DE,de;q=0.9",
     },
-    redirect: "follow",
     signal: AbortSignal.timeout(30000),
   });
   if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
@@ -207,36 +169,21 @@ async function main() {
 
   for (const search of SEARCHES) {
     try {
-      const searchHtml = await fetchHtml(search.url);
+      const html = await fetchHtml(search.url);
       successfulSearches += 1;
-      const urls = findExposeUrls(searchHtml);
-      console.log(`${search.district}: ${urls.length} Exposé-Links gefunden.`);
-      for (const url of urls) {
-        try {
-          const exposeHtml = await fetchHtml(url);
-          const apartment = parseExpose(url, exposeHtml, search.district, previousByUrl);
-          if (apartment) imported.push(apartment);
-        } catch (error) {
-          errors.push(`${url}: ${error.message}`);
-        }
-      }
-    } catch (error) {
-      errors.push(`${search.district}: ${error.message}`);
-    }
+      const apartments = parseSearchPage(html, search.district, previousByUrl);
+      imported.push(...apartments);
+      console.log(`${search.district}: ${apartments.length} verwertbare Angebote aus der Suchseite gelesen.`);
+    } catch (error) { errors.push(`${search.district}: ${error.message}`); }
   }
 
   const unique = imported.filter((item, index, all) => all.findIndex((other) => other.originalUrl === item.originalUrl) === index);
   const immoweltApartments = successfulSearches > 0 ? unique : previousImmowelt;
-  const output = {
-    ...existing,
-    lastUpdated: today(),
-    apartments: [...otherSources, ...immoweltApartments],
-  };
-
+  const output = { ...existing, lastUpdated: today(), apartments: [...otherSources, ...immoweltApartments] };
   await writeFile(DATA_FILE, `${JSON.stringify(output, null, 2)}\n`, "utf8");
-  console.log(`Immowelt-Import: ${unique.length} geprüfte Angebote gespeichert.`);
-  if (errors.length) console.warn(`Teilweise Fehler: ${errors.slice(0, 10).join(" | ")}`);
-  if (!successfulSearches) console.warn("Keine Immowelt-Suche erreichbar. Vorhandene Daten wurden beibehalten.");
+  console.log(`Immowelt-Import: ${immoweltApartments.length} geprüfte Angebote gespeichert.`);
+  if (errors.length) console.warn(`Teilweise Fehler: ${errors.join(" | ")}`);
+  if (successfulSearches > 0 && !unique.length) console.warn("Suchseiten waren erreichbar, enthielten aber keine ausreichend vollständig erkennbaren passenden Angebote.");
 }
 
 main().catch((error) => {

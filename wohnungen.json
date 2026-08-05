@@ -1,36 +1,6 @@
 {
-  "aktualisiert_am": "2026-08-03",
+  "aktualisiert_am": "2026-08-05",
   "wohnungen": [
-    {
-      "id": "EWG-BIRKEN5",
-      "titel": "WBS pMW 3-RW für mind. 3 Personen",
-      "stadtteil": "Gorbitz",
-      "adresse": "Birkenstr. 5, 01169 Dresden",
-      "zimmer": 3,
-      "wohnflaeche_m2": 66.65,
-      "nettokaltmiete_eur": 526.54,
-      "warmmiete_eur": 719.83,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "ja",
-      "barriereangaben": [
-        "Personenaufzug",
-        "seniorengerecht",
-        "Dusche, nicht als bodengleich bezeichnet"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "Eisenbahner-Wohnungsbaugenossenschaft Dresden eG",
-      "quelle": "EWG Dresden",
-      "direkte_inserats_url": "https://www.ewg-dresden.de/immobilie/wbs-pmw-3-rw-fuer-mind-3-personen/",
-      "abrufdatum": "2026-08-03",
-      "neu": false,
-      "hinweis": "Die KdU-Rechnung ergibt zwei Personen. Das Inserat verlangt wegen des WBS pMW ausdrücklich mindestens drei Personen.",
-      "erstmals_gefunden_am": "2026-07-23",
-      "kartenposition": {
-        "breitengrad": 51.047019,
-        "laengengrad": 13.6669271,
-        "genauigkeit": "Adresse gefunden"
-      }
-    },
     {
       "id": "GCP-5131-00449-007-0038",
       "titel": "Einzug leicht gemacht: 3 Zimmer nicht nur ab sofort, sondern auch noch im Erdgeschoss!",
@@ -54,7 +24,7 @@
       "anbieter": "GCP – Grand City Property",
       "quelle": "GCP",
       "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/reuningstrasse-9/5131_00449_007_0038",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -83,7 +53,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169055221",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -112,7 +82,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168290861",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -139,7 +109,7 @@
       "anbieter": "Heimstaden Germany GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168085567",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -167,7 +137,7 @@
       "anbieter": "Haferkamp Immobilien GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168620427",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -195,7 +165,7 @@
       "anbieter": "Haferkamp Immobilien GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168620730",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -222,7 +192,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169203145",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -250,7 +220,7 @@
       "anbieter": "BVG mbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168502434",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -277,7 +247,7 @@
       "anbieter": "Covivio Immobilien GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169265475",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -306,40 +276,12 @@
       "anbieter": "DIVARES GmbH & Co. KG",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/140823749",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
         "breitengrad": 51.0575586,
         "laengengrad": 13.7724361,
-        "genauigkeit": "Adresse gefunden"
-      }
-    },
-    {
-      "id": "IS24-169203384",
-      "titel": "Erstbezug nach Sanierung: familienfreundliche 3-Zimmer-Wohnung mit Balkon und super Aussicht!",
-      "stadtteil": "Johannstadt-Süd",
-      "adresse": "Holbeinstr. 58, 01307 Dresden",
-      "zimmer": 3,
-      "wohnflaeche_m2": 77.91,
-      "nettokaltmiete_eur": 716.77,
-      "warmmiete_eur": 988.77,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "seniorengerecht",
-        "Aufzug"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "Vonovia Kundenservice GmbH",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169203384",
-      "abrufdatum": "2026-08-03",
-      "neu": false,
-      "erstmals_gefunden_am": "2026-07-23",
-      "kartenposition": {
-        "breitengrad": 51.0491104,
-        "laengengrad": 13.7691195,
         "genauigkeit": "Adresse gefunden"
       }
     },
@@ -361,7 +303,7 @@
       "anbieter": "DIVARES GmbH & Co. KG",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169441920",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -390,7 +332,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169004155",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -417,7 +359,7 @@
       "anbieter": "CORRECT Hausverwaltung Riedel & Martin OHG",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/166654732",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -444,7 +386,7 @@
       "anbieter": "von privat",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169210483",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -473,7 +415,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169456386",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -502,7 +444,7 @@
       "anbieter": "iKonzept24",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169199205",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -533,7 +475,7 @@
       "anbieter": "GCP – Grand City Property",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/164339112",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "erstmals_gefunden_am": "2026-07-29",
       "kartenposition": {
         "breitengrad": 51.0467788,
@@ -561,7 +503,7 @@
       "anbieter": "GCP – Grand City Property",
       "quelle": "GCP",
       "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/robinienstrasse-18/5131_00453_015_0150",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "erstmals_gefunden_am": "2026-07-29",
       "kartenposition": {
         "breitengrad": 51.0420655,
@@ -570,63 +512,6 @@
       },
       "neu": false,
       "hinweis": "Eine Walk-In-Dusche ist ausdrücklich genannt; Angaben zu stufenlosem Zugang oder Aufzug fehlen."
-    },
-    {
-      "id": "IS24-166258575",
-      "titel": "Familienglück: weitläufige 3-Zimmer-Wohnung mit Balkon",
-      "stadtteil": "Johannstadt",
-      "adresse": "Holbeinstr. 26, 01307 Dresden",
-      "zimmer": 3,
-      "wohnflaeche_m2": 78.81,
-      "nettokaltmiete_eur": 696.68,
-      "warmmiete_eur": 972.68,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "barrierearmes Gebäude",
-        "Personenaufzug"
-      ],
-      "bewertung": "ausdrücklich geeignet",
-      "anbieter": "Vonovia Kundenservice GmbH",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/166258575",
-      "abrufdatum": "2026-08-03",
-      "erstmals_gefunden_am": "2026-07-29",
-      "kartenposition": {
-        "breitengrad": 51.0505829,
-        "laengengrad": 13.7622254,
-        "genauigkeit": "Adresse gefunden"
-      },
-      "neu": false,
-      "hinweis": "Das Gebäude wird ausdrücklich als barrierearm bezeichnet; die konkrete Wohnung und der Weg dorthin sind individuell zu prüfen."
-    },
-    {
-      "id": "IW-26E88L8NU6K3",
-      "titel": "2-Raumwohnung mit Balkon und Fahrstuhl im Objekt",
-      "stadtteil": "Johannstadt",
-      "adresse": "Gerokstraße 24, 01307 Dresden",
-      "zimmer": 2,
-      "wohnflaeche_m2": 51.5,
-      "nettokaltmiete_eur": 460,
-      "warmmiete_eur": 620,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Personenaufzug"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "Hommel Management GmbH",
-      "quelle": "Immowelt",
-      "direkte_inserats_url": "https://www.immowelt.de/expose/a6337bc4-02c5-43b8-be63-95404faee651",
-      "abrufdatum": "2026-08-03",
-      "erstmals_gefunden_am": "2026-07-29",
-      "kartenposition": {
-        "breitengrad": 51.0527335,
-        "laengengrad": 13.7660245,
-        "genauigkeit": "Adresse gefunden"
-      },
-      "neu": false,
-      "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit; der Zugang zur Wohnung ist zu prüfen."
     },
     {
       "id": "KA-3447340801",
@@ -647,7 +532,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/schoene-2-zimmer-wohnung-mit-balkon-und-einbaukueche-/3447340801-203-28644",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "erstmals_gefunden_am": "2026-07-29",
       "kartenposition": {
         "breitengrad": 51.0499616,
@@ -678,7 +563,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-altersgerechte-2-zimmer-wohnung-mit-aufzug/3442748958-203-28644",
-      "abrufdatum": "2026-08-03",
+      "abrufdatum": "2026-08-05",
       "erstmals_gefunden_am": "2026-07-29",
       "neu": false,
       "hinweis": "Die Adress-Geocodierung war technisch nicht zuverlässig möglich; die Kartenposition bleibt deshalb offen. Die individuelle Rollstuhleignung ist zu prüfen."
@@ -702,8 +587,8 @@
       "anbieter": "DIVARES GmbH & Co. KG",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/156400491",
-      "abrufdatum": "2026-08-03",
-      "neu": true,
+      "abrufdatum": "2026-08-05",
+      "neu": false,
       "erstmals_gefunden_am": "2026-08-03",
       "kartenposition": {
         "breitengrad": 51.0540667,
@@ -730,12 +615,73 @@
       "anbieter": "von privat",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169597758",
-      "abrufdatum": "2026-08-03",
-      "neu": true,
+      "abrufdatum": "2026-08-05",
+      "neu": false,
       "erstmals_gefunden_am": "2026-08-03",
       "kartenposition": {
         "breitengrad": 51.0541256,
         "laengengrad": 13.7842523,
+        "genauigkeit": "Adresse gefunden"
+      }
+    },
+    {
+      "id": "GCP-5131-00453-017-0166",
+      "titel": "Wenig Treppensteigen nötig! 3-Zimmer-Wohnung im 1. OG! Wir renovieren!",
+      "stadtteil": "Gorbitz",
+      "adresse": "Robinienstraße 20, 01169 Dresden",
+      "zimmer": 3,
+      "wohnflaeche_m2": 67,
+      "nettokaltmiete_eur": 485,
+      "warmmiete_eur": 650,
+      "notwendige_personenzahl_nach_kdu_limit": 2,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "Seniorenwohnen",
+        "1. Obergeschoss",
+        "wenig Treppensteigen nötig"
+      ],
+      "bewertung": "zu prüfen",
+      "anbieter": "GCP – Grand City Property",
+      "quelle": "GCP",
+      "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/robinienstrasse-20/5131_00453_017_0166",
+      "abrufdatum": "2026-08-05",
+      "neu": true,
+      "hinweis": "Das Inserat nennt Seniorenwohnen und wenig Treppensteigen, aber keinen Aufzug und keinen stufenlosen Zugang. Die individuelle Eignung ist zu prüfen.",
+      "erstmals_gefunden_am": "2026-08-05",
+      "kartenposition": {
+        "breitengrad": 51.0421678,
+        "laengengrad": 13.6678863,
+        "genauigkeit": "Adresse gefunden"
+      }
+    },
+    {
+      "id": "GCP-5131-00451-014-0138",
+      "titel": "Wir renovieren für Sie eine 3-Zimmer-Wohnung in ordentlicher Wohnungseigentümergemeinschaft!",
+      "stadtteil": "Gorbitz",
+      "adresse": "Altgorbitzer Ring 82, 01169 Dresden",
+      "zimmer": 3,
+      "wohnflaeche_m2": 64,
+      "nettokaltmiete_eur": 469,
+      "warmmiete_eur": 607,
+      "notwendige_personenzahl_nach_kdu_limit": 2,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "altersgerecht",
+        "Personenaufzug",
+        "barrierearmer Zugang",
+        "barrierearme Gestaltung der Innenräume"
+      ],
+      "bewertung": "ausdrücklich geeignet",
+      "anbieter": "GCP – Grand City Property",
+      "quelle": "GCP",
+      "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/altgorbitzer-ring-82/5131_00451_014_0138",
+      "abrufdatum": "2026-08-05",
+      "neu": true,
+      "hinweis": "Die Etagenangabe im Inserat ist widersprüchlich: In den Eckdaten steht Erdgeschoss, in der Beschreibung 2. Etage. Zugang und individuelle Eignung sind zu prüfen.",
+      "erstmals_gefunden_am": "2026-08-05",
+      "kartenposition": {
+        "breitengrad": 51.0411077,
+        "laengengrad": 13.6674372,
         "genauigkeit": "Adresse gefunden"
       }
     }

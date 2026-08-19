@@ -15,6 +15,8 @@ const decimal = new Intl.NumberFormat("de-DE", {
   maximumFractionDigits: 2,
 });
 
+const appVersion = "2026.08.19.5";
+
 type DistrictFilter = "alle" | "Johannstadt" | "Gorbitz";
 type DistrictName = Exclude<DistrictFilter, "alle">;
 type RatingFilter = "alle" | Wohnung["bewertung"];
@@ -962,6 +964,7 @@ export default function Home() {
   return (
     <main>
       <section className="hero" id="top">
+        <span className="app-version">Version {appVersion}</span>
         <div className="hero-copy">
           <p className="hero-date">
             Stand{" "}

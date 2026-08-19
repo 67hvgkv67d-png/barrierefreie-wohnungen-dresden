@@ -45,6 +45,20 @@ function statusClass(bewertung: Wohnung["bewertung"]) {
   return "status-check";
 }
 
+function ratingLabel(bewertung: Wohnung["bewertung"]) {
+  if (bewertung === "ausdrücklich geeignet")
+    return "Klare Barriereangaben";
+  if (bewertung === "möglicherweise geeignet")
+    return "Einzelne Barriereangaben";
+  return "Angaben prüfen";
+}
+
+const ratingOrder: Record<Wohnung["bewertung"], number> = {
+  "ausdrücklich geeignet": 0,
+  "möglicherweise geeignet": 1,
+  "zu prüfen": 2,
+};
+
 function ratingMarkerClass(bewertung: Wohnung["bewertung"]) {
   if (bewertung === "ausdrücklich geeignet") return "overview-marker-good";
   if (bewertung === "möglicherweise geeignet") return "overview-marker-maybe";
@@ -147,7 +161,7 @@ function DistrictOverviewMap({
       popup.append(address);
 
       const rating = document.createElement("span");
-      rating.textContent = `Bewertung: ${wohnung.bewertung}`;
+      rating.textContent = `Einordnung: ${ratingLabel(wohnung.bewertung)}`;
       popup.append(rating);
 
       const link = document.createElement("a");
@@ -356,7 +370,8 @@ function LocationMap({ wohnung }: { wohnung: Wohnung }) {
               </span>
               <strong>Wohnung</strong>
               <small>
-                {wohnung.adresse} · {wohnung.bewertung} · {position.genauigkeit}
+                {wohnung.adresse} · {ratingLabel(wohnung.bewertung)} ·{" "}
+                {position.genauigkeit}
               </small>
             </p>
             <p>
@@ -415,7 +430,7 @@ function ListingCard({
           {age ? <span className="age-badge">{age}</span> : null}
         </div>
         <span className={`status-badge ${statusClass(wohnung.bewertung)}`}>
-          {wohnung.bewertung}
+          {ratingLabel(wohnung.bewertung)}
         </span>
       </div>
 
@@ -461,7 +476,7 @@ function ListingCard({
       </div>
 
       <div className="barrier-block">
-        <p>Ausdrücklich genannt</p>
+        <p>Im Originalinserat genannt</p>
         <ul>
           {wohnung.barriereangaben.map((angabe) => (
             <li key={angabe}>{angabe}</li>
@@ -480,7 +495,7 @@ function ListingCard({
           {wohnung.anbieter} · {wohnung.quelle}
         </span>
         <span>
-          geprüft{" "}
+          Quelle abgerufen am{" "}
           {new Intl.DateTimeFormat("de-DE").format(
             new Date(`${wohnung.abrufdatum}T12:00:00`),
           )}
@@ -517,7 +532,11 @@ function ListingCard({
             rows={3}
           />
         </label>
-        <p>Die Notiz wird nur in diesem Browser gespeichert.</p>
+        <p>
+          Die Notiz wird nur in diesem Browser gespeichert. Bitte keine
+          Gesundheitsdaten oder andere sensible personenbezogene Angaben
+          eintragen.
+        </p>
       </details>
 
       <a
@@ -530,6 +549,145 @@ function ListingCard({
         Direkt zum Inserat <span aria-hidden="true">↗</span>
       </a>
     </article>
+  );
+}
+
+function PrintSheet({
+  wohnungen,
+  aktualisiertAm,
+  notes,
+}: {
+  wohnungen: Wohnung[];
+  aktualisiertAm: string;
+  notes: Record<string, string>;
+}) {
+  const districts: DistrictName[] = ["Johannstadt", "Gorbitz"];
+  const ratings: Wohnung["bewertung"][] = [
+    "ausdrücklich geeignet",
+    "möglicherweise geeignet",
+    "zu prüfen",
+  ];
+
+  return (
+    <section className="print-sheet" aria-hidden="true">
+      <header className="print-header">
+        <div>
+          <p>Ergänzende Recherchehilfe</p>
+          <h1>Wohnungsangebote mit Barriereangaben</h1>
+        </div>
+        <div className="print-meta">
+          <strong>{wohnungen.length} gefilterte Angebote</strong>
+          <span>
+            Datenstand:{" "}
+            {aktualisiertAm
+              ? new Intl.DateTimeFormat("de-DE").format(
+                  new Date(`${aktualisiertAm}T12:00:00`),
+                )
+              : "nicht angegeben"}
+          </span>
+        </div>
+      </header>
+
+      <p className="print-disclaimer">
+        Recherchierte Hinweise ohne Gewähr. Keine Wohnungsvermittlung und keine
+        Zusage zur Barrierefreiheit. Maßgeblich sind das Originalinserat und die
+        Prüfung der Wohnung vor Ort.
+      </p>
+
+      {districts.map((districtItem) => {
+        const districtWohnungen = wohnungen.filter(
+          (wohnung) => districtName(wohnung.stadtteil) === districtItem,
+        );
+        if (!districtWohnungen.length) return null;
+
+        return (
+          <section className="print-district" key={districtItem}>
+            <h2>
+              {districtItem} <span>{districtWohnungen.length}</span>
+            </h2>
+            {ratings.map((ratingItem) => {
+              const ratingWohnungen = districtWohnungen.filter(
+                (wohnung) => wohnung.bewertung === ratingItem,
+              );
+              if (!ratingWohnungen.length) return null;
+
+              return (
+                <section className="print-rating" key={ratingItem}>
+                  <h3>{ratingLabel(ratingItem)}</h3>
+                  {ratingWohnungen.map((wohnung) => (
+                    <article className="print-listing" key={wohnung.id}>
+                      <div className="print-listing-heading">
+                        <div>
+                          <h4>{wohnung.titel}</h4>
+                          <p>{wohnung.adresse}</p>
+                        </div>
+                        <strong>{decimal.format(wohnung.zimmer)} Zimmer</strong>
+                      </div>
+                      <dl>
+                        <div>
+                          <dt>Wohnfläche</dt>
+                          <dd>{decimal.format(wohnung.wohnflaeche_m2)} m²</dd>
+                        </div>
+                        <div>
+                          <dt>Nettokalt</dt>
+                          <dd>{euro.format(wohnung.nettokaltmiete_eur)}</dd>
+                        </div>
+                        <div>
+                          <dt>Warm</dt>
+                          <dd>{euro.format(wohnung.warmmiete_eur)}</dd>
+                        </div>
+                        <div>
+                          <dt>KdU-Orientierung</dt>
+                          <dd>
+                            {wohnung.notwendige_personenzahl_nach_kdu_limit}{" "}
+                            {wohnung.notwendige_personenzahl_nach_kdu_limit === 1
+                              ? "Person"
+                              : "Personen"}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>WBS</dt>
+                          <dd>{wohnung.wbs}</dd>
+                        </div>
+                      </dl>
+                      <p className="print-barriers">
+                        <strong>Im Inserat genannt:</strong>{" "}
+                        {wohnung.barriereangaben.join(", ")}
+                      </p>
+                      {wohnung.hinweis ? (
+                        <p className="print-hint">{wohnung.hinweis}</p>
+                      ) : null}
+                      {notes[wohnung.id] ? (
+                        <p className="print-note">
+                          <strong>Persönliche Notiz:</strong> {notes[wohnung.id]}
+                        </p>
+                      ) : null}
+                      <p className="print-source">
+                        <strong>Quelle:</strong> {wohnung.anbieter} ·{" "}
+                        {wohnung.quelle} · abgerufen am{" "}
+                        {new Intl.DateTimeFormat("de-DE").format(
+                          new Date(`${wohnung.abrufdatum}T12:00:00`),
+                        )}
+                        <br />
+                        <a href={wohnung.direkte_inserats_url}>
+                          {wohnung.direkte_inserats_url}
+                        </a>
+                      </p>
+                    </article>
+                  ))}
+                </section>
+              );
+            })}
+          </section>
+        );
+      })}
+
+      <footer className="print-footer">
+        450,50 € Nettokaltmiete je berücksichtigter Person dienen nur als
+        rechnerische KdU-Orientierung. Die Anerkennung ist im Einzelfall zu
+        klären.
+      </footer>
+    </section>
   );
 }
 
@@ -619,6 +777,11 @@ export default function Home() {
   const gorbitzCount = wohnungen.filter(
     (wohnung) => districtName(wohnung.stadtteil) === "Gorbitz",
   ).length;
+  const personOptions = [...new Set(
+    wohnungen.map(
+      (wohnung) => wohnung.notwendige_personenzahl_nach_kdu_limit,
+    ),
+  )].sort((a, b) => a - b);
 
   const visibleWohnungen = useMemo(() => {
     const search = query.trim().toLocaleLowerCase("de-DE");
@@ -669,7 +832,27 @@ export default function Home() {
           a.nettokaltmiete_eur - b.nettokaltmiete_eur
         );
       });
-  }, [district, hiddenIds, persons, query, rating, sort, view, wbs]);
+  }, [district, hiddenIds, persons, query, rating, sort, view, wbs, wohnungen]);
+
+  const exportWohnungen = useMemo(
+    () =>
+      [...visibleWohnungen].sort((a, b) => {
+        const districtDifference =
+          ["Johannstadt", "Gorbitz"].indexOf(districtName(a.stadtteil)) -
+          ["Johannstadt", "Gorbitz"].indexOf(districtName(b.stadtteil));
+        if (districtDifference) return districtDifference;
+
+        const ratingDifference =
+          ratingOrder[a.bewertung] - ratingOrder[b.bewertung];
+        if (ratingDifference) return ratingDifference;
+
+        return (
+          a.zimmer - b.zimmer ||
+          a.nettokaltmiete_eur - b.nettokaltmiete_eur
+        );
+      }),
+    [visibleWohnungen],
+  );
 
   function updateSet(
     setter: React.Dispatch<React.SetStateAction<Set<string>>>,
@@ -726,7 +909,7 @@ export default function Home() {
     ];
     const escapeCsv = (value: string | number) =>
       `"${String(value).replaceAll('"', '""')}"`;
-    const rows = wohnungen.map((wohnung) => [
+    const rows = exportWohnungen.map((wohnung) => [
       wohnung.id,
       wohnung.titel,
       wohnung.stadtteil,
@@ -774,7 +957,8 @@ export default function Home() {
                 )
               : "wird geladen"}
           </p>
-          <h1>Barrierefreie Wohnungen in Dresden Gorbitz und Johannstadt</h1>
+          <h1>Wohnungsangebote mit Barriereangaben</h1>
+          <p className="hero-subtitle">Dresden-Johannstadt und Dresden-Gorbitz</p>
         </div>
 
         <aside className="hero-panel" aria-label="Übersicht">
@@ -794,7 +978,7 @@ export default function Home() {
             </div>
             <div>
               <strong>{explicitCount}</strong>
-              <span>ausdrücklich geeignet</span>
+              <span>mit klaren Barriereangaben</span>
             </div>
             <div>
               <strong>{wbsCount}</strong>
@@ -805,6 +989,22 @@ export default function Home() {
             KdU-Grenze: 450,50 € Nettokaltmiete je berücksichtigter Person
           </p>
         </aside>
+      </section>
+
+      <section className="research-notice" id="hinweise" aria-label="Wichtige Hinweise">
+        <strong>Ergänzende Recherchehilfe</strong>
+        <p>
+          Dies ist kein offizielles Wohnungsportal der Lebenshilfe und keine
+          Wohnungsvermittlung. Die Übersicht sammelt recherchierte Angebote
+          und kann unvollständig oder zwischenzeitlich veraltet sein.
+          Maßgeblich ist immer das verlinkte Originalinserat.
+        </p>
+        <p>
+          Angaben zur Zugänglichkeit stammen aus dem Originalinserat. Die
+          farbliche Einordnung wird automatisiert beziehungsweise redaktionell
+          daraus abgeleitet und ist keine Zusage, dass eine Wohnung individuell
+          geeignet oder barrierefrei ist.
+        </p>
       </section>
 
       <section className="overview-section" aria-labelledby="karten-ueberschrift">
@@ -828,15 +1028,15 @@ export default function Home() {
         <div className="overview-map-legend" aria-label="Kartenlegende">
           <span>
             <i className="overview-legend-dot overview-marker-good">W</i>
-            ausdrücklich geeignet
+            klare Barriereangaben
           </span>
           <span>
             <i className="overview-legend-dot overview-marker-maybe">W</i>
-            möglicherweise geeignet
+            einzelne Barriereangaben
           </span>
           <span>
             <i className="overview-legend-dot overview-marker-check">W</i>
-            zu prüfen
+            Angaben prüfen
           </span>
           <span>
             <i className="overview-legend-office">R</i>
@@ -844,9 +1044,10 @@ export default function Home() {
           </span>
         </div>
         <p className="overview-map-note">
-          Die Farben geben die redaktionelle Bewertung der ausdrücklich
-          genannten Barriereangaben wieder. Sie ersetzen keine individuelle
-          Prüfung. Beim Laden werden Kartendaten von OpenStreetMap abgerufen.
+          Die Farben geben eine automatisierte beziehungsweise redaktionelle
+          Einordnung der im Originalinserat genannten Angaben wieder. Sie
+          ersetzen keine individuelle Prüfung. Beim Laden werden Kartendaten
+          von OpenStreetMap abgerufen.
         </p>
       </section>
 
@@ -862,7 +1063,7 @@ export default function Home() {
         ) : null}
         <div className="section-heading">
           <div>
-            <p className="eyebrow eyebrow-dark">Geprüfte Direktangebote</p>
+            <p className="eyebrow eyebrow-dark">Recherchierte Direktangebote</p>
             <h2>Wohnungen filtern und vormerken</h2>
           </div>
           <p>
@@ -870,21 +1071,6 @@ export default function Home() {
             Eignung. Vorgemerkte und ausgeblendete Angebote bleiben auf diesem
             Gerät gespeichert.
           </p>
-        </div>
-
-        <div className="accessibility-note" role="note">
-          <span className="note-icon" aria-hidden="true">
-            i
-          </span>
-          <div>
-            <strong>Ein Aufzug allein gilt nicht als barrierefrei.</strong>
-            <p>
-              „Ausdrücklich geeignet“ wird nur bei klaren Angaben wie
-              barrierearm, stufenlos oder bodengleiche Dusche vergeben. Kein
-              Inserat bezeichnet die Wohnung ausdrücklich als
-              rollstuhlgerecht.
-            </p>
-          </div>
         </div>
 
         <div className="filter-panel" aria-label="Angebote filtern">
@@ -939,9 +1125,11 @@ export default function Home() {
                 onChange={(event) => setPersons(event.target.value)}
               >
                 <option value="alle">Alle</option>
-                <option value="1">1 Person</option>
-                <option value="2">2 Personen</option>
-                <option value="10">10 Personen</option>
+                {personOptions.map((personCount) => (
+                  <option value={personCount} key={personCount}>
+                    {personCount} {personCount === 1 ? "Person" : "Personen"}
+                  </option>
+                ))}
               </select>
             </label>
             <label>
@@ -953,13 +1141,11 @@ export default function Home() {
                 }
               >
                 <option value="alle">Alle Bewertungen</option>
-                <option value="ausdrücklich geeignet">
-                  ausdrücklich geeignet
-                </option>
+                <option value="ausdrücklich geeignet">Klare Barriereangaben</option>
                 <option value="möglicherweise geeignet">
-                  möglicherweise geeignet
+                  Einzelne Barriereangaben
                 </option>
-                <option value="zu prüfen">zu prüfen</option>
+                <option value="zu prüfen">Angaben prüfen</option>
               </select>
             </label>
             <label>
@@ -993,8 +1179,15 @@ export default function Home() {
               <button type="button" className="text-button" onClick={resetFilters}>
                 Filter zurücksetzen
               </button>
-              <button type="button" className="json-button" onClick={downloadCsv}>
-                CSV für Excel herunterladen
+              <button type="button" className="data-button" onClick={downloadCsv}>
+                Daten für Excel
+              </button>
+              <button
+                type="button"
+                className="print-button"
+                onClick={() => window.print()}
+              >
+                Gefilterte Liste drucken / als PDF speichern
               </button>
             </div>
           </div>
@@ -1033,14 +1226,15 @@ export default function Home() {
       </section>
 
       <section className="method-section" id="methode">
-        <p className="eyebrow">So wurde geprüft</p>
+        <p className="eyebrow">So wird recherchiert und eingeordnet</p>
         <div className="method-grid">
           <div>
             <span>01</span>
-            <h2>Direkt & erreichbar</h2>
+            <h2>Direkt verlinkt</h2>
             <p>
-              Nur beim Abruf aktive, konkrete Inseratsseiten. Keine
-              Suchergebnisse, Übersichtsseiten oder Tauschwohnungen.
+              Jedes Angebot nennt Quelle, Anbieter und Original-Link. Beim
+              Abruf nicht erreichbare Inserate und Tauschwohnungen werden
+              nicht in die aktive Liste übernommen.
             </p>
           </div>
           <div>
@@ -1053,16 +1247,98 @@ export default function Home() {
           </div>
           <div>
             <span>03</span>
-            <h2>Nichts geschätzt</h2>
+            <h2>Quellennah eingeordnet</h2>
             <p>
               WBS und Barriereangaben werden nur übernommen, wenn sie
-              ausdrücklich im Angebot stehen. Unklares bleibt „zu prüfen“.
+              ausdrücklich im Angebot stehen. Die Einordnung ist keine
+              Eignungsprüfung und Unklares bleibt „Angaben prüfen“.
             </p>
           </div>
         </div>
       </section>
 
-      <footer>
+      <section className="privacy-section" id="datenschutz">
+        <p className="eyebrow eyebrow-dark">Datenschutz und Nutzung</p>
+        <div className="privacy-grid">
+          <div>
+            <h2>Lokale Funktionen</h2>
+            <p>
+              Favoriten, ausgeblendete Angebote und persönliche Notizen werden
+              ausschließlich im lokalen Speicher dieses Browsers abgelegt. Die
+              Seite übermittelt diese Angaben nicht an uns. Bitte trotzdem
+              keine Gesundheitsdaten oder andere sensible personenbezogene
+              Daten in Notizen eintragen.
+            </p>
+          </div>
+          <div>
+            <h2>Technische Dienste</h2>
+            <p>
+              Die Seite wird über GitHub Pages bereitgestellt. Beim Aufruf
+              verarbeitet GitHub technisch erforderliche Verbindungsdaten wie
+              die IP-Adresse. Für die Übersichtskarten und beim Öffnen einer
+              Lagekarte werden Kartenkacheln von OpenStreetMap geladen; dabei
+              erhält OpenStreetMap ebenfalls technische Verbindungsdaten.
+            </p>
+          </div>
+          <div>
+            <h2>Keine eigene Analyse</h2>
+            <p>
+              Die Seite setzt selbst keine Analyse- oder Werbedienste ein und
+              legt keine eigenen Cookies an. Beim Öffnen eines Originalinserats
+              gelten die Datenschutzbestimmungen des jeweiligen Anbieters.
+            </p>
+          </div>
+        </div>
+        <p className="privacy-links">
+          Weitere Informationen:{" "}
+          <a
+            href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Datenschutz bei GitHub
+          </a>{" "}
+          ·{" "}
+          <a
+            href="https://osmfoundation.org/wiki/Privacy_Policy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Datenschutz bei OpenStreetMap
+          </a>
+        </p>
+      </section>
+
+      <section className="provider-section" id="anbieter">
+        <p className="eyebrow eyebrow-dark">Anbieterkennzeichnung und Kontakt</p>
+        <div>
+          <h2>Hinweise zur Recherchehilfe</h2>
+          <address>
+            Markus Hutschenreuther<br />
+            Wohnprojekt „Wohnen, wie ich es will“<br />
+            Lebenshilfe Dresden e. V.<br />
+            Josephinenstraße 31<br />
+            01069 Dresden<br />
+            <a href="mailto:WieIchEsWill@lebenshilfe-dresden.de">
+              WieIchEsWill@lebenshilfe-dresden.de
+            </a><br />
+            <a href="tel:+49351424978410">0351 424 978 410</a>
+          </address>
+          <p>
+            Kontakt für Korrekturhinweise zur Übersicht. Die Seite ist eine
+            ergänzende Recherchehilfe im Rahmen individueller Wohnberatungen,
+            kein allgemeines offizielles Wohnungsportal der Lebenshilfe und
+            keine Wohnungsvermittlung.
+          </p>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <nav aria-label="Rechtliche Hinweise">
+          <a href="#hinweise">Hinweise</a>
+          <a href="#datenschutz">Datenschutz</a>
+          <a href="#anbieter">Anbieter</a>
+        </nav>
         <p>
           Recherche-Stand{" "}
           {daten.aktualisiert_am
@@ -1074,6 +1350,11 @@ export default function Home() {
           bitte auf der Direktseite prüfen
         </p>
       </footer>
+      <PrintSheet
+        wohnungen={exportWohnungen}
+        aktualisiertAm={daten.aktualisiert_am}
+        notes={notes}
+      />
     </main>
   );
 }

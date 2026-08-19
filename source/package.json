@@ -16,6 +16,7 @@
     "leaflet": "^1.9.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-qr-code": "^2.2.0",
     "typescript": "^5.7.3",
     "vite": "^6.0.11"
   }

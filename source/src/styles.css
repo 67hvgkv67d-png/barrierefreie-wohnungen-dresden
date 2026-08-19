@@ -1822,11 +1822,35 @@ a {
     font-size: 8pt;
   }
 
-  .print-listing-heading > strong {
+  .print-listing-aside {
+    display: grid;
+    justify-items: end;
+    gap: 2mm;
+    flex: 0 0 29mm;
+  }
+
+  .print-listing-aside > strong {
     flex: 0 0 auto;
     padding: 1.5mm 2mm;
     background: #e0edf4;
     font-size: 8pt;
+  }
+
+  .print-qr {
+    display: grid;
+    justify-items: center;
+    gap: 1mm;
+  }
+
+  .print-qr svg {
+    width: 25mm;
+    height: 25mm;
+  }
+
+  .print-qr span {
+    font-size: 6.5pt;
+    font-weight: 800;
+    white-space: nowrap;
   }
 
   .print-listing dl {

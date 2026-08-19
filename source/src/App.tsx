@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
+import QRCode from "react-qr-code";
 import { type Wohnung, type Wohnungsdaten } from "./types";
 
 const euro = new Intl.NumberFormat("de-DE", {
@@ -621,7 +622,20 @@ function PrintSheet({
                           <h4>{wohnung.titel}</h4>
                           <p>{wohnung.adresse}</p>
                         </div>
-                        <strong>{decimal.format(wohnung.zimmer)} Zimmer</strong>
+                        <div className="print-listing-aside">
+                          <strong>{decimal.format(wohnung.zimmer)} Zimmer</strong>
+                          <div className="print-qr">
+                            <QRCode
+                              value={wohnung.direkte_inserats_url}
+                              size={112}
+                              level="M"
+                              bgColor="#ffffff"
+                              fgColor="#10283a"
+                              title={`QR-Code zum Originalinserat: ${wohnung.titel}`}
+                            />
+                            <span>Originalinserat öffnen</span>
+                          </div>
+                        </div>
                       </div>
                       <dl>
                         <div>

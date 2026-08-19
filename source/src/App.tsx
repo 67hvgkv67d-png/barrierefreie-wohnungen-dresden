@@ -618,9 +618,36 @@ function PrintSheet({
                   {ratingWohnungen.map((wohnung) => (
                     <article className="print-listing" key={wohnung.id}>
                       <div className="print-listing-heading">
-                        <div>
+                        <div className="print-listing-main">
                           <h4>{wohnung.titel}</h4>
                           <p>{wohnung.adresse}</p>
+                          <dl>
+                            <div>
+                              <dt>Wohnfläche</dt>
+                              <dd>{decimal.format(wohnung.wohnflaeche_m2)} m²</dd>
+                            </div>
+                            <div>
+                              <dt>Nettokalt</dt>
+                              <dd>{euro.format(wohnung.nettokaltmiete_eur)}</dd>
+                            </div>
+                            <div>
+                              <dt>Warm</dt>
+                              <dd>{euro.format(wohnung.warmmiete_eur)}</dd>
+                            </div>
+                            <div>
+                              <dt>KdU-Orientierung</dt>
+                              <dd>
+                                {wohnung.notwendige_personenzahl_nach_kdu_limit}{" "}
+                                {wohnung.notwendige_personenzahl_nach_kdu_limit === 1
+                                  ? "Person"
+                                  : "Personen"}
+                              </dd>
+                            </div>
+                            <div>
+                              <dt>WBS</dt>
+                              <dd>{wohnung.wbs}</dd>
+                            </div>
+                          </dl>
                         </div>
                         <div className="print-listing-aside">
                           <strong>{decimal.format(wohnung.zimmer)} Zimmer</strong>
@@ -637,33 +664,6 @@ function PrintSheet({
                           </div>
                         </div>
                       </div>
-                      <dl>
-                        <div>
-                          <dt>Wohnfläche</dt>
-                          <dd>{decimal.format(wohnung.wohnflaeche_m2)} m²</dd>
-                        </div>
-                        <div>
-                          <dt>Nettokalt</dt>
-                          <dd>{euro.format(wohnung.nettokaltmiete_eur)}</dd>
-                        </div>
-                        <div>
-                          <dt>Warm</dt>
-                          <dd>{euro.format(wohnung.warmmiete_eur)}</dd>
-                        </div>
-                        <div>
-                          <dt>KdU-Orientierung</dt>
-                          <dd>
-                            {wohnung.notwendige_personenzahl_nach_kdu_limit}{" "}
-                            {wohnung.notwendige_personenzahl_nach_kdu_limit === 1
-                              ? "Person"
-                              : "Personen"}
-                          </dd>
-                        </div>
-                        <div>
-                          <dt>WBS</dt>
-                          <dd>{wohnung.wbs}</dd>
-                        </div>
-                      </dl>
                       <p className="print-barriers">
                         <strong>Im Inserat genannt:</strong>{" "}
                         {wohnung.barriereangaben.join(", ")}

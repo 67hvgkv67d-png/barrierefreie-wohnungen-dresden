@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-08-24",
+  "aktualisiert_am": "2026-08-26",
   "wohnungen": [
     {
       "id": "IS24-169055221",
@@ -21,7 +21,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169055221",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
@@ -49,40 +49,12 @@
       "anbieter": "BVG mbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/168502434",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "neu": false,
       "erstmals_gefunden_am": "2026-07-23",
       "kartenposition": {
         "breitengrad": 51.0602845,
         "laengengrad": 13.7845137,
-        "genauigkeit": "Adresse gefunden"
-      }
-    },
-    {
-      "id": "IS24-156400491",
-      "titel": "WOHNEN + EINKAUFEN + LEBEN",
-      "stadtteil": "Johannstadt-Nord",
-      "adresse": "Elisenstraße 27, 01307 Dresden",
-      "zimmer": 3,
-      "wohnflaeche_m2": 87.74,
-      "nettokaltmiete_eur": 1165,
-      "warmmiete_eur": 1480,
-      "notwendige_personenzahl_nach_kdu_limit": 3,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Stufenloser Zugang",
-        "Personenaufzug"
-      ],
-      "bewertung": "ausdrücklich geeignet",
-      "anbieter": "DIVARES GmbH & Co. KG",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/156400491",
-      "abrufdatum": "2026-08-24",
-      "neu": false,
-      "erstmals_gefunden_am": "2026-08-03",
-      "kartenposition": {
-        "breitengrad": 51.0540667,
-        "laengengrad": 13.7611883,
         "genauigkeit": "Adresse gefunden"
       }
     },
@@ -105,7 +77,7 @@
       "anbieter": "DIVARES GmbH & Co. KG",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/132337860",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "neu": false,
       "hinweis": "Stufenloser Zugang und Personenaufzug sind ausdrücklich genannt. Die individuelle Eignung der Wohnung ist dennoch vor Ort zu prüfen.",
       "erstmals_gefunden_am": "2026-08-10",
@@ -134,7 +106,7 @@
       "anbieter": "von privat",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/3-zimmer-neubauwohnung-mit-balkon-und-einbaukueche/3462347473-203-28644",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "neu": false,
       "erstmals_gefunden_am": "2026-08-12",
       "kartenposition": {
@@ -163,7 +135,7 @@
       "anbieter": "moovin Immobilien GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170017998",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-17",
       "neu": false,
       "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit; die genaue Ausführung der Walk-In-Dusche ist zu prüfen."
@@ -186,7 +158,7 @@
       "anbieter": "moovin Immobilien GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170017959",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-17",
       "neu": false,
       "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit. Der Titel nennt 3 Zimmer, das Datenfeld des Inserats ausdrücklich 2 Zimmer; zu prüfen."
@@ -209,7 +181,7 @@
       "anbieter": "von privat",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169959504",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-17",
       "neu": false,
       "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit."
@@ -232,7 +204,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/144741591",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-17",
       "neu": false,
       "hinweis": "Zugang zum Gebäude und zur Wohnung nicht als stufenlos oder barrierefrei beschrieben; zu prüfen."
@@ -255,7 +227,7 @@
       "anbieter": "iKonzept24",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/146299927",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-17",
       "neu": false,
       "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit."
@@ -278,67 +250,10 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169986533",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-17",
       "neu": false,
       "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit."
-    },
-    {
-      "id": "IS24-170123276",
-      "titel": "Familienfreundliche 4-Zimmer-Wohnung, Küche mit Tresen, Bad mit Wanne",
-      "stadtteil": "Johannstadt-Nord",
-      "adresse": "Florian-Geyer-Straße 48, 01307 Dresden",
-      "zimmer": 4,
-      "wohnflaeche_m2": 80.39,
-      "nettokaltmiete_eur": 626.08,
-      "warmmiete_eur": 908.08,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "barrierearmes Gebäude",
-        "Personenaufzug"
-      ],
-      "bewertung": "ausdrücklich geeignet",
-      "anbieter": "Vonovia Kundenservice GmbH",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170123276",
-      "abrufdatum": "2026-08-24",
-      "erstmals_gefunden_am": "2026-08-19",
-      "kartenposition": {
-        "breitengrad": 51.0577054,
-        "laengengrad": 13.7647272,
-        "genauigkeit": "Adresse gefunden"
-      },
-      "neu": false,
-      "hinweis": "Das Gebäude wird ausdrücklich als barrierearm beschrieben. Die individuelle Eignung der Wohnung ist vor Ort zu prüfen."
-    },
-    {
-      "id": "IS24-169941997",
-      "titel": "1-Zimmer-Single-Wohnung zu mieten!",
-      "stadtteil": "Johannstadt-Süd",
-      "adresse": "Dürerstraße 57, 01307 Dresden",
-      "zimmer": 1,
-      "wohnflaeche_m2": 27.03,
-      "nettokaltmiete_eur": 275.71,
-      "warmmiete_eur": 417.71,
-      "notwendige_personenzahl_nach_kdu_limit": 1,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Dusche"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "Vonovia Kundenservice GmbH",
-      "quelle": "ImmoScout24",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169941997",
-      "abrufdatum": "2026-08-24",
-      "erstmals_gefunden_am": "2026-08-19",
-      "kartenposition": {
-        "breitengrad": 51.0519687,
-        "laengengrad": 13.7656815,
-        "genauigkeit": "Adresse gefunden"
-      },
-      "neu": false,
-      "hinweis": "Die Dusche ist ausdrücklich genannt; Angaben zu Stufenlosigkeit, Schwellen oder Aufzug fehlen und sind zu prüfen."
     },
     {
       "id": "IS24-169999122",
@@ -359,7 +274,7 @@
       "anbieter": "iKonzept24",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169999122",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-19",
       "kartenposition": {
         "breitengrad": 51.0507489,
@@ -387,7 +302,7 @@
       "anbieter": "GCP – Grand City Property",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169502983",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-19",
       "kartenposition": {
         "breitengrad": 51.0417005,
@@ -416,14 +331,14 @@
       "anbieter": "Home & Co Management GmbH",
       "quelle": "Immowelt",
       "direkte_inserats_url": "https://www.immowelt.de/expose/44645dbe-9080-4005-90a7-cee52e6c046a",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-24",
       "kartenposition": {
         "breitengrad": 51.0502513,
         "laengengrad": 13.7576672,
         "genauigkeit": "Adresse gefunden"
       },
-      "neu": true,
+      "neu": false,
       "hinweis": "Nur temporäres Wohnen für Studierende, Auszubildende oder Praktikant:innen. Ein Aufzug allein belegt keine Barrierefreiheit; stufenloser Zugang und Schwellen sind nicht beschrieben und müssen geprüft werden."
     },
     {
@@ -445,10 +360,62 @@
       "anbieter": "von privat",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/1raumwohnung-3-og/3487247780-203-28644",
-      "abrufdatum": "2026-08-24",
+      "abrufdatum": "2026-08-26",
       "erstmals_gefunden_am": "2026-08-24",
-      "neu": true,
+      "neu": false,
       "hinweis": "Die genaue Adresse ist im Inserat nicht genannt; deshalb wurde keine Kartenposition geschätzt. Einige Gegenstände sollen nach Wunsch gegen einen fairen Preis übernommen werden."
+    },
+    {
+      "id": "KA-3488117014",
+      "titel": "Helle 2-Zimmer-Dachgeschosswohnung mit Aufzug",
+      "stadtteil": "Johannstadt-Nord",
+      "adresse": "Pfotenhauerstraße 55, 01307 Dresden",
+      "zimmer": 2,
+      "wohnflaeche_m2": 59.45,
+      "nettokaltmiete_eur": 549,
+      "warmmiete_eur": 720,
+      "notwendige_personenzahl_nach_kdu_limit": 2,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "Aufzug",
+        "Bad mit Dusche"
+      ],
+      "bewertung": "möglicherweise geeignet",
+      "anbieter": "von privat",
+      "quelle": "Kleinanzeigen",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/helle-2-zimmer-dachgeschosswohnung-mit-aufzug-in-dresden/3488117014-203-28644",
+      "abrufdatum": "2026-08-26",
+      "erstmals_gefunden_am": "2026-08-26",
+      "kartenposition": {
+        "breitengrad": 51.0576245,
+        "laengengrad": 13.7713388,
+        "genauigkeit": "Adresse gefunden"
+      },
+      "neu": true,
+      "hinweis": "Aufzug und Dusche sind ausdrücklich genannt. Ein Aufzug allein belegt keine Barrierefreiheit; Stufen und Schwellen sind vor Ort zu prüfen."
+    },
+    {
+      "id": "KA-3446714202",
+      "titel": "2-Zimmerwohnung mit Balkon am Fetscherplatz",
+      "stadtteil": "Johannstadt-Süd",
+      "adresse": "Fetscherplatz, 01307 Dresden (Hausnummer nicht angegeben)",
+      "zimmer": 2,
+      "wohnflaeche_m2": 46,
+      "nettokaltmiete_eur": 461,
+      "warmmiete_eur": 550,
+      "notwendige_personenzahl_nach_kdu_limit": 2,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "Aufzug"
+      ],
+      "bewertung": "möglicherweise geeignet",
+      "anbieter": "von privat",
+      "quelle": "Kleinanzeigen",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/2-zimmerwohnung-mit-balkon-am-fetscherplatz/3446714202-203-28644",
+      "abrufdatum": "2026-08-26",
+      "erstmals_gefunden_am": "2026-08-26",
+      "neu": true,
+      "hinweis": "Ein Aufzug ist ausdrücklich genannt, belegt aber allein keine Barrierefreiheit. Die genaue Adresse fehlt; die Inseratsmiete kann sich laut Anbieter noch ändern. Eine Ablöse von 900 Euro ist Voraussetzung."
     }
   ]
 }

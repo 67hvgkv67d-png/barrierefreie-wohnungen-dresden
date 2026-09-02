@@ -21,7 +21,7 @@ const decimal = new Intl.NumberFormat("de-DE", {
   maximumFractionDigits: 2,
 });
 
-const appVersion = "2026.09.02.1";
+const appVersion = "2026.09.02.2";
 
 type DistrictFilter = "alle" | "Johannstadt" | "Gorbitz";
 type DistrictName = Exclude<DistrictFilter, "alle">;
@@ -568,6 +568,63 @@ function LocationMap({ wohnung }: { wohnung: Wohnung }) {
   );
 }
 
+function RbLocationMap({ wohnung }: { wohnung: RbWohnung }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const mapElement = useRef<HTMLDivElement>(null);
+  const position = wohnung.kartenposition;
+  const reference = wohnung.suchbereich === "Johannstadt"
+    ? { ...regionalstellen.Johannstadt, marker: "R" }
+    : { ...rbReferenzorte.find((ort) => ort.name === wohnung.suchbereich)!, marker: "Z" };
+
+  useEffect(() => {
+    if (!isOpen || !mapElement.current || !position) return;
+    const home: L.LatLngTuple = [position.breitengrad, position.laengengrad];
+    const target: L.LatLngTuple = [reference.breitengrad, reference.laengengrad];
+    const map = L.map(mapElement.current, { scrollWheelZoom: false, zoomControl: true });
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>',
+      maxZoom: 19,
+    }).addTo(map);
+    L.marker(home, {
+      icon: L.divIcon({
+        className: `map-marker map-marker-home rb-marker-${wohnung.bewertung.replaceAll(" ", "-")}`,
+        html: "<span>W</span>", iconSize: [34, 34], iconAnchor: [17, 17],
+      }),
+      title: `Wohnung: ${wohnung.adresse}`,
+    }).addTo(map);
+    L.marker(target, {
+      icon: L.divIcon({
+        className: "map-marker rb-reference-marker",
+        html: `<span>${reference.marker}</span>`, iconSize: [34, 34], iconAnchor: [17, 17],
+      }),
+      title: reference.name,
+    }).addTo(map);
+    L.polyline([home, target], { color: "#6c568f", weight: 2, opacity: 0.55, dashArray: "7 7" }).addTo(map);
+    map.fitBounds(L.latLngBounds([home, target]), { padding: [34, 34], maxZoom: 15 });
+    return () => {
+      map.remove();
+    };
+  }, [isOpen, position, reference.breitengrad, reference.laengengrad, reference.marker, reference.name, wohnung.adresse, wohnung.bewertung]);
+
+  if (!position) return <div className="map-unavailable">Lage konnte noch nicht zuverlässig bestimmt werden.</div>;
+  const osmLink = `https://www.openstreetmap.org/?mlat=${position.breitengrad}&mlon=${position.laengengrad}#map=17/${position.breitengrad}/${position.laengengrad}`;
+  return (
+    <div className="location-map rb-location-map">
+      <button type="button" className="map-toggle" aria-expanded={isOpen} onClick={() => setIsOpen((open) => !open)}>
+        {isOpen ? "Karte schließen" : "Lage anzeigen"}<span aria-hidden="true">{isOpen ? "−" : "+"}</span>
+      </button>
+      {isOpen ? <div className="map-content">
+        <div ref={mapElement} className="map-canvas" aria-label={`Karte mit ${wohnung.adresse} und ${reference.name}`} />
+        <div className="map-legend">
+          <p><span className={`legend-marker ${rbStatusClass(wohnung.bewertung)}`}>W</span><strong>Wohnung</strong><small>{wohnung.adresse} · {position.genauigkeit}</small></p>
+          <p><span className="legend-marker rb-reference-legend">{reference.marker}</span><strong>{reference.name}</strong></p>
+        </div>
+        <div className="map-footer"><span>Beim Öffnen werden Kartendaten von OpenStreetMap geladen.</span><a href={osmLink} target="_blank" rel="noreferrer">Große Karte öffnen ↗</a></div>
+      </div> : null}
+    </div>
+  );
+}
+
 function ListingCard({
   wohnung,
   isSaved,
@@ -803,6 +860,8 @@ function RbListingCard({
         <strong>Vor Entscheidung prüfen</strong>
         <ul>{wohnung.pruefhinweise.map((hinweis) => <li key={hinweis}>{hinweis}</li>)}</ul>
       </div>
+
+      <RbLocationMap wohnung={wohnung} />
 
       <div className="provider-row">
         <span>{wohnung.anbieter} · {wohnung.quelle}</span>

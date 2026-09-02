@@ -1253,6 +1253,12 @@ export default function Home() {
   const rbWohnungen = useMemo(() => {
     const mainJohannstadt = wohnungen
       .filter((wohnung) => districtName(wohnung.stadtteil) === "Johannstadt")
+      .filter(
+        (wohnung) =>
+          !/temporär|wohnen auf zeit|studierende|auszubildende|praktikant|seniorenwohnpark|betreutes wohnen/i.test(
+            `${wohnung.titel} ${wohnung.hinweis ?? ""}`,
+          ),
+      )
       .map(mainWohnungToRb);
     const seen = new Set(rbDaten.wohnungen.map((wohnung) => wohnung.direkte_inserats_url));
     return [

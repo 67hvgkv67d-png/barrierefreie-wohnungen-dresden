@@ -157,6 +157,32 @@ a {
   max-width: 860px;
 }
 
+.mode-switch {
+  display: inline-flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mode-switch button {
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.mode-switch button.active {
+  background: var(--lime);
+  color: var(--ink);
+}
+
 .hero-date {
   display: inline-block;
   margin: 0 0 16px;
@@ -497,6 +523,71 @@ a {
   font-size: 9px;
   line-height: 1.5;
 }
+
+.rb-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 1440px;
+  margin: 0 auto 18px;
+}
+
+.rb-reference-grid div {
+  display: grid;
+  gap: 5px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-left: 4px solid #7d6ca8;
+  border-radius: 5px;
+  background: var(--white);
+}
+
+.rb-reference-grid strong { font-size: 12px; }
+.rb-reference-grid span { color: var(--ink-soft); font-size: 9px; }
+.rb-map-wrap { max-width: 1440px; margin: 0 auto; }
+.rb-overview-map-card { border-top-color: #7d6ca8; }
+.rb-overview-heading { background: #eeebf6; }
+.rb-overview-canvas { height: 430px; }
+
+.rb-marker-eher-passend span,
+.rb-legend-good { background: #18805a; }
+.rb-marker-bedingt-passend span,
+.rb-legend-maybe { background: #5c7f94; }
+.rb-marker-zu-prüfen span,
+.rb-legend-check { background: #b95a3f; }
+.rb-reference-marker span,
+.rb-reference-legend { border-radius: 7px !important; background: #6c568f; color: #fff; }
+
+.rb-filter-grid { grid-template-columns: 1.5fr repeat(4, minmax(150px, 1fr)); }
+.rb-listing-card {
+  border-left: 5px solid #7d6ca8;
+  background: linear-gradient(180deg, rgba(125, 108, 168, 0.12), transparent 190px), var(--white);
+}
+.rb-area-label { background: #ebe7f4; color: #584678; }
+.rb-card-heading { min-height: 190px; }
+.rb-distance {
+  margin: 10px 0 0;
+  color: #584678;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+.rb-assessment {
+  margin: 16px 0 12px;
+  padding: 14px;
+  border-left: 4px solid #7d6ca8;
+  background: #f1eef7;
+}
+.rb-assessment p { margin: 0 0 7px; color: #6c568f; font-size: 8px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.rb-assessment strong { font-size: 11px; line-height: 1.5; }
+.rb-details { display: grid; grid-template-columns: 1fr 1fr; margin: 0 0 12px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.rb-details div { padding: 10px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.rb-details dt { margin-bottom: 4px; color: #70818c; font-size: 8px; font-weight: 850; text-transform: uppercase; }
+.rb-details dd { margin: 0; font-size: 10px; line-height: 1.4; }
+.rb-positive-block { flex: none; background: #eef6f1; }
+.rb-business { margin: 10px 0 0; color: var(--ink-soft); font-size: 10px; line-height: 1.5; }
+.rb-checks { margin-top: 12px; padding: 12px 14px; background: #fff1ec; color: #704435; font-size: 10px; line-height: 1.45; }
+.rb-checks ul { margin: 6px 0 0; padding-left: 17px; }
 
 .overview-popup {
   display: grid;
@@ -1554,6 +1645,8 @@ a {
   .filter-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .rb-filter-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 760px) {
@@ -1584,6 +1677,9 @@ a {
     margin: 22px 0 0;
     padding: 16px;
   }
+
+  .mode-switch { width: 100%; }
+  .mode-switch button { flex: 1; }
 
   .hero-stat-primary strong {
     font-size: 46px;
@@ -1617,6 +1713,9 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .rb-reference-grid { grid-template-columns: 1fr; }
+  .rb-overview-canvas { height: 360px; }
+
   .overview-map-canvas {
     height: 310px;
   }
@@ -1638,6 +1737,9 @@ a {
   .filter-grid {
     grid-template-columns: 1fr;
   }
+
+  .rb-filter-grid { grid-template-columns: 1fr; }
+  .rb-details { grid-template-columns: 1fr; }
 
   .filter-footer {
     align-items: flex-start;

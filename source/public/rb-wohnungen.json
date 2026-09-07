@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-09-02",
+  "aktualisiert_am": "2026-09-07",
   "suchradius_hinweis": "Johannstadt vollständig; ergänzend Angebote in etwa 15 Minuten Fußweg um Eibenstocker Straße 105, Niedersedlitzer Platz und Lauensteiner Straße 40. Gehzeiten sind Orientierungswerte und vor einer Bewerbung zu prüfen.",
   "wohnungen": [
     {
@@ -15,24 +15,43 @@
       "begruendung": "Dachgeschoss ohne Wohnung darüber und ausdrücklich beschriebenes Wohn- und Geschäftshaus in offener Bebauung. Die Zahl der Mietparteien ist mit zwölf Wohnungen jedoch nicht klein.",
       "anzahl_wohnungen_mietparteien": "12 Wohnungen, zusätzlich 2 Gewerbeeinheiten",
       "wohn_und_geschaeftshaus": "ja",
-      "gewerbeeinheiten": ["2 Gewerbeeinheiten im Erdgeschoss", "Art der Gewerbeeinheiten nicht genannt"],
+      "gewerbeeinheiten": [
+        "2 Gewerbeeinheiten im Erdgeschoss",
+        "Art der Gewerbeeinheiten nicht genannt"
+      ],
       "lage_im_gebaeude": "Dachgeschoss, 3. Etage; keine Wohnung darüber",
       "eigener_separater_eingang": "unklar",
       "direkt_angrenzende_wohnungen": "nicht genannt",
-      "schallschutz_ruhezonen": ["offene Bebauung", "teils begrünter Außenbereich"],
-      "positive_merkmale": ["Dachgeschoss", "Wohn- und Geschäftshaus", "Gewerbe im Erdgeschoss", "offene Bebauung"],
-      "pruefhinweise": ["12 Wohnungen im Haus", "Hellhörigkeit nicht beschrieben", "direkt angrenzende Wohnungen nicht genannt"],
+      "schallschutz_ruhezonen": [
+        "offene Bebauung",
+        "teils begrünter Außenbereich"
+      ],
+      "positive_merkmale": [
+        "Dachgeschoss",
+        "Wohn- und Geschäftshaus",
+        "Gewerbe im Erdgeschoss",
+        "offene Bebauung"
+      ],
+      "pruefhinweise": [
+        "12 Wohnungen im Haus",
+        "Hellhörigkeit nicht beschrieben",
+        "direkt angrenzende Wohnungen nicht genannt"
+      ],
       "anbieter": "Covivio Immobilien GmbH",
       "quelle": "ImmoScout24",
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170243963",
       "status": "aktiv",
-      "abrufdatum": "2026-09-02",
+      "abrufdatum": "2026-09-07",
       "erstmals_gefunden_am": "2026-09-02",
       "fussweg_minuten": 1,
       "entfernung_hinweis": "direkt neben der Referenzadresse Lauensteiner Straße 40",
-      "kartenposition": {"breitengrad": 51.0404312, "laengengrad": 13.8025057, "genauigkeit": "Adresse gefunden"},
-      "neu": true
+      "kartenposition": {
+        "breitengrad": 51.0404312,
+        "laengengrad": 13.8025057,
+        "genauigkeit": "Adresse gefunden"
+      },
+      "neu": false
     },
     {
       "id": "RB-IS24-169158750",
@@ -51,20 +70,34 @@
       "lage_im_gebaeude": "Dachgeschoss; genaue Etage nicht genannt",
       "eigener_separater_eingang": "unklar",
       "direkt_angrenzende_wohnungen": "nicht genannt",
-      "schallschutz_ruhezonen": ["Isolierverglasung", "ruhige Seitenstraßenlage"],
-      "positive_merkmale": ["Dachgeschoss", "ruhige Seitenstraße", "Isolierverglasung"],
-      "pruefhinweise": ["Anzahl der Mietparteien nicht genannt", "Hellhörigkeit und angrenzende Wohnungen vor Ort prüfen"],
+      "schallschutz_ruhezonen": [
+        "Isolierverglasung",
+        "ruhige Seitenstraßenlage"
+      ],
+      "positive_merkmale": [
+        "Dachgeschoss",
+        "ruhige Seitenstraße",
+        "Isolierverglasung"
+      ],
+      "pruefhinweise": [
+        "Anzahl der Mietparteien nicht genannt",
+        "Hellhörigkeit und angrenzende Wohnungen vor Ort prüfen"
+      ],
       "anbieter": "von privat",
       "quelle": "ImmoScout24",
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169158750",
       "status": "aktiv",
-      "abrufdatum": "2026-09-02",
+      "abrufdatum": "2026-09-07",
       "erstmals_gefunden_am": "2026-09-02",
       "fussweg_minuten": 10,
       "entfernung_hinweis": "rund 800 Meter von Eibenstocker Straße 105",
-      "kartenposition": {"breitengrad": 51.0416026, "laengengrad": 13.8046216, "genauigkeit": "Adresse gefunden"},
-      "neu": true
+      "kartenposition": {
+        "breitengrad": 51.0416026,
+        "laengengrad": 13.8046216,
+        "genauigkeit": "Adresse gefunden"
+      },
+      "neu": false
     },
     {
       "id": "RB-KA-3460898338",
@@ -79,13 +112,33 @@
       "begruendung": "Die gemischte Nutzung mit tagsüber genutzten Läden, Praxen und Büros ist günstig. Der Komplex umfasst aber ausdrücklich 56 Wohnungen und ist deshalb kein kleines, nachbararmes Haus.",
       "anzahl_wohnungen_mietparteien": "56 Wohnungen und 24 Gewerbeeinheiten im Areal",
       "wohn_und_geschaeftshaus": "ja",
-      "gewerbeeinheiten": ["Supermarkt", "Bäckerei", "Floristik", "Kosmetik", "Friseur", "Apotheke", "Post", "Büros", "Arztpraxen"],
+      "gewerbeeinheiten": [
+        "Supermarkt",
+        "Bäckerei",
+        "Floristik",
+        "Kosmetik",
+        "Friseur",
+        "Apotheke",
+        "Post",
+        "Büros",
+        "Arztpraxen"
+      ],
       "lage_im_gebaeude": "2. Obergeschoss",
       "eigener_separater_eingang": "unklar",
       "direkt_angrenzende_wohnungen": "nicht genannt",
-      "schallschutz_ruhezonen": ["offene Bebauung im Stadtteil genannt"],
-      "positive_merkmale": ["Wohn- und Geschäftskomplex", "viele tagsüber genutzte Gewerbeeinheiten", "direkt an der Referenzadresse"],
-      "pruefhinweise": ["großer Komplex mit 56 Wohnungen", "Lärm durch Gewerbe und Anlieferung prüfen", "angrenzende Wohnungen nicht genannt"],
+      "schallschutz_ruhezonen": [
+        "offene Bebauung im Stadtteil genannt"
+      ],
+      "positive_merkmale": [
+        "Wohn- und Geschäftskomplex",
+        "viele tagsüber genutzte Gewerbeeinheiten",
+        "direkt an der Referenzadresse"
+      ],
+      "pruefhinweise": [
+        "großer Komplex mit 56 Wohnungen",
+        "Lärm durch Gewerbe und Anlieferung prüfen",
+        "angrenzende Wohnungen nicht genannt"
+      ],
       "anbieter": "CAPERA Immobilien Service GmbH",
       "quelle": "Kleinanzeigen",
       "kontakt": "Kontaktformular im Originalinserat",
@@ -95,8 +148,12 @@
       "erstmals_gefunden_am": "2026-09-02",
       "fussweg_minuten": 1,
       "entfernung_hinweis": "direkt am Niedersedlitzer Platz",
-      "kartenposition": {"breitengrad": 50.9954371, "laengengrad": 13.8255496, "genauigkeit": "Adresse gefunden"},
-      "neu": true
+      "kartenposition": {
+        "breitengrad": 50.9954371,
+        "laengengrad": 13.8255496,
+        "genauigkeit": "Adresse gefunden"
+      },
+      "neu": false
     }
   ]
 }

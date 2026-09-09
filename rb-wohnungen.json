@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-09-07",
+  "aktualisiert_am": "2026-09-09",
   "suchradius_hinweis": "Johannstadt vollständig; ergänzend Angebote in etwa 15 Minuten Fußweg um Eibenstocker Straße 105, Niedersedlitzer Platz und Lauensteiner Straße 40. Gehzeiten sind Orientierungswerte und vor einer Bewerbung zu prüfen.",
   "wohnungen": [
     {
@@ -42,7 +42,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170243963",
       "status": "aktiv",
-      "abrufdatum": "2026-09-07",
+      "abrufdatum": "2026-09-09",
       "erstmals_gefunden_am": "2026-09-02",
       "fussweg_minuten": 1,
       "entfernung_hinweis": "direkt neben der Referenzadresse Lauensteiner Straße 40",
@@ -88,7 +88,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169158750",
       "status": "aktiv",
-      "abrufdatum": "2026-09-07",
+      "abrufdatum": "2026-09-09",
       "erstmals_gefunden_am": "2026-09-02",
       "fussweg_minuten": 10,
       "entfernung_hinweis": "rund 800 Meter von Eibenstocker Straße 105",
@@ -154,6 +154,50 @@
         "genauigkeit": "Adresse gefunden"
       },
       "neu": false
+    },
+    {
+      "id": "RB-KA-3503737889",
+      "titel": "Sanierte 3-Zimmer-Wohnung mit Schallschutzverglasung",
+      "suchbereich": "Johannstadt",
+      "adresse": "Blasewitzer Straße 36i, 01307 Dresden",
+      "zimmer": 3,
+      "wohnflaeche_m2": 65.62,
+      "nettokaltmiete_eur": 539,
+      "warmmiete_eur": 769,
+      "bewertung": "bedingt passend",
+      "begruendung": "Die ausdrücklich genannte Schallschutzverglasung ist positiv. Das Inserat beschreibt jedoch ein Mehrfamilienhaus und nennt weder Zahl der Mietparteien noch direkt angrenzende Wohnungen.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "unklar",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "5. Etage; Mehrfamilienhaus",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "Schallschutzverglasung ausdrücklich genannt"
+      ],
+      "positive_merkmale": [
+        "Schallschutzverglasung"
+      ],
+      "pruefhinweise": [
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Wohn- und Geschäftsnutzung unklar"
+      ],
+      "anbieter": "Vonovia",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontaktformular im Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-familienfreundliche-3-zimmer-wohnung-mit-balkon/3503737889-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-09-09",
+      "erstmals_gefunden_am": "2026-09-09",
+      "kartenposition": {
+        "breitengrad": 51.0523284,
+        "laengengrad": 13.7756302,
+        "genauigkeit": "Adresse gefunden"
+      },
+      "neu": true
     }
   ]
 }

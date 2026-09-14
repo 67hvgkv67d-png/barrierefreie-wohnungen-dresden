@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-09-09",
+  "aktualisiert_am": "2026-09-14",
   "suchradius_hinweis": "Johannstadt vollständig; ergänzend Angebote in etwa 15 Minuten Fußweg um Eibenstocker Straße 105, Niedersedlitzer Platz und Lauensteiner Straße 40. Gehzeiten sind Orientierungswerte und vor einer Bewerbung zu prüfen.",
   "wohnungen": [
     {
@@ -49,52 +49,6 @@
       "kartenposition": {
         "breitengrad": 51.0404312,
         "laengengrad": 13.8025057,
-        "genauigkeit": "Adresse gefunden"
-      },
-      "neu": false
-    },
-    {
-      "id": "RB-IS24-169158750",
-      "titel": "Helle 2-Raum-Dachgeschosswohnung in ruhiger Seitenstraße",
-      "suchbereich": "Eibenstocker Straße 105",
-      "adresse": "Wittenberger Straße 107, 01277 Dresden",
-      "zimmer": 2,
-      "wohnflaeche_m2": 42,
-      "nettokaltmiete_eur": 504,
-      "warmmiete_eur": 630,
-      "bewertung": "eher passend",
-      "begruendung": "Dachgeschoss, ruhige Seitenstraßenlage und ausdrücklich genannte Isolierverglasung sprechen für eine nähere Prüfung. Zahl und Lage angrenzender Wohnungen fehlen.",
-      "anzahl_wohnungen_mietparteien": "Mehrfamilienhaus; Anzahl nicht genannt",
-      "wohn_und_geschaeftshaus": "unklar",
-      "gewerbeeinheiten": [],
-      "lage_im_gebaeude": "Dachgeschoss; genaue Etage nicht genannt",
-      "eigener_separater_eingang": "unklar",
-      "direkt_angrenzende_wohnungen": "nicht genannt",
-      "schallschutz_ruhezonen": [
-        "Isolierverglasung",
-        "ruhige Seitenstraßenlage"
-      ],
-      "positive_merkmale": [
-        "Dachgeschoss",
-        "ruhige Seitenstraße",
-        "Isolierverglasung"
-      ],
-      "pruefhinweise": [
-        "Anzahl der Mietparteien nicht genannt",
-        "Hellhörigkeit und angrenzende Wohnungen vor Ort prüfen"
-      ],
-      "anbieter": "von privat",
-      "quelle": "ImmoScout24",
-      "kontakt": "Kontaktformular im Originalinserat",
-      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169158750",
-      "status": "aktiv",
-      "abrufdatum": "2026-09-09",
-      "erstmals_gefunden_am": "2026-09-02",
-      "fussweg_minuten": 10,
-      "entfernung_hinweis": "rund 800 Meter von Eibenstocker Straße 105",
-      "kartenposition": {
-        "breitengrad": 51.0416026,
-        "laengengrad": 13.8046216,
         "genauigkeit": "Adresse gefunden"
       },
       "neu": false
@@ -190,14 +144,14 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-familienfreundliche-3-zimmer-wohnung-mit-balkon/3503737889-203-28644",
       "status": "aktiv",
-      "abrufdatum": "2026-09-09",
+      "abrufdatum": "2026-09-14",
       "erstmals_gefunden_am": "2026-09-09",
       "kartenposition": {
         "breitengrad": 51.0523284,
         "laengengrad": 13.7756302,
         "genauigkeit": "Adresse gefunden"
       },
-      "neu": true
+      "neu": false
     }
   ]
 }

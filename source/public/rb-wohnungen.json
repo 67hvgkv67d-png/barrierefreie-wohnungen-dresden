@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-09-14",
+  "aktualisiert_am": "2026-09-21",
   "suchradius_hinweis": "Johannstadt vollständig; ergänzend Angebote in etwa 15 Minuten Fußweg um Eibenstocker Straße 105, Niedersedlitzer Platz und Lauensteiner Straße 40. Gehzeiten sind Orientierungswerte und vor einer Bewerbung zu prüfen.",
   "wohnungen": [
     {
@@ -144,7 +144,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-familienfreundliche-3-zimmer-wohnung-mit-balkon/3503737889-203-28644",
       "status": "aktiv",
-      "abrufdatum": "2026-09-14",
+      "abrufdatum": "2026-09-21",
       "erstmals_gefunden_am": "2026-09-09",
       "kartenposition": {
         "breitengrad": 51.0523284,
@@ -152,6 +152,47 @@
         "genauigkeit": "Adresse gefunden"
       },
       "neu": false
+    },
+    {
+      "id": "RB-KA-3504673434",
+      "titel": "3-Zimmer-Wohnung im Erdgeschoss in Johannstadt",
+      "suchbereich": "Johannstadt",
+      "adresse": "01307 Dresden-Johannstadt (genaue Adresse nicht genannt)",
+      "zimmer": 3,
+      "wohnflaeche_m2": 80,
+      "nettokaltmiete_eur": 1058,
+      "warmmiete_eur": 1345,
+      "bewertung": "bedingt passend",
+      "begruendung": "Die ausdrücklich genannte Erdgeschosslage ist positiv. Gebäudegröße, Eingangssituation, direkt angrenzende Wohnungen und Schallschutz werden jedoch nicht beschrieben.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "unklar",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "Erdgeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "nicht genannt"
+      ],
+      "positive_merkmale": [
+        "Erdgeschosswohnung",
+        "Terrasse"
+      ],
+      "pruefhinweise": [
+        "genaue Adresse nicht genannt",
+        "Gebäudegröße und Zahl der Mietparteien nicht genannt",
+        "Eingangssituation und direkt angrenzende Wohnungen nicht genannt",
+        "Schallschutz nicht genannt"
+      ],
+      "anbieter": "von privat",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/3-zimmer-wohnung-in-johannstadt/3504673434-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-09-21",
+      "erstmals_gefunden_am": "2026-09-21",
+      "neu": true
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-09-28",
+  "aktualisiert_am": "2026-09-30",
   "suchradius_hinweis": "Johannstadt vollständig; ergänzend Angebote in etwa 15 Minuten Fußweg um Eibenstocker Straße 105, Niedersedlitzer Platz und Lauensteiner Straße 40. Gehzeiten sind Orientierungswerte und vor einer Bewerbung zu prüfen.",
   "wohnungen": [
     {
@@ -37,7 +37,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-familienfreundliche-3-zimmer-wohnung-mit-balkon/3503737889-203-28644",
       "status": "aktiv",
-      "abrufdatum": "2026-09-28",
+      "abrufdatum": "2026-09-30",
       "erstmals_gefunden_am": "2026-09-09",
       "kartenposition": {
         "breitengrad": 51.0523284,
@@ -124,9 +124,9 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171106418",
       "status": "aktiv; bezugsfrei ab Januar 2027",
-      "abrufdatum": "2026-09-28",
+      "abrufdatum": "2026-09-30",
       "erstmals_gefunden_am": "2026-09-28",
-      "neu": true
+      "neu": false
     },
     {
       "id": "RB-IS24-139664020",
@@ -170,14 +170,14 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/139664020",
       "status": "aktiv; bezugsfrei ab 01.11.2026",
-      "abrufdatum": "2026-09-28",
+      "abrufdatum": "2026-09-30",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0538861,
         "laengengrad": 13.7604333,
         "genauigkeit": "Adresse gefunden"
       },
-      "neu": true
+      "neu": false
     },
     {
       "id": "RB-IS24-122953235",
@@ -216,11 +216,58 @@
       "kontakt": "Kontakt über Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/122953235",
       "status": "aktiv",
-      "abrufdatum": "2026-09-28",
+      "abrufdatum": "2026-09-30",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.059597,
         "laengengrad": 13.7852376,
+        "genauigkeit": "Adresse gefunden"
+      },
+      "neu": false
+    },
+    {
+      "id": "RB-IS24-170609322",
+      "titel": "Großzügige 4-Zimmer-Wohnung im Wohn- und Geschäftshaus",
+      "suchbereich": "Johannstadt",
+      "adresse": "Bönischplatz 11, 01307 Dresden",
+      "zimmer": 4,
+      "wohnflaeche_m2": 127.79,
+      "nettokaltmiete_eur": 1220,
+      "warmmiete_eur": 1780,
+      "bewertung": "eher passend",
+      "begruendung": "Das Inserat bezeichnet das Gebäude ausdrücklich als Wohn- und Geschäftshaus. Am Standort sind öffentlich Büro- und Beratungsnutzungen ausgewiesen; das spricht für gemischte, überwiegend tagsüber genutzte Bereiche. Zahl der Mietparteien, direkte Nachbarwohnungen und Schallschutz bleiben offen.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "ja",
+      "gewerbeeinheiten": [
+        "Büro- und Beratungsnutzung am Standort öffentlich ausgewiesen"
+      ],
+      "lage_im_gebaeude": "2. Obergeschoss eines fünfgeschossigen Gebäudes",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "nicht genannt"
+      ],
+      "positive_merkmale": [
+        "Wohn- und Geschäftshaus",
+        "Büro- und Beratungsnutzung am Standort",
+        "keine WG-Vermietung laut Inserat"
+      ],
+      "pruefhinweise": [
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Schallschutz nicht genannt",
+        "Eingangssituation nicht genannt"
+      ],
+      "anbieter": "Drecasa GmbH",
+      "quelle": "ImmoScout24",
+      "kontakt": "Kontaktformular im Originalinserat",
+      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170609322",
+      "status": "aktiv",
+      "abrufdatum": "2026-09-30",
+      "erstmals_gefunden_am": "2026-09-30",
+      "kartenposition": {
+        "breitengrad": 51.0558594,
+        "laengengrad": 13.7626471,
         "genauigkeit": "Adresse gefunden"
       },
       "neu": true

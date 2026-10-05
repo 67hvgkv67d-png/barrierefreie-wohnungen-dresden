@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-09-30",
+  "aktualisiert_am": "2026-10-05",
   "wohnungen": [
     {
       "id": "KA-3462347473",
@@ -20,7 +20,7 @@
       "anbieter": "von privat",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/3-zimmer-neubauwohnung-mit-balkon-und-einbaukueche/3462347473-203-28644",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "neu": false,
       "erstmals_gefunden_am": "2026-08-12",
       "kartenposition": {
@@ -49,7 +49,7 @@
       "anbieter": "moovin Immobilien GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170017998",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-08-17",
       "neu": false,
       "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit; die genaue Ausführung der Walk-In-Dusche ist zu prüfen."
@@ -73,7 +73,7 @@
       "anbieter": "iKonzept24",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169999122",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-08-19",
       "kartenposition": {
         "breitengrad": 51.0507489,
@@ -102,7 +102,7 @@
       "anbieter": "Home & Co Management GmbH",
       "quelle": "Immowelt",
       "direkte_inserats_url": "https://www.immowelt.de/expose/44645dbe-9080-4005-90a7-cee52e6c046a",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-08-24",
       "kartenposition": {
         "breitengrad": 51.0502513,
@@ -131,7 +131,7 @@
       "anbieter": "von privat",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/1raumwohnung-3-og/3487247780-203-28644",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-08-24",
       "neu": false,
       "hinweis": "Die genaue Adresse ist im Inserat nicht genannt; deshalb wurde keine Kartenposition geschätzt. Einige Gegenstände sollen nach Wunsch gegen einen fairen Preis übernommen werden."
@@ -155,7 +155,7 @@
       "anbieter": "von privat",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/helle-2-zimmer-dachgeschosswohnung-mit-aufzug-in-dresden/3488117014-203-28644",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-08-26",
       "kartenposition": {
         "breitengrad": 51.0576245,
@@ -183,7 +183,7 @@
       "anbieter": "Antje Schmidt Immobilien",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169471497",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-07",
       "neu": false,
       "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit. Die genaue Adresse wird im Inserat nicht veröffentlicht; deshalb wurde keine Kartenposition geschätzt."
@@ -206,7 +206,7 @@
       "anbieter": "von privat",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/nachmieter-01307-dresden-altstadt/3492891538-203-28644",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-21",
       "kartenposition": {
         "breitengrad": 51.0495442,
@@ -294,7 +294,7 @@
       "anbieter": "iKonzept24",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170987430",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0507489,
@@ -322,7 +322,7 @@
       "anbieter": "iKonzept24",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/149366800",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0507598,
@@ -351,7 +351,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171119761",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.049735,
@@ -360,62 +360,6 @@
       },
       "neu": false,
       "hinweis": "Das Gebäude wird ausdrücklich als barrierearm beschrieben und verfügt über einen Aufzug. Die individuelle Eignung ist vor Ort zu prüfen."
-    },
-    {
-      "id": "IW-81ffa7d6-0daf-42d6-827c-1bbd2fb511ea",
-      "titel": "Praktische 1-Raum-Wohnung",
-      "stadtteil": "Gorbitz-Süd",
-      "adresse": "Amalie-Dietrich-Platz 9, 01169 Dresden",
-      "zimmer": 1,
-      "wohnflaeche_m2": 26.89,
-      "nettokaltmiete_eur": 286.92,
-      "warmmiete_eur": 388.92,
-      "notwendige_personenzahl_nach_kdu_limit": 1,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Personenaufzug"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "Vonovia Kundenservice GmbH",
-      "quelle": "Immowelt",
-      "direkte_inserats_url": "https://www.immowelt.de/expose/81ffa7d6-0daf-42d6-827c-1bbd2fb511ea",
-      "abrufdatum": "2026-09-30",
-      "erstmals_gefunden_am": "2026-09-28",
-      "kartenposition": {
-        "breitengrad": 51.0440564,
-        "laengengrad": 13.6777804,
-        "genauigkeit": "Adresse gefunden"
-      },
-      "neu": false,
-      "hinweis": "Ein Personenaufzug ist ausdrücklich genannt. Ein Aufzug allein belegt keine Barrierefreiheit; Zugang und Schwellen müssen geprüft werden."
-    },
-    {
-      "id": "IW-f874519c-ff17-4d2b-90af-2f242abcbf73",
-      "titel": "Auf gute Nachbarschaft: günstige 2-Zimmer-Wohnung",
-      "stadtteil": "Gorbitz-Süd",
-      "adresse": "Amalie-Dietrich-Platz 9, 01169 Dresden",
-      "zimmer": 2,
-      "wohnflaeche_m2": 43.5,
-      "nettokaltmiete_eur": 483.72,
-      "warmmiete_eur": 648.72,
-      "notwendige_personenzahl_nach_kdu_limit": 2,
-      "wbs": "unklar",
-      "barriereangaben": [
-        "Personenaufzug"
-      ],
-      "bewertung": "möglicherweise geeignet",
-      "anbieter": "Vonovia Kundenservice GmbH",
-      "quelle": "Immowelt",
-      "direkte_inserats_url": "https://www.immowelt.de/expose/f874519c-ff17-4d2b-90af-2f242abcbf73",
-      "abrufdatum": "2026-09-30",
-      "erstmals_gefunden_am": "2026-09-28",
-      "kartenposition": {
-        "breitengrad": 51.0440564,
-        "laengengrad": 13.6777804,
-        "genauigkeit": "Adresse gefunden"
-      },
-      "neu": false,
-      "hinweis": "Ein Personenaufzug ist ausdrücklich genannt. Ein Aufzug allein belegt keine Barrierefreiheit; Zugang und Schwellen müssen geprüft werden."
     },
     {
       "id": "IS24-171176079",
@@ -436,7 +380,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171176079",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0499616,
@@ -465,45 +409,44 @@
       "anbieter": "Drecasa GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170609322",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-30",
       "kartenposition": {
         "breitengrad": 51.0558594,
         "laengengrad": 13.7626471,
         "genauigkeit": "Adresse gefunden"
       },
-      "neu": true,
+      "neu": false,
       "hinweis": "Aufzug und Dusche sind ausdrücklich genannt. Ein stufenloser Wohnungszugang und weitere Barrierefreiheitsmerkmale sind nicht beschrieben und müssen geprüft werden."
     },
     {
-      "id": "IW-8182b8b5-111b-4e3a-8963-ee9b3615dba1",
-      "titel": "Moderne 3-Zimmer-Wohnung mit großer Terrasse",
-      "stadtteil": "Johannstadt-Süd",
-      "adresse": "Holbeinstraße 7, 01307 Dresden",
+      "id": "GCP-5130-00456-008-0127",
+      "titel": "3-Zimmer-Wohnung mit Einbauküche im 1. Obergeschoss",
+      "stadtteil": "Gorbitz-Ost",
+      "adresse": "Herzogswalder Straße 15, 01169 Dresden",
       "zimmer": 3,
-      "wohnflaeche_m2": 72.64,
-      "nettokaltmiete_eur": 910.84,
-      "warmmiete_eur": 1165,
-      "notwendige_personenzahl_nach_kdu_limit": 3,
+      "wohnflaeche_m2": 61,
+      "nettokaltmiete_eur": 401.71,
+      "warmmiete_eur": 621.71,
+      "notwendige_personenzahl_nach_kdu_limit": 1,
       "wbs": "unklar",
       "barriereangaben": [
-        "barrierearmes Gebäude",
-        "Personenaufzug",
-        "bodengleiche Dusche"
+        "Seniorenwohnen",
+        "Bad mit Dusche"
       ],
-      "bewertung": "ausdrücklich geeignet",
-      "anbieter": "Vonovia Kundenservice GmbH",
-      "quelle": "Immowelt",
-      "direkte_inserats_url": "https://www.immowelt.de/expose/8182b8b5-111b-4e3a-8963-ee9b3615dba1",
-      "abrufdatum": "2026-09-30",
-      "erstmals_gefunden_am": "2026-09-30",
+      "bewertung": "zu prüfen",
+      "anbieter": "Grand City Property",
+      "quelle": "GCP",
+      "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/herzogswalder-strasse-15/5130_00456_008_0127",
+      "abrufdatum": "2026-10-05",
+      "erstmals_gefunden_am": "2026-10-05",
       "kartenposition": {
-        "breitengrad": 51.0508543,
-        "laengengrad": 13.7618705,
-        "genauigkeit": "Adresse gefunden"
+        "breitengrad": 51.0470158,
+        "laengengrad": 13.673176,
+        "genauigkeit": "Adresse hausnummerngenau gefunden"
       },
       "neu": true,
-      "hinweis": "Das Inserat nennt ausdrücklich ein barrierearmes Gebäude, einen Aufzug und eine bodengleiche Dusche. Die individuelle Eignung ist vor Ort zu prüfen."
+      "hinweis": "Seniorenwohnen und ein Bad mit Dusche sind ausdrücklich genannt. Barrierefreiheit, stufenloser Zugang und die Ausführung der Dusche sind nicht beschrieben und müssen geprüft werden."
     }
   ]
 }

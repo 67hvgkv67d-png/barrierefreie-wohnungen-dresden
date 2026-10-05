@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-09-30",
+  "aktualisiert_am": "2026-10-05",
   "suchradius_hinweis": "Johannstadt vollständig; ergänzend Angebote in etwa 15 Minuten Fußweg um Eibenstocker Straße 105, Niedersedlitzer Platz und Lauensteiner Straße 40. Gehzeiten sind Orientierungswerte und vor einer Bewerbung zu prüfen.",
   "wohnungen": [
     {
@@ -37,7 +37,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-familienfreundliche-3-zimmer-wohnung-mit-balkon/3503737889-203-28644",
       "status": "aktiv",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-09",
       "kartenposition": {
         "breitengrad": 51.0523284,
@@ -124,7 +124,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171106418",
       "status": "aktiv; bezugsfrei ab Januar 2027",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-28",
       "neu": false
     },
@@ -170,7 +170,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/139664020",
       "status": "aktiv; bezugsfrei ab 01.11.2026",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0538861,
@@ -216,7 +216,7 @@
       "kontakt": "Kontakt über Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/122953235",
       "status": "aktiv",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.059597,
@@ -263,13 +263,55 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170609322",
       "status": "aktiv",
-      "abrufdatum": "2026-09-30",
+      "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-09-30",
       "kartenposition": {
         "breitengrad": 51.0558594,
         "laengengrad": 13.7626471,
         "genauigkeit": "Adresse gefunden"
       },
+      "neu": false
+    },
+    {
+      "id": "RB-KA-3500389340",
+      "titel": "4,5-Zimmer-Neubauwohnung im Dachgeschoss über Gewerbe",
+      "suchbereich": "Johannstadt",
+      "adresse": "Güntzplatz, 01307 Dresden (Hausnummer nicht genannt)",
+      "zimmer": 4.5,
+      "wohnflaeche_m2": 100,
+      "nettokaltmiete_eur": "nicht genannt",
+      "warmmiete_eur": 1415,
+      "bewertung": "eher passend",
+      "begruendung": "Die Wohnung liegt ausdrücklich im Dachgeschoss eines Neubaus; damit befindet sich keine Wohnung direkt darüber. Im Erdgeschoss wird ein REWE-Markt genannt, sodass eine gemischte Nutzung belegt ist. Zahl der Mietparteien, angrenzende Wohnungen und Schallschutz sind nicht beschrieben.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "ja",
+      "gewerbeeinheiten": [
+        "REWE-Markt im Erdgeschoss"
+      ],
+      "lage_im_gebaeude": "Dachgeschoss, 6. Etage; keine Wohnung darüber",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "nicht genannt"
+      ],
+      "positive_merkmale": [
+        "Dachgeschoss ohne Wohnung darüber",
+        "Neubau",
+        "gemischte Nutzung mit Supermarkt im Erdgeschoss"
+      ],
+      "pruefhinweise": [
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Schallschutz nicht genannt",
+        "Hausnummer nicht genannt"
+      ],
+      "anbieter": "von privat",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/wohnung-4-5-zimmer-neubau-inkl-einbaukueche/3500389340-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-05",
+      "erstmals_gefunden_am": "2026-10-05",
       "neu": true
     }
   ]

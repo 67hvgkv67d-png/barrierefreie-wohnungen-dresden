@@ -1,51 +1,7 @@
 {
-  "aktualisiert_am": "2026-10-05",
+  "aktualisiert_am": "2026-10-07",
   "suchradius_hinweis": "Johannstadt vollständig; ergänzend Angebote in etwa 15 Minuten Fußweg um Eibenstocker Straße 105, Niedersedlitzer Platz und Lauensteiner Straße 40. Gehzeiten sind Orientierungswerte und vor einer Bewerbung zu prüfen.",
   "wohnungen": [
-    {
-      "id": "RB-KA-3503737889",
-      "titel": "Sanierte 3-Zimmer-Wohnung mit Schallschutzverglasung",
-      "suchbereich": "Johannstadt",
-      "adresse": "Blasewitzer Straße 36i, 01307 Dresden",
-      "zimmer": 3,
-      "wohnflaeche_m2": 65.62,
-      "nettokaltmiete_eur": 539,
-      "warmmiete_eur": 769,
-      "bewertung": "bedingt passend",
-      "begruendung": "Die ausdrücklich genannte Schallschutzverglasung ist positiv. Das Inserat beschreibt jedoch ein Mehrfamilienhaus und nennt weder Zahl der Mietparteien noch direkt angrenzende Wohnungen.",
-      "anzahl_wohnungen_mietparteien": "nicht genannt",
-      "wohn_und_geschaeftshaus": "unklar",
-      "gewerbeeinheiten": [
-        "nicht genannt"
-      ],
-      "lage_im_gebaeude": "5. Etage; Mehrfamilienhaus",
-      "eigener_separater_eingang": "nicht genannt",
-      "direkt_angrenzende_wohnungen": "nicht genannt",
-      "schallschutz_ruhezonen": [
-        "Schallschutzverglasung ausdrücklich genannt"
-      ],
-      "positive_merkmale": [
-        "Schallschutzverglasung"
-      ],
-      "pruefhinweise": [
-        "Zahl der Mietparteien nicht genannt",
-        "direkt angrenzende Wohnungen nicht genannt",
-        "Wohn- und Geschäftsnutzung unklar"
-      ],
-      "anbieter": "Vonovia",
-      "quelle": "Kleinanzeigen",
-      "kontakt": "Kontaktformular im Originalinserat",
-      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-familienfreundliche-3-zimmer-wohnung-mit-balkon/3503737889-203-28644",
-      "status": "aktiv",
-      "abrufdatum": "2026-10-05",
-      "erstmals_gefunden_am": "2026-09-09",
-      "kartenposition": {
-        "breitengrad": 51.0523284,
-        "laengengrad": 13.7756302,
-        "genauigkeit": "Adresse gefunden"
-      },
-      "neu": false
-    },
     {
       "id": "RB-KA-3504673434",
       "titel": "3-Zimmer-Wohnung im Erdgeschoss in Johannstadt",
@@ -124,7 +80,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171106418",
       "status": "aktiv; bezugsfrei ab Januar 2027",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-28",
       "neu": false
     },
@@ -170,7 +126,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/139664020",
       "status": "aktiv; bezugsfrei ab 01.11.2026",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0538861,
@@ -216,7 +172,7 @@
       "kontakt": "Kontakt über Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/122953235",
       "status": "aktiv",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.059597,
@@ -263,7 +219,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170609322",
       "status": "aktiv",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-30",
       "kartenposition": {
         "breitengrad": 51.0558594,
@@ -312,6 +268,314 @@
       "status": "aktiv",
       "abrufdatum": "2026-10-05",
       "erstmals_gefunden_am": "2026-10-05",
+      "neu": false
+    },
+    {
+      "id": "RB-KA-3527771774",
+      "titel": "2-Zimmer-Wohnung im 6. Obergeschoss",
+      "suchbereich": "Johannstadt",
+      "adresse": "Hopfgartenstraße 10, 01307 Dresden",
+      "zimmer": 2,
+      "wohnflaeche_m2": 51.41,
+      "nettokaltmiete_eur": 496,
+      "warmmiete_eur": 676,
+      "bewertung": "zu prüfen",
+      "begruendung": "Die Wohnung liegt im 6. Obergeschoss. Für die RB-Kriterien werden weder gemischte Nutzung noch wenige Nachbarwohnungen, separater Eingang oder Schallschutz genannt.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "unklar",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "6. Obergeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "Isolierverglasung genannt"
+      ],
+      "positive_merkmale": [
+        "Isolierverglasung"
+      ],
+      "pruefhinweise": [
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Eingangssituation nicht genannt",
+        "gemischte Nutzung nicht genannt"
+      ],
+      "anbieter": "Vonovia SE",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontaktformular im Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-2-zimmer-wohnung-mit-dusche-und-balkon-in-johannstadt/3527771774-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "kartenposition": {
+        "breitengrad": 51.0537424,
+        "laengengrad": 13.763842,
+        "genauigkeit": "Adresse hausnummerngenau gefunden"
+      },
+      "neu": true
+    },
+    {
+      "id": "RB-KA-3529382742",
+      "titel": "2-Zimmer-Wohnung im Mehrfamilienhaus",
+      "suchbereich": "Johannstadt",
+      "adresse": "Holbeinstraße 7, 01307 Dresden",
+      "zimmer": 2,
+      "wohnflaeche_m2": 66.29,
+      "nettokaltmiete_eur": 887,
+      "warmmiete_eur": 1119,
+      "bewertung": "zu prüfen",
+      "begruendung": "Das Inserat nennt ein 2023 errichtetes Mehrfamilienhaus. Angaben zu Mietparteien, angrenzenden Wohnungen, gemischter Nutzung, separatem Eingang oder besonderem Schallschutz fehlen.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "nein",
+      "gewerbeeinheiten": [
+        "keine genannt"
+      ],
+      "lage_im_gebaeude": "3. Obergeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "Isolierverglasung genannt"
+      ],
+      "positive_merkmale": [
+        "Isolierverglasung"
+      ],
+      "pruefhinweise": [
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Eingangssituation nicht genannt",
+        "keine gemischte Nutzung beschrieben"
+      ],
+      "anbieter": "Vonovia SE",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontaktformular im Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/hochwertige-2-zimmer-wohnung-mit-balkon/3529382742-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "kartenposition": {
+        "breitengrad": 51.0508543,
+        "laengengrad": 13.7618705,
+        "genauigkeit": "Adresse gefunden"
+      },
+      "neu": true
+    },
+    {
+      "id": "RB-KA-3528084267",
+      "titel": "2-Zimmer-Erdgeschosswohnung",
+      "suchbereich": "Johannstadt",
+      "adresse": "Dürerstraße 71, 01307 Dresden",
+      "zimmer": 2,
+      "wohnflaeche_m2": 39.16,
+      "nettokaltmiete_eur": 349,
+      "warmmiete_eur": 486,
+      "bewertung": "bedingt passend",
+      "begruendung": "Die Erdgeschosslage ist ausdrücklich genannt. Ein eigener oder separater Zugang sowie Angaben zu Mietparteien, angrenzenden Wohnungen und Schallschutz fehlen.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "unklar",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "Erdgeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "Isolierverglasung genannt"
+      ],
+      "positive_merkmale": [
+        "Erdgeschosslage",
+        "Isolierverglasung"
+      ],
+      "pruefhinweise": [
+        "separater Eingang nicht genannt",
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "gemischte Nutzung nicht genannt"
+      ],
+      "anbieter": "Vonovia SE",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontaktformular im Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/ihre-neue-wohnung-individuelle-2-zimmer-wohnung-mit-balkon/3528084267-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "kartenposition": {
+        "breitengrad": 51.0515585,
+        "laengengrad": 13.7669948,
+        "genauigkeit": "Adresse hausnummerngenau gefunden"
+      },
+      "neu": true
+    },
+    {
+      "id": "RB-KA-3495328811",
+      "titel": "3-Raum-Wohnung in Wohnanlage",
+      "suchbereich": "Johannstadt",
+      "adresse": "Gerokstraße 24, 01307 Dresden",
+      "zimmer": 3,
+      "wohnflaeche_m2": 80.9,
+      "nettokaltmiete_eur": 700,
+      "warmmiete_eur": 955,
+      "bewertung": "zu prüfen",
+      "begruendung": "Das Inserat nennt eine gepflegte Wohnanlage und die Lage im 5. Obergeschoss. Für ein konfliktarmes Umfeld fehlen Angaben zu Größe des Hauses, angrenzenden Wohnungen, separatem Eingang und Schallschutz.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "unklar",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "5. Obergeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "ruhige Wohnatmosphäre im Inserat beschrieben"
+      ],
+      "positive_merkmale": [
+        "ruhige Wohnatmosphäre laut Inserat"
+      ],
+      "pruefhinweise": [
+        "Wohnanlage kann viele Mietparteien umfassen",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Eingangssituation nicht genannt",
+        "Schallschutz nicht genannt"
+      ],
+      "anbieter": "HOMMEL Management GmbH",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontaktformular im Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/tolle-3-raumwohnung-mit-balkon/3495328811-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "kartenposition": {
+        "breitengrad": 51.0527335,
+        "laengengrad": 13.7660245,
+        "genauigkeit": "Adresse hausnummerngenau gefunden"
+      },
+      "neu": true
+    },
+    {
+      "id": "RB-KA-3528527424",
+      "titel": "Möblierte 1-Raum-Wohnung im ruhig beschriebenen Neubau",
+      "suchbereich": "Johannstadt",
+      "adresse": "Pfotenhauerstraße, 01307 Dresden (Hausnummer nicht genannt)",
+      "zimmer": 1,
+      "wohnflaeche_m2": 28,
+      "nettokaltmiete_eur": 338,
+      "warmmiete_eur": 520,
+      "bewertung": "bedingt passend",
+      "begruendung": "Das Inserat beschreibt ausdrücklich einen Neubau in ruhiger Wohnlage und bietet Vertragsübernahme oder langfristige Untermiete. Die Wohnung liegt jedoch im 5. Obergeschoss; Angaben zu Mietparteien, Nachbarwohnungen und Schallschutz fehlen.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "unklar",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "5. Obergeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "ruhige Wohnlage laut Inserat"
+      ],
+      "positive_merkmale": [
+        "Neubau",
+        "ruhige Wohnlage laut Inserat",
+        "langfristige Vertragsoption"
+      ],
+      "pruefhinweise": [
+        "Hausnummer nicht genannt",
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Schallschutz nicht genannt"
+      ],
+      "anbieter": "von privat",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/moebl-1-raum-wohnung-balkon-naehe-uniklinikum-furnished-studio/3528527424-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "neu": true
+    },
+    {
+      "id": "RB-KA-3489218176",
+      "titel": "3-Zimmer-Wohnung in zehnstöckigem Wohngebäude",
+      "suchbereich": "Johannstadt",
+      "adresse": "Gerokstraße, 01307 Dresden (Hausnummer nicht genannt)",
+      "zimmer": 3,
+      "wohnflaeche_m2": 81.07,
+      "nettokaltmiete_eur": 570,
+      "warmmiete_eur": 867,
+      "bewertung": "zu prüfen",
+      "begruendung": "Das Inserat nennt ausdrücklich ein zehnstöckiges Wohngebäude. Das spricht eher gegen das bevorzugte kleine und konfliktarme Wohnumfeld; Zahl der Mietparteien, angrenzende Wohnungen und Schallschutz sind nicht genannt.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt; zehnstöckiges Gebäude",
+      "wohn_und_geschaeftshaus": "nein",
+      "gewerbeeinheiten": [
+        "keine genannt"
+      ],
+      "lage_im_gebaeude": "2. Obergeschoss eines zehnstöckigen Wohngebäudes",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "isolierverglaste Fenster genannt"
+      ],
+      "positive_merkmale": [
+        "isolierverglaste Fenster"
+      ],
+      "pruefhinweise": [
+        "zehnstöckiges Wohngebäude",
+        "wahrscheinlich viele Mietparteien",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Eingangssituation nicht genannt"
+      ],
+      "anbieter": "von privat / Vermieter Vonovia",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/nachmieter-gesucht/3489218176-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "neu": true
+    },
+    {
+      "id": "RB-KA-3533464332",
+      "titel": "1-Zimmer-Wohnung im Mehrfamilienhaus",
+      "suchbereich": "Johannstadt",
+      "adresse": "Dürerstraße 32, 01307 Dresden",
+      "zimmer": 1,
+      "wohnflaeche_m2": 43.67,
+      "nettokaltmiete_eur": 612,
+      "warmmiete_eur": 765,
+      "bewertung": "zu prüfen",
+      "begruendung": "Das Inserat nennt ein 2023 errichtetes Mehrfamilienhaus und die Lage im 4. Obergeschoss. Angaben zur Zahl der Mietparteien, direkt angrenzenden Wohnungen, gemischten Nutzung und besonderem Schallschutz fehlen.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "nein",
+      "gewerbeeinheiten": [
+        "keine genannt"
+      ],
+      "lage_im_gebaeude": "4. Obergeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "Isolierverglasung genannt"
+      ],
+      "positive_merkmale": [
+        "Isolierverglasung"
+      ],
+      "pruefhinweise": [
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Eingangssituation nicht genannt",
+        "keine gemischte Nutzung beschrieben"
+      ],
+      "anbieter": "Vonovia SE",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontaktformular im Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/grosszuegige-1-zimmer-wohnung-mit-balkon-und-einbaukueche/3533464332-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "kartenposition": {
+        "breitengrad": 51.0517602,
+        "laengengrad": 13.7620377,
+        "genauigkeit": "Adresse hausnummerngenau gefunden"
+      },
       "neu": true
     }
   ]

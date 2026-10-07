@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-10-05",
+  "aktualisiert_am": "2026-10-07",
   "wohnungen": [
     {
       "id": "KA-3462347473",
@@ -49,7 +49,7 @@
       "anbieter": "moovin Immobilien GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170017998",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-08-17",
       "neu": false,
       "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit; die genaue Ausführung der Walk-In-Dusche ist zu prüfen."
@@ -73,7 +73,7 @@
       "anbieter": "iKonzept24",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169999122",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-08-19",
       "kartenposition": {
         "breitengrad": 51.0507489,
@@ -102,7 +102,7 @@
       "anbieter": "Home & Co Management GmbH",
       "quelle": "Immowelt",
       "direkte_inserats_url": "https://www.immowelt.de/expose/44645dbe-9080-4005-90a7-cee52e6c046a",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-08-24",
       "kartenposition": {
         "breitengrad": 51.0502513,
@@ -131,7 +131,7 @@
       "anbieter": "von privat",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/1raumwohnung-3-og/3487247780-203-28644",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-08-24",
       "neu": false,
       "hinweis": "Die genaue Adresse ist im Inserat nicht genannt; deshalb wurde keine Kartenposition geschätzt. Einige Gegenstände sollen nach Wunsch gegen einen fairen Preis übernommen werden."
@@ -155,7 +155,7 @@
       "anbieter": "von privat",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/helle-2-zimmer-dachgeschosswohnung-mit-aufzug-in-dresden/3488117014-203-28644",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-08-26",
       "kartenposition": {
         "breitengrad": 51.0576245,
@@ -183,7 +183,7 @@
       "anbieter": "Antje Schmidt Immobilien",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/169471497",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-07",
       "neu": false,
       "hinweis": "Ein Aufzug allein belegt keine Barrierefreiheit. Die genaue Adresse wird im Inserat nicht veröffentlicht; deshalb wurde keine Kartenposition geschätzt."
@@ -265,7 +265,7 @@
       "anbieter": "Drecasa GmbH",
       "quelle": "Kleinanzeigen",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/grosszuegig-helle-4-zimmer-wohnung/3507017582-203-28644",
-      "abrufdatum": "2026-09-23",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-21",
       "kartenposition": {
         "breitengrad": 51.0558864,
@@ -294,7 +294,7 @@
       "anbieter": "iKonzept24",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170987430",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0507489,
@@ -322,7 +322,7 @@
       "anbieter": "iKonzept24",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/149366800",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0507598,
@@ -351,7 +351,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171119761",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.049735,
@@ -380,7 +380,7 @@
       "anbieter": "Vonovia Kundenservice GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171176079",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0499616,
@@ -409,7 +409,7 @@
       "anbieter": "Drecasa GmbH",
       "quelle": "ImmoScout24",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170609322",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-09-30",
       "kartenposition": {
         "breitengrad": 51.0558594,
@@ -438,15 +438,178 @@
       "anbieter": "Grand City Property",
       "quelle": "GCP",
       "direkte_inserats_url": "https://www.grandcityproperty.de/wohnungssuche/dresden/herzogswalder-strasse-15/5130_00456_008_0127",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-10-05",
       "kartenposition": {
         "breitengrad": 51.0470158,
         "laengengrad": 13.673176,
         "genauigkeit": "Adresse hausnummerngenau gefunden"
       },
-      "neu": true,
+      "neu": false,
       "hinweis": "Seniorenwohnen und ein Bad mit Dusche sind ausdrücklich genannt. Barrierefreiheit, stufenloser Zugang und die Ausführung der Dusche sind nicht beschrieben und müssen geprüft werden."
+    },
+    {
+      "id": "KA-3527771774",
+      "titel": "Erstbezug nach Sanierung: 2-Zimmer-Wohnung mit Dusche und Balkon",
+      "stadtteil": "Johannstadt-Nord",
+      "adresse": "Hopfgartenstraße 10, 01307 Dresden",
+      "zimmer": 2,
+      "wohnflaeche_m2": 51.41,
+      "nettokaltmiete_eur": 496,
+      "warmmiete_eur": 676,
+      "notwendige_personenzahl_nach_kdu_limit": 2,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "Barrierefreies Gebäude",
+        "Aufzug",
+        "Dusche"
+      ],
+      "bewertung": "ausdrücklich geeignet",
+      "anbieter": "Vonovia SE",
+      "quelle": "Kleinanzeigen",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-2-zimmer-wohnung-mit-dusche-und-balkon-in-johannstadt/3527771774-203-28644",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "kartenposition": {
+        "breitengrad": 51.0537424,
+        "laengengrad": 13.763842,
+        "genauigkeit": "Adresse hausnummerngenau gefunden"
+      },
+      "neu": true,
+      "hinweis": "Das Gebäude wird im Originalinserat ausdrücklich als barrierefrei bezeichnet; Aufzug und Dusche sind ebenfalls genannt. Die individuelle Eignung ist vor Ort zu prüfen."
+    },
+    {
+      "id": "KA-3529382742",
+      "titel": "Hochwertige 2-Zimmer-Wohnung mit Balkon und bodengleicher Dusche",
+      "stadtteil": "Johannstadt-Süd",
+      "adresse": "Holbeinstraße 7, 01307 Dresden",
+      "zimmer": 2,
+      "wohnflaeche_m2": 66.29,
+      "nettokaltmiete_eur": 887,
+      "warmmiete_eur": 1119,
+      "notwendige_personenzahl_nach_kdu_limit": 2,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "Barrierearmes Gebäude",
+        "Aufzug",
+        "Bodengleiche Dusche"
+      ],
+      "bewertung": "ausdrücklich geeignet",
+      "anbieter": "Vonovia SE",
+      "quelle": "Kleinanzeigen",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/hochwertige-2-zimmer-wohnung-mit-balkon/3529382742-203-28644",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "kartenposition": {
+        "breitengrad": 51.0508543,
+        "laengengrad": 13.7618705,
+        "genauigkeit": "Adresse gefunden"
+      },
+      "neu": true,
+      "hinweis": "Barrierearmes Gebäude, Aufzug und bodengleiche Dusche sind ausdrücklich genannt. Die individuelle Eignung ist vor Ort zu prüfen."
+    },
+    {
+      "id": "KA-3528084267",
+      "titel": "2-Zimmer-Erdgeschosswohnung mit Dusche und Balkon",
+      "stadtteil": "Johannstadt-Süd",
+      "adresse": "Dürerstraße 71, 01307 Dresden",
+      "zimmer": 2,
+      "wohnflaeche_m2": 39.16,
+      "nettokaltmiete_eur": 349,
+      "warmmiete_eur": 486,
+      "notwendige_personenzahl_nach_kdu_limit": 1,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "Erdgeschoss",
+        "Dusche"
+      ],
+      "bewertung": "zu prüfen",
+      "anbieter": "Vonovia SE",
+      "quelle": "Kleinanzeigen",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/ihre-neue-wohnung-individuelle-2-zimmer-wohnung-mit-balkon/3528084267-203-28644",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "kartenposition": {
+        "breitengrad": 51.0515585,
+        "laengengrad": 13.7669948,
+        "genauigkeit": "Adresse hausnummerngenau gefunden"
+      },
+      "neu": true,
+      "hinweis": "Erdgeschosslage und Dusche sind ausdrücklich genannt. Ein stufenloser Zugang und die Ausführung der Dusche sind nicht beschrieben."
+    },
+    {
+      "id": "KA-3495328811",
+      "titel": "3-Raum-Wohnung mit Balkon und Aufzug",
+      "stadtteil": "Johannstadt-Süd",
+      "adresse": "Gerokstraße 24, 01307 Dresden",
+      "zimmer": 3,
+      "wohnflaeche_m2": 80.9,
+      "nettokaltmiete_eur": 700,
+      "warmmiete_eur": 955,
+      "notwendige_personenzahl_nach_kdu_limit": 2,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "Aufzug"
+      ],
+      "bewertung": "möglicherweise geeignet",
+      "anbieter": "HOMMEL Management GmbH",
+      "quelle": "Kleinanzeigen",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/tolle-3-raumwohnung-mit-balkon/3495328811-203-28644",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "kartenposition": {
+        "breitengrad": 51.0527335,
+        "laengengrad": 13.7660245,
+        "genauigkeit": "Adresse hausnummerngenau gefunden"
+      },
+      "neu": true,
+      "hinweis": "Ein Aufzug ist ausdrücklich genannt. Ein Aufzug allein gilt nicht als Nachweis für Barrierefreiheit; Zugang und Wohnung müssen geprüft werden."
+    },
+    {
+      "id": "KA-3528527424",
+      "titel": "Möblierte 1-Raum-Wohnung im Neubau mit Aufzug",
+      "stadtteil": "Johannstadt-Nord",
+      "adresse": "Pfotenhauerstraße, 01307 Dresden (Hausnummer nicht genannt)",
+      "zimmer": 1,
+      "wohnflaeche_m2": 28,
+      "nettokaltmiete_eur": 338,
+      "warmmiete_eur": 520,
+      "notwendige_personenzahl_nach_kdu_limit": 1,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "Aufzug"
+      ],
+      "bewertung": "möglicherweise geeignet",
+      "anbieter": "von privat",
+      "quelle": "Kleinanzeigen",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/moebl-1-raum-wohnung-balkon-naehe-uniklinikum-furnished-studio/3528527424-203-28644",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "neu": true,
+      "hinweis": "Ein Aufzug ist ausdrücklich genannt. Angeboten werden Vertragsübernahme oder langfristige Untermiete; Hausnummer und weitere Zugänglichkeitsmerkmale sind nicht genannt."
+    },
+    {
+      "id": "KA-3489218176",
+      "titel": "3-Zimmer-Wohnung mit Aufzug und Südbalkon",
+      "stadtteil": "Johannstadt-Nord",
+      "adresse": "Gerokstraße, 01307 Dresden (Hausnummer nicht genannt)",
+      "zimmer": 3,
+      "wohnflaeche_m2": 81.07,
+      "nettokaltmiete_eur": 570,
+      "warmmiete_eur": 867,
+      "notwendige_personenzahl_nach_kdu_limit": 2,
+      "wbs": "unklar",
+      "barriereangaben": [
+        "Aufzug"
+      ],
+      "bewertung": "möglicherweise geeignet",
+      "anbieter": "von privat / Vermieter Vonovia",
+      "quelle": "Kleinanzeigen",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/nachmieter-gesucht/3489218176-203-28644",
+      "abrufdatum": "2026-10-07",
+      "erstmals_gefunden_am": "2026-10-07",
+      "neu": true,
+      "hinweis": "Ein Aufzug ist ausdrücklich genannt. Das Inserat nennt ein zehnstöckiges Gebäude; Hausnummer, stufenloser Zugang und weitere Barrierefreiheitsmerkmale sind nicht beschrieben."
     }
   ]
 }

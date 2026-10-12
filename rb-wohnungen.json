@@ -1,5 +1,5 @@
 {
-  "aktualisiert_am": "2026-10-07",
+  "aktualisiert_am": "2026-10-12",
   "suchradius_hinweis": "Johannstadt vollständig; ergänzend Angebote in etwa 15 Minuten Fußweg um Eibenstocker Straße 105, Niedersedlitzer Platz und Lauensteiner Straße 40. Gehzeiten sind Orientierungswerte und vor einer Bewerbung zu prüfen.",
   "wohnungen": [
     {
@@ -80,7 +80,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171106418",
       "status": "aktiv; bezugsfrei ab Januar 2027",
-      "abrufdatum": "2026-10-07",
+      "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-09-28",
       "neu": false
     },
@@ -126,7 +126,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/139664020",
       "status": "aktiv; bezugsfrei ab 01.11.2026",
-      "abrufdatum": "2026-10-07",
+      "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-09-28",
       "kartenposition": {
         "breitengrad": 51.0538861,
@@ -219,7 +219,7 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.immobilienscout24.de/expose/170609322",
       "status": "aktiv",
-      "abrufdatum": "2026-10-07",
+      "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-09-30",
       "kartenposition": {
         "breitengrad": 51.0558594,
@@ -266,54 +266,9 @@
       "kontakt": "Kontakt über Originalinserat",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/wohnung-4-5-zimmer-neubau-inkl-einbaukueche/3500389340-203-28644",
       "status": "aktiv",
-      "abrufdatum": "2026-10-05",
+      "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-10-05",
       "neu": false
-    },
-    {
-      "id": "RB-KA-3527771774",
-      "titel": "2-Zimmer-Wohnung im 6. Obergeschoss",
-      "suchbereich": "Johannstadt",
-      "adresse": "Hopfgartenstraße 10, 01307 Dresden",
-      "zimmer": 2,
-      "wohnflaeche_m2": 51.41,
-      "nettokaltmiete_eur": 496,
-      "warmmiete_eur": 676,
-      "bewertung": "zu prüfen",
-      "begruendung": "Die Wohnung liegt im 6. Obergeschoss. Für die RB-Kriterien werden weder gemischte Nutzung noch wenige Nachbarwohnungen, separater Eingang oder Schallschutz genannt.",
-      "anzahl_wohnungen_mietparteien": "nicht genannt",
-      "wohn_und_geschaeftshaus": "unklar",
-      "gewerbeeinheiten": [
-        "nicht genannt"
-      ],
-      "lage_im_gebaeude": "6. Obergeschoss",
-      "eigener_separater_eingang": "nicht genannt",
-      "direkt_angrenzende_wohnungen": "nicht genannt",
-      "schallschutz_ruhezonen": [
-        "Isolierverglasung genannt"
-      ],
-      "positive_merkmale": [
-        "Isolierverglasung"
-      ],
-      "pruefhinweise": [
-        "Zahl der Mietparteien nicht genannt",
-        "direkt angrenzende Wohnungen nicht genannt",
-        "Eingangssituation nicht genannt",
-        "gemischte Nutzung nicht genannt"
-      ],
-      "anbieter": "Vonovia SE",
-      "quelle": "Kleinanzeigen",
-      "kontakt": "Kontaktformular im Originalinserat",
-      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/erstbezug-nach-sanierung-2-zimmer-wohnung-mit-dusche-und-balkon-in-johannstadt/3527771774-203-28644",
-      "status": "aktiv",
-      "abrufdatum": "2026-10-07",
-      "erstmals_gefunden_am": "2026-10-07",
-      "kartenposition": {
-        "breitengrad": 51.0537424,
-        "laengengrad": 13.763842,
-        "genauigkeit": "Adresse hausnummerngenau gefunden"
-      },
-      "neu": true
     },
     {
       "id": "RB-KA-3529382742",
@@ -358,7 +313,7 @@
         "laengengrad": 13.7618705,
         "genauigkeit": "Adresse gefunden"
       },
-      "neu": true
+      "neu": false
     },
     {
       "id": "RB-KA-3528084267",
@@ -404,7 +359,7 @@
         "laengengrad": 13.7669948,
         "genauigkeit": "Adresse hausnummerngenau gefunden"
       },
-      "neu": true
+      "neu": false
     },
     {
       "id": "RB-KA-3495328811",
@@ -442,14 +397,14 @@
       "kontakt": "Kontaktformular im Originalinserat",
       "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/tolle-3-raumwohnung-mit-balkon/3495328811-203-28644",
       "status": "aktiv",
-      "abrufdatum": "2026-10-07",
+      "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-10-07",
       "kartenposition": {
         "breitengrad": 51.0527335,
         "laengengrad": 13.7660245,
         "genauigkeit": "Adresse hausnummerngenau gefunden"
       },
-      "neu": true
+      "neu": false
     },
     {
       "id": "RB-KA-3528527424",
@@ -491,7 +446,7 @@
       "status": "aktiv",
       "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-10-07",
-      "neu": true
+      "neu": false
     },
     {
       "id": "RB-KA-3489218176",
@@ -531,7 +486,7 @@
       "status": "aktiv",
       "abrufdatum": "2026-10-07",
       "erstmals_gefunden_am": "2026-10-07",
-      "neu": true
+      "neu": false
     },
     {
       "id": "RB-KA-3533464332",
@@ -576,6 +531,247 @@
         "laengengrad": 13.7620377,
         "genauigkeit": "Adresse hausnummerngenau gefunden"
       },
+      "neu": false
+    },
+    {
+      "id": "RB-IS24-171667339",
+      "titel": "3-Raum-Wohnung im 9. Obergeschoss",
+      "suchbereich": "Johannstadt",
+      "adresse": "Pfotenhauerstraße 16, 01307 Dresden",
+      "zimmer": 3,
+      "wohnflaeche_m2": 77.98,
+      "nettokaltmiete_eur": 634.76,
+      "warmmiete_eur": 907.76,
+      "bewertung": "zu prüfen",
+      "begruendung": "Die Wohnung liegt im 9. Obergeschoss eines Gebäudes von 1973. Konfliktreduzierende Gebäudemerkmale, Zahl der Mietparteien und Schallschutz sind nicht genannt.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "unklar",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "9. Obergeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "Isolierverglasung genannt"
+      ],
+      "positive_merkmale": [
+        "Isolierverglasung"
+      ],
+      "pruefhinweise": [
+        "Gebäudegröße und Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Eingangssituation nicht genannt"
+      ],
+      "anbieter": "Vonovia Kundenservice GmbH",
+      "quelle": "ImmoScout24",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171667339",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-12",
+      "erstmals_gefunden_am": "2026-10-12",
+      "neu": true
+    },
+    {
+      "id": "RB-IS24-171666645",
+      "titel": "2-Zimmer-Wohnung im 3. Obergeschoss",
+      "suchbereich": "Johannstadt",
+      "adresse": "Pfotenhauerstraße 5, 01307 Dresden",
+      "zimmer": 2,
+      "wohnflaeche_m2": 55.74,
+      "nettokaltmiete_eur": 515.6,
+      "warmmiete_eur": 710.6,
+      "bewertung": "zu prüfen",
+      "begruendung": "Zur Konfliktarmut des Gebäudes werden keine belastbaren Angaben gemacht. Positiv ist die ausdrücklich genannte Isolierverglasung.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "unklar",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "3. Obergeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "Isolierverglasung genannt"
+      ],
+      "positive_merkmale": [
+        "Isolierverglasung"
+      ],
+      "pruefhinweise": [
+        "Gebäudegröße und Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Eingangssituation nicht genannt"
+      ],
+      "anbieter": "Vonovia Kundenservice GmbH",
+      "quelle": "ImmoScout24",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171666645",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-12",
+      "erstmals_gefunden_am": "2026-10-12",
+      "neu": true
+    },
+    {
+      "id": "RB-IS24-149469292",
+      "titel": "Wohnung im gemischt genutzten Quartier MEIN GUENTZ",
+      "suchbereich": "Johannstadt",
+      "adresse": "Gerokstraße 11/13, 01307 Dresden",
+      "zimmer": 3,
+      "wohnflaeche_m2": 75.69,
+      "nettokaltmiete_eur": 1090,
+      "warmmiete_eur": 1362,
+      "bewertung": "eher passend",
+      "begruendung": "Das Inserat nennt eine Mischung aus Wohnen und tagsüber genutztem Gewerbe sowie begrünte Ruhezonen. Die Wohnung liegt jedoch im 3. Obergeschoss eines sechsgeschossigen Gebäudes.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "ja",
+      "gewerbeeinheiten": [
+        "REWE-Supermarkt",
+        "Drogerie",
+        "Bäckerei",
+        "Reisecenter"
+      ],
+      "lage_im_gebaeude": "3. Obergeschoss von 6",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "begrünte Ruhezonen im Innenbereich genannt"
+      ],
+      "positive_merkmale": [
+        "gemischte Nutzung",
+        "tagsüber genutzte Gewerbeeinheiten",
+        "begrünte Ruhezonen"
+      ],
+      "pruefhinweise": [
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Eingangssituation nicht genannt"
+      ],
+      "anbieter": "CRESCO REAL ESTATE GmbH",
+      "quelle": "ImmoScout24",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/149469292",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-12",
+      "erstmals_gefunden_am": "2026-10-12",
+      "neu": true
+    },
+    {
+      "id": "RB-IS24-171416476",
+      "titel": "4-Raum-Wohnung im Jugendstilhaus",
+      "suchbereich": "Johannstadt",
+      "adresse": "Hertelstraße 16, 01307 Dresden",
+      "zimmer": 4,
+      "wohnflaeche_m2": 103,
+      "nettokaltmiete_eur": 1200,
+      "warmmiete_eur": 1580,
+      "bewertung": "zu prüfen",
+      "begruendung": "Die Wohnung liegt im 1. Obergeschoss eines fünfgeschossigen Jugendstil-Wohnhauses. Angaben zu Mietparteien, Nachbarwohnungen und Schallschutz fehlen.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "nein",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "1. Obergeschoss von 5",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "nicht genannt"
+      ],
+      "positive_merkmale": [
+        "keine ausdrücklich genannt"
+      ],
+      "pruefhinweise": [
+        "Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Schallschutz nicht genannt"
+      ],
+      "anbieter": "gewerblicher Anbieter",
+      "quelle": "ImmoScout24",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171416476",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-12",
+      "erstmals_gefunden_am": "2026-10-12",
+      "neu": true
+    },
+    {
+      "id": "RB-IS24-171587324",
+      "titel": "Maisonette-Dachgeschosswohnung ohne Wohnung darüber",
+      "suchbereich": "Johannstadt",
+      "adresse": "Käthe-Kollwitz-Ufer 20, 01307 Dresden",
+      "zimmer": 2,
+      "wohnflaeche_m2": 79.9,
+      "nettokaltmiete_eur": 630,
+      "warmmiete_eur": 900,
+      "bewertung": "eher passend",
+      "begruendung": "Die Wohnung liegt ausdrücklich als Dachgeschoss-Maisonette im 5. und obersten Geschoss. Damit befindet sich keine Wohnung darüber; weitere Nachbarschafts- und Schallschutzangaben fehlen.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "nein",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "Dachgeschoss, 5. von 5 Geschossen",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "nicht genannt"
+      ],
+      "positive_merkmale": [
+        "Dachgeschoss",
+        "keine Wohnung darüber"
+      ],
+      "pruefhinweise": [
+        "Gebäudegröße und Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Schallschutz nicht genannt"
+      ],
+      "anbieter": "von privat",
+      "quelle": "ImmoScout24",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.immobilienscout24.de/expose/171587324",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-12",
+      "erstmals_gefunden_am": "2026-10-12",
+      "neu": true
+    },
+    {
+      "id": "RB-KA-3507192592",
+      "titel": "3-Raum-Wohnung im 3. Obergeschoss",
+      "suchbereich": "Johannstadt",
+      "adresse": "01307 Dresden-Johannstadt (genaue Adresse nicht genannt)",
+      "zimmer": 3,
+      "wohnflaeche_m2": 77.65,
+      "nettokaltmiete_eur": 952,
+      "warmmiete_eur": 1238,
+      "bewertung": "zu prüfen",
+      "begruendung": "Das Inserat nennt einen Neubau und die Lage im 3. Obergeschoss, aber keine konfliktmindernden Gebäudeeigenschaften.",
+      "anzahl_wohnungen_mietparteien": "nicht genannt",
+      "wohn_und_geschaeftshaus": "unklar",
+      "gewerbeeinheiten": [
+        "nicht genannt"
+      ],
+      "lage_im_gebaeude": "3. Obergeschoss",
+      "eigener_separater_eingang": "nicht genannt",
+      "direkt_angrenzende_wohnungen": "nicht genannt",
+      "schallschutz_ruhezonen": [
+        "nicht genannt"
+      ],
+      "positive_merkmale": [
+        "Neubau"
+      ],
+      "pruefhinweise": [
+        "genaue Adresse nicht genannt",
+        "Gebäudegröße und Zahl der Mietparteien nicht genannt",
+        "direkt angrenzende Wohnungen nicht genannt",
+        "Schallschutz nicht genannt"
+      ],
+      "anbieter": "von privat",
+      "quelle": "Kleinanzeigen",
+      "kontakt": "Kontakt über Originalinserat",
+      "direkte_inserats_url": "https://www.kleinanzeigen.de/s-anzeige/nachmieter-gesucht-3-raum-wohnung-johannstadt/3507192592-203-28644",
+      "status": "aktiv",
+      "abrufdatum": "2026-10-12",
+      "erstmals_gefunden_am": "2026-10-12",
       "neu": true
     }
   ]

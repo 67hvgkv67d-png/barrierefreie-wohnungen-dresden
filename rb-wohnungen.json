@@ -570,7 +570,12 @@
       "status": "aktiv",
       "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-10-12",
-      "neu": true
+      "neu": true,
+      "kartenposition": {
+        "breitengrad": 51.0551704,
+        "laengengrad": 13.7628771,
+        "genauigkeit": "Hausnummer gefunden"
+      }
     },
     {
       "id": "RB-IS24-171666645",
@@ -609,7 +614,12 @@
       "status": "aktiv",
       "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-10-12",
-      "neu": true
+      "neu": true,
+      "kartenposition": {
+        "breitengrad": 51.0562427,
+        "laengengrad": 13.7643533,
+        "genauigkeit": "Hausnummer gefunden"
+      }
     },
     {
       "id": "RB-IS24-149469292",
@@ -653,7 +663,12 @@
       "status": "aktiv",
       "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-10-12",
-      "neu": true
+      "neu": true,
+      "kartenposition": {
+        "breitengrad": 51.0537389,
+        "laengengrad": 13.7610250,
+        "genauigkeit": "Adresse Gerokstraße 11 gefunden"
+      }
     },
     {
       "id": "RB-IS24-171416476",
@@ -692,7 +707,12 @@
       "status": "aktiv",
       "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-10-12",
-      "neu": true
+      "neu": true,
+      "kartenposition": {
+        "breitengrad": 51.0580659,
+        "laengengrad": 13.7725725,
+        "genauigkeit": "Hausnummer gefunden"
+      }
     },
     {
       "id": "RB-IS24-171587324",
@@ -732,7 +752,12 @@
       "status": "aktiv",
       "abrufdatum": "2026-10-12",
       "erstmals_gefunden_am": "2026-10-12",
-      "neu": true
+      "neu": true,
+      "kartenposition": {
+        "breitengrad": 51.0588972,
+        "laengengrad": 13.7645363,
+        "genauigkeit": "Hausnummer gefunden"
+      }
     },
     {
       "id": "RB-KA-3507192592",

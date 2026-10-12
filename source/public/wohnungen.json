@@ -574,7 +574,12 @@
       "abrufdatum": "2026-10-12",
       "neu": true,
       "erstmals_gefunden_am": "2026-10-12",
-      "hinweis": "Das Gebäude wird ausdrücklich als barrierefrei beschrieben; ein Aufzug ist vorhanden. Die Wohnung liegt im 9. Obergeschoss."
+      "hinweis": "Das Gebäude wird ausdrücklich als barrierefrei beschrieben; ein Aufzug ist vorhanden. Die Wohnung liegt im 9. Obergeschoss.",
+      "kartenposition": {
+        "breitengrad": 51.0551704,
+        "laengengrad": 13.7628771,
+        "genauigkeit": "Hausnummer gefunden"
+      }
     },
     {
       "id": "IS24-171666645",
@@ -600,7 +605,12 @@
       "abrufdatum": "2026-10-12",
       "neu": true,
       "erstmals_gefunden_am": "2026-10-12",
-      "hinweis": "Barrierefreiheit, ein barrierearmes Gebäude, stufenloser Zugang und Aufzug sind ausdrücklich genannt."
+      "hinweis": "Barrierefreiheit, ein barrierearmes Gebäude, stufenloser Zugang und Aufzug sind ausdrücklich genannt.",
+      "kartenposition": {
+        "breitengrad": 51.0562427,
+        "laengengrad": 13.7643533,
+        "genauigkeit": "Hausnummer gefunden"
+      }
     },
     {
       "id": "IS24-149469292",
@@ -624,7 +634,12 @@
       "abrufdatum": "2026-10-12",
       "neu": true,
       "erstmals_gefunden_am": "2026-10-12",
-      "hinweis": "Der Inseratstitel nennt Barrierefreiheit und ein Aufzug ist vorhanden; die Detailkennzeichnung des Portals ist dazu widersprüchlich. Vor Ort prüfen."
+      "hinweis": "Der Inseratstitel nennt Barrierefreiheit und ein Aufzug ist vorhanden; die Detailkennzeichnung des Portals ist dazu widersprüchlich. Vor Ort prüfen.",
+      "kartenposition": {
+        "breitengrad": 51.0537389,
+        "laengengrad": 13.7610250,
+        "genauigkeit": "Adresse Gerokstraße 11 gefunden"
+      }
     },
     {
       "id": "KA-3507192592",
@@ -672,7 +687,12 @@
       "abrufdatum": "2026-10-12",
       "neu": true,
       "erstmals_gefunden_am": "2026-10-12",
-      "hinweis": "Barrierearmer Zugang, barrierearme Gestaltung der Innenräume und Personenaufzug sind ausdrücklich genannt."
+      "hinweis": "Barrierearmer Zugang, barrierearme Gestaltung der Innenräume und Personenaufzug sind ausdrücklich genannt.",
+      "kartenposition": {
+        "breitengrad": 51.0485621,
+        "laengengrad": 13.6531432,
+        "genauigkeit": "Hausnummer gefunden"
+      }
     },
     {
       "id": "GCP-5131-00447-005-0046",
@@ -698,7 +718,12 @@
       "abrufdatum": "2026-10-12",
       "neu": true,
       "erstmals_gefunden_am": "2026-10-12",
-      "hinweis": "Erdgeschosslage, barrierearmer Zugang, barrierearme Gestaltung der Innenräume und Personenaufzug sind ausdrücklich genannt."
+      "hinweis": "Erdgeschosslage, barrierearmer Zugang, barrierearme Gestaltung der Innenräume und Personenaufzug sind ausdrücklich genannt.",
+      "kartenposition": {
+        "breitengrad": 51.0500156,
+        "laengengrad": 13.6558095,
+        "genauigkeit": "Hausnummer gefunden"
+      }
     }
   ]
 }
